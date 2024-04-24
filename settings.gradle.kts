@@ -21,4 +21,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "Duet"
 include(":app")
- 
+include(":core:domain-models")
+include(":core:presentation")
+include(":data")
+include(":domain")
+include(":features:no-active-group")
