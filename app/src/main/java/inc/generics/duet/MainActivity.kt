@@ -3,30 +3,30 @@ package inc.generics.duet
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-
+import androidx.navigation.compose.rememberNavController
+import inc.generics.duet.navigation.SetupMainNavGraph
+import inc.generics.presentation.theme.AppDuetTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
-            Surface(
-                modifier = Modifier.fillMaxSize(),
-            ) {
-                Greeting("Android")
+            AppDuetTheme {
+                Main()
             }
         }
     }
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun Main() {
+    val mainNavController = rememberNavController()
+    SetupMainNavGraph(navHostController = mainNavController)
+}
+
+@Composable
+fun TestScreen() {
+
 }
