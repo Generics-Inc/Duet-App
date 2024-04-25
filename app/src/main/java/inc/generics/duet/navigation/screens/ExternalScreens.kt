@@ -1,0 +1,5 @@
+package inc.generics.duet.navigation.screens
+
+sealed class ExternalScreens(val route: String) {
+    data object Main : ExternalScreens(route = "externalMainScreen")
+}
