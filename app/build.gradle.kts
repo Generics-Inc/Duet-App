@@ -51,6 +51,9 @@ android {
 
 dependencies {
     implementation(project(":core:presentation"))
+    implementation(project(":core:domain-models"))
+
+    implementation(project(":features:no-active-group"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
