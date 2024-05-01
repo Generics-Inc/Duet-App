@@ -18,6 +18,15 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        multiDexEnabled = true
+
+        addManifestPlaceholders(mapOf(
+            "VKIDRedirectHost" to "vk.com",
+            "VKIDRedirectScheme" to "vk51832254",
+            "VKIDClientID" to 51832254,
+            "VKIDClientSecret" to "G1cKB1SGCuxjmxUG0FIC"
+        ))
     }
 
     buildTypes {
@@ -32,6 +41,7 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+        isCoreLibraryDesugaringEnabled = true
     }
     kotlinOptions {
         jvmTarget = "1.8"
@@ -54,6 +64,7 @@ dependencies {
     implementation(project(":core:domain-models"))
 
     implementation(project(":features:no-active-group"))
+    implementation(project(":features:authorization"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -69,6 +80,8 @@ dependencies {
     implementation(libs.di.koin.androidx.compose)
 
     implementation(libs.androidx.navigation.compose)
+
+    coreLibraryDesugaring(libs.desugar.android)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
