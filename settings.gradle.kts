@@ -16,6 +16,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven {
+            url = uri("https://artifactory-external.vkpartner.ru/artifactory/vkid-sdk-andorid/")
+        }
     }
 }
 
@@ -26,3 +29,4 @@ include(":core:presentation")
 include(":data")
 include(":domain")
 include(":features:no-active-group")
+include(":features:authorization")

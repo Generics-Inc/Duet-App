@@ -16,6 +16,7 @@
             <option value="$PROJECT_DIR$/data" />
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/features" />
+            <option value="$PROJECT_DIR$/features/authorization" />
             <option value="$PROJECT_DIR$/features/no-active-group" />
           </set>
         </option>
