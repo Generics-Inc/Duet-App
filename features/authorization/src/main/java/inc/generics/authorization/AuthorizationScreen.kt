@@ -81,7 +81,7 @@ fun AuthorizationScreen(
 }
 
 @Composable
-fun VkAuth(viewModel: AuthorizationViewModel = koinViewModel()) {
+internal fun VkAuth(viewModel: AuthorizationViewModel = koinViewModel()) {
     val bottomSheetState = rememberOneTapBottomSheetState()
     OneTapBottomSheet(
         state = bottomSheetState,
