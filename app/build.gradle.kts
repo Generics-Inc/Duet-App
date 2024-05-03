@@ -65,6 +65,7 @@ dependencies {
 
     implementation(project(":features:no-active-group"))
     implementation(project(":features:authorization"))
+    implementation(project(":features:create-new-group"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -74,6 +75,8 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+
+    implementation(libs.androidx.runtime.livedata)
 
     implementation(libs.di.koin.core)
     implementation(libs.di.koin.android)
