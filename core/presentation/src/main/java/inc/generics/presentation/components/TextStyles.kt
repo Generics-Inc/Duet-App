@@ -14,6 +14,13 @@ fun defaultTextStyleDuet(): TextStyle = TextStyle(
 )
 
 @Composable
+fun titleContrastTestStyleDuet(): TextStyle = TextStyle(
+    color = DuetTheme.colors.backgroundColor,
+    fontSize = 20.sp,
+    textAlign = TextAlign.End
+)
+
+@Composable
 internal fun defaultTextStyleForButtonDuet(): TextStyle = TextStyle(
     fontSize = 18.sp,
     textAlign = TextAlign.Center
