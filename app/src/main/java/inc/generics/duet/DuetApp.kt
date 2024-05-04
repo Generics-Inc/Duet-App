@@ -1,7 +1,7 @@
 package inc.generics.duet
 
 import android.app.Application
-import inc.generics.duet.glue.authorization.di.authorizationFeatureModule
+import inc.generics.duet.glue.features.authorization.di.authorizationFeatureModule
 import inc.generics.duet.glue.presentation.di.presentationModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger

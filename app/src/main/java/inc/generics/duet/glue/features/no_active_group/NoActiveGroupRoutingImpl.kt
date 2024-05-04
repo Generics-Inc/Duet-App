@@ -1,4 +1,4 @@
-package inc.generics.duet.glue.no_active_group
+package inc.generics.duet.glue.features.no_active_group
 
 import androidx.navigation.NavHostController
 import inc.generics.no_active_group.routing.NoActiveGroupRouting

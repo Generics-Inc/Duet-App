@@ -1,4 +1,4 @@
-package inc.generics.duet.glue.authorization
+package inc.generics.duet.glue.features.authorization
 
 import androidx.navigation.NavHostController
 import inc.generics.authorization.routing.AuthorizationScreenRouting

@@ -1,4 +1,4 @@
-package inc.generics.duet.glue.authorization
+package inc.generics.duet.glue.features.authorization
 
 import inc.generics.authorization.interactors.AuthorizationInteractor
 import kotlinx.coroutines.delay

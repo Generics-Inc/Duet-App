@@ -10,8 +10,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import inc.generics.authorization.AuthorizationScreen
 import inc.generics.duet.TestScreen
-import inc.generics.duet.glue.authorization.AuthorizationScreenRoutingImpl
-import inc.generics.duet.glue.no_active_group.NoActiveGroupRoutingImpl
+import inc.generics.duet.glue.features.authorization.AuthorizationScreenRoutingImpl
+import inc.generics.duet.glue.features.no_active_group.NoActiveGroupRoutingImpl
 import inc.generics.duet.navigation.screens.ExternalScreens
 import inc.generics.no_active_group.NoActiveGroupScreen
 import inc.generics.no_active_group.models.GroupInf
