@@ -1,4 +1,5 @@
 package inc.generics.duet_api
+import com.skydoves.retrofit.adapters.result.ResultCallAdapterFactory
 import inc.generics.duet_api.api.DuetApi
 import inc.generics.duet_api.util.DuetTokenInterceptor
 import inc.generics.duet_api.util.TokenProvider
@@ -23,6 +24,7 @@ internal fun retrofit(okHttpClient: OkHttpClient, baseUrl: String): Retrofit {
         .client(okHttpClient)
         .baseUrl(baseUrl)
         .addConverterFactory(GsonConverterFactory.create())
+        .addCallAdapterFactory(ResultCallAdapterFactory.create())
         .build()
 }
 
