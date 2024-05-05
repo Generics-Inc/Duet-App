@@ -1,6 +1,8 @@
 package inc.generics.duet
 
 import android.app.Application
+import inc.generics.duet.glue.core.di.coreUtilsModule
+import inc.generics.duet.glue.data_sources.duet_api.di.duetApiModule
 import inc.generics.duet.glue.features.authorization.di.authorizationFeatureModule
 import inc.generics.duet.glue.presentation.di.presentationModule
 import org.koin.android.ext.koin.androidContext
@@ -17,7 +19,9 @@ class DuetApp: Application() {
             androidContext(this@DuetApp)
             modules(
                 authorizationFeatureModule,
-                presentationModule
+                presentationModule,
+                coreUtilsModule,
+                duetApiModule
             )
         }
     }
