@@ -61,9 +61,8 @@ android {
 
 dependencies {
     implementation(project(":core:presentation"))
-    implementation(project(":core:domain-models"))
-    implementation(project(":core:utils"))
 
+    implementation(project(":data-sources:duet-local"))
     implementation(project(":data-sources:duet-api"))
 
     implementation(project(":features:no-active-group"))

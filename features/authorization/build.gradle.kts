@@ -40,7 +40,6 @@ android {
 
 dependencies {
     implementation(project(":core:presentation"))
-    implementation(project(":core:domain-models"))
 
     implementation(libs.androidx.core.ktx)
 
