@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import inc.generics.create_new_group.interactors.CreateNewGroupInteractor
-import inc.generics.domain_models.models.GroupSimple
+import inc.generics.create_new_group.models.GroupSimple
 import kotlinx.coroutines.launch
 
 class CreateNewGroupViewModel(private val interactor: CreateNewGroupInteractor) : ViewModel() {
