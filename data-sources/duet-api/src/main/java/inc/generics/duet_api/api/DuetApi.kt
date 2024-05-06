@@ -1,13 +1,13 @@
 package inc.generics.duet_api.api
 
 import inc.generics.duet_api.models.auth.AuthResponseDto
-import inc.generics.duet_api.models.auth.RefreshTokenDto
 import inc.generics.duet_api.models.auth.SignInDto
 import inc.generics.duet_api.models.auth.VkSignInDto
 import inc.generics.duet_api.models.profile.ProfileInfDto
 import inc.generics.duet_api.models.profile.StatusUsersGroupDto
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Headers
 import retrofit2.http.POST
 import retrofit2.http.Path
 
@@ -25,8 +25,9 @@ interface DuetApi {
     @POST("api/auth/logout")
     suspend fun logout()
 
+    @Headers("REFRESH:ON")
     @POST("api/auth/refresh")
-    suspend fun refreshToken(@Body body: RefreshTokenDto): Result<AuthResponseDto>
+    suspend fun refreshToken(): Result<AuthResponseDto>
 
     /* Profile */
     @GET("api/profiles/status")

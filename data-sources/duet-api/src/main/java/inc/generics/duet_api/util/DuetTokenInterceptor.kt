@@ -1,5 +1,6 @@
 package inc.generics.duet_api.util
 
+import okhttp3.FormBody
 import okhttp3.Interceptor
 import okhttp3.Response
 
@@ -8,8 +9,15 @@ internal class DuetTokenInterceptor(private val tokenProvider: TokenProvider) : 
         val requestBuild = chain.request().newBuilder()
         val token = tokenProvider.token()
 
-        token?.let {
-            requestBuild.addHeader("Authorization", "Bearer $token")
+        if (chain.proceed(chain.request()).headers("REFRESH").isEmpty()) {
+            token?.let {
+                requestBuild.addHeader("Authorization", "Bearer $token")
+            }
+        } else {
+            val requestBody = FormBody.Builder()
+                .add("accessToken", token!!).build()
+            requestBuild.addHeader("Authorization", "Bearer ${tokenProvider.refToken()}")
+            requestBuild.post(requestBody)
         }
 
         return chain.proceed(requestBuild.build())
@@ -18,4 +26,6 @@ internal class DuetTokenInterceptor(private val tokenProvider: TokenProvider) : 
 
 interface TokenProvider {
     fun token(): String?
+
+    fun refToken(): String?
 }
