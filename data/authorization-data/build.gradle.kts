@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "inc.generics.authorization"
+    namespace = "inc.generics.authorization_data"
     compileSdk = 34
 
     defaultConfig {
@@ -30,34 +30,13 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
-    }
 }
 
 dependencies {
-    implementation(project(":core:presentation"))
-    implementation(project(":data:authorization-data"))
 
     implementation(libs.androidx.core.ktx)
-
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
-
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.lifecycle.runtime.compose)
-    implementation(libs.androidx.runtime.livedata)
-
-    implementation(libs.di.koin.androidx.compose)
-
-    implementation(libs.vk.vkid.core)
-    implementation(libs.vk.vkid.onetap.compose)
-
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

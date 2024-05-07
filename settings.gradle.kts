@@ -25,8 +25,12 @@ dependencyResolutionManagement {
 rootProject.name = "Duet"
 include(":app")
 include(":core:presentation")
-include(":features:no-active-group")
-include(":features:authorization")
-include(":features:create-new-group")
+
 include(":data-sources:duet-api")
 include(":data-sources:duet-local")
+
+
+include(":features:authorization")
+include(":data:authorization-data")
+include(":features:no-active-group")
+include(":features:create-new-group")
