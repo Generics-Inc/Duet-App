@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "inc.generics.authorization_data"
+    namespace = "inc.generics.android_utils"
     compileSdk = 34
 
     defaultConfig {
@@ -33,12 +33,9 @@ android {
 }
 
 dependencies {
-    implementation(project(":data-sources:duet-api"))
-    implementation(project(":data-sources:duet-local"))
 
     implementation(libs.androidx.core.ktx)
 
-    testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }

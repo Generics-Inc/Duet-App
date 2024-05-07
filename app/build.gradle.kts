@@ -67,7 +67,10 @@ dependencies {
 
     implementation(project(":features:no-active-group"))
     implementation(project(":features:authorization"))
+    implementation(project(":data:authorization-data"))
     implementation(project(":features:create-new-group"))
+
+    implementation(project(":android-utils"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
