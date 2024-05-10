@@ -9,7 +9,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import inc.generics.authorization.AuthorizationScreen
-import inc.generics.duet.TestScreen
+import inc.generics.duet.Main
 import inc.generics.duet.glue.features.authorization.AuthorizationScreenRoutingImpl
 import inc.generics.duet.glue.features.no_active_group.NoActiveGroupRoutingImpl
 import inc.generics.duet.navigation.screens.ExternalScreens
@@ -33,7 +33,7 @@ fun SetupMainNavGraph(navHostController: NavHostController) {
         }
     ) {
         composable(route = ExternalScreens.Main.route) {
-            TestScreen()
+            Main(mainNavController = navHostController)
         }
         composable(route = ExternalScreens.NoActiveGroup.route) {
             val groupInf: GroupInf? = navHostController.getData("groupInf") as GroupInf?

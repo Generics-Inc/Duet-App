@@ -1,9 +1,15 @@
 package inc.generics.duet
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.currentCompositeKeyHash
+import androidx.compose.runtime.currentCompositionLocalContext
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.navigation.NavHostController
@@ -15,6 +21,7 @@ import inc.generics.presentation.theme.appDuetThemeViewModel
 import inc.generics.presentation.theme.localization.Language
 import org.koin.androidx.compose.koinViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.component.getScopeId
 
 class MainActivity : ComponentActivity() {
 
@@ -30,26 +37,7 @@ class MainActivity : ComponentActivity() {
             AppDuetTheme(localization = language) {
                 val mainNavController = rememberNavController()
                 SetupMainNavGraph(navHostController = mainNavController)
-                Main(mainNavController = mainNavController)
             }
-        }
-    }
-}
-
-
-@Composable
-fun Main(mainViewModel: MainViewModel = koinViewModel(), mainNavController: NavHostController) {
-    val statusGroup by mainViewModel.statusGroup.observeAsState(StatusGroup.NONE)
-    mainViewModel.checkGroupStatus()
-
-    when(statusGroup) {
-        StatusGroup.NOT_ACTIVE_GROUP ->
-            mainNavController.navigate(ExternalScreens.NoActiveGroup.route)
-        StatusGroup.NOT_AUTHORIZE ->
-            mainNavController.navigate(ExternalScreens.Authorization.route)
-        StatusGroup.ACTIVE_GROUP -> {}
-        StatusGroup.NONE -> {
-            // mb loading screen
         }
     }
 }
