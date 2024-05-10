@@ -19,7 +19,6 @@ import org.koin.compose.koinInject
 
 @Composable
 fun UserWithoutGroup(
-    viewModel: NoActiveGroupViewModel = koinViewModel(),
     routing: NoActiveGroupRouting = koinInject()
 ) {
     HeadTestAndIcon("У вас нет\nактивной группы")
@@ -55,13 +54,12 @@ fun UserWithoutGroup(
 @Composable
 fun NoPartnerInGroup(
     partnerLeavedGroup: Boolean,
-    viewModel: NoActiveGroupViewModel = koinViewModel(),
     routing: NoActiveGroupRouting = koinInject()
 ) {
     if (partnerLeavedGroup) {
         HeadTestAndIcon("Ваш партнер\nвышел из группы")
         DefaultOutlinedButtonDuet(
-            onClick = { routing.routToCreateInviteCode() },
+            onClick = {  },
             text = "Новый код",
             modifier = Modifier
                 .padding(top = 65.dp)
@@ -73,7 +71,7 @@ fun NoPartnerInGroup(
     }
 
     DefaultOutlinedButtonDuet(
-        onClick = { viewModel.saveArchiveThisGroup() },
+        onClick = {  },
         text = "Скачать архив",
         modifier = Modifier
             .padding(top = 26.dp)
