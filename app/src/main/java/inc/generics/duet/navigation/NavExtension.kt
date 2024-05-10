@@ -10,3 +10,11 @@ fun NavHostController.navigateWithData(route: String, pair: Pair<String, Parcela
 
 fun NavHostController.getData(key: String): Parcelable? =
     this.previousBackStackEntry?.savedStateHandle?.get<Parcelable>(key)
+
+fun NavHostController.navigateInclusive(route: String) {
+    this.navigate(route) {
+        popUpTo(route) {
+            inclusive = true
+        }
+    }
+}
