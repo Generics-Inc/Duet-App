@@ -10,7 +10,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun Main(mainViewModel: MainViewModel = koinViewModel(), mainNavController: NavHostController) {
-    val statusGroup by mainViewModel.statusGroup.observeAsState(StatusGroup.NONE)
+    val statusGroup by mainViewModel.statusGroup.observeAsState(StatusGroup.None)
 
     LaunchedEffect(Unit) {
         mainViewModel.checkGroupStatus()
@@ -18,14 +18,22 @@ fun Main(mainViewModel: MainViewModel = koinViewModel(), mainNavController: NavH
 
     LaunchedEffect(key1 = statusGroup) {
         when(statusGroup) {
-            StatusGroup.NOT_AUTHORIZE ->
+            is StatusGroup.NotAuthorize ->
                 mainNavController.navigate(ExternalScreens.Authorization.route)
-            StatusGroup.NOT_ACTIVE_GROUP ->
+            is StatusGroup.NotActiveGroup ->
                 mainNavController.navigate(ExternalScreens.NoActiveGroup.route)
-            StatusGroup.IN_GROUP__NO_PARTNER -> {}
-            StatusGroup.IN_GROUP__PARTNER_LEAVED -> {}
-            StatusGroup.ACTIVE_GROUP -> {}
-            StatusGroup.NONE -> {
+                // с инфой по корзине navigateWithData()
+            is StatusGroup.InGroupNoPartner -> {
+                // экран редактирования группы
+            }
+            is StatusGroup.InGroupPartnerLeaved -> {
+                // переход с инфой по ситатусу партнера
+                // GROUP_IN_ARCHIVE or LEAVED and isMainInGroup
+            }
+            StatusGroup.ActiveGroup -> {
+                // доступ к контенту приложения
+            }
+            StatusGroup.None -> {
                 // mb loading screen
             }
         }
