@@ -17,7 +17,7 @@ internal class DuetTokenInterceptor(private val tokenProvider: TokenProvider) : 
             val requestBody = FormBody.Builder()
                 .add("accessToken", token!!).build()
             requestBuild.addHeader("Authorization", "Bearer ${tokenProvider.refToken()}")
-            requestBuild.post(requestBody)
+            return chain.proceed(requestBuild.post(requestBody).build())
         }
 
         return chain.proceed(requestBuild.build())
