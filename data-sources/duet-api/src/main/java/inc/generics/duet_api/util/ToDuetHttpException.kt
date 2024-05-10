@@ -2,7 +2,7 @@ package inc.generics.duet_api.util
 
 import retrofit2.HttpException
 
-fun toDuetHttpException(throwable: Throwable): DuetHttpException? {
+fun toDuetHttpException(throwable: Throwable): DuetHttpException {
     if (throwable is HttpException) {
         return when (throwable.code()) {
             400 -> DuetHttpException.BAD_REQUEST
@@ -20,7 +20,7 @@ fun toDuetHttpException(throwable: Throwable): DuetHttpException? {
             else -> DuetHttpException.NOT_DEFINED
         }
    }
-    return null
+    return DuetHttpException.NOT_DEFINED
 }
 
 enum class DuetHttpException {
