@@ -14,7 +14,6 @@ import inc.generics.duet.glue.features.authorization.AuthorizationScreenRoutingI
 import inc.generics.duet.glue.features.no_active_group.NoActiveGroupRoutingImpl
 import inc.generics.duet.navigation.screens.ExternalScreens
 import inc.generics.no_active_group.NoActiveGroupScreen
-import inc.generics.no_active_group.models.GroupInf
 
 @Composable
 fun SetupMainNavGraph(navHostController: NavHostController) {
@@ -36,13 +35,14 @@ fun SetupMainNavGraph(navHostController: NavHostController) {
             Main(mainNavController = navHostController)
         }
         composable(route = ExternalScreens.NoActiveGroup.route) {
-            val groupInf: GroupInf? = navHostController.getData("groupInf") as GroupInf?
+            /*val groupInf: GroupInf? = navHostController.getData("groupInf") as GroupInf?
             groupInf?.let {
                 NoActiveGroupScreen(
                 groupInf = it,
                 routing = NoActiveGroupRoutingImpl(navHostController)
                 )
-            }
+            }*/
+            NoActiveGroupScreen(routing = NoActiveGroupRoutingImpl(navHostController))
         }
         composable(route = ExternalScreens.Authorization.route) {
             AuthorizationScreen(router = AuthorizationScreenRoutingImpl(navHostController))

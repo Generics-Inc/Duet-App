@@ -13,8 +13,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import inc.generics.no_active_group.models.GroupInf
-import inc.generics.no_active_group.models.StatusGroup
 import inc.generics.no_active_group.routing.NoActiveGroupRouting
 import inc.generics.presentation.R
 import inc.generics.presentation.theme.DuetTheme
@@ -22,7 +20,6 @@ import inc.generics.presentation.theme.DuetTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NoActiveGroupScreen(
-    groupInf: GroupInf,
     routing: NoActiveGroupRouting
 ) {
     Scaffold(
@@ -50,18 +47,7 @@ fun NoActiveGroupScreen(
                 .background(DuetTheme.colors.backgroundColor),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            if (groupInf.userDeletedOrLeaveGroup != StatusGroup.ACTIVE) {
-                UserWithoutGroup()
-            } else if (groupInf.partnerStatusGroup == null) {
-                routing.routToCreateInviteCode()
-            } else if (groupInf.partnerStatusGroup != StatusGroup.ACTIVE){
-                NoPartnerInGroup(
-                    when (groupInf.partnerStatusGroup) {
-                        StatusGroup.LEAVE -> true
-                        else -> false
-                    }
-                )
-            }
+            UserWithoutGroup()
         }
     }
 }

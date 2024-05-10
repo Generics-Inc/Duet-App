@@ -9,6 +9,4 @@ class NoActiveGroupRoutingImpl(navController: NavHostController) : NoActiveGroup
     override fun routToListOfDeletedGroups() {}
 
     override fun routToJoinGroup() {}
-
-    override fun routToCreateInviteCode() {}
 }

@@ -4,6 +4,4 @@ interface NoActiveGroupRouting {
     fun routToCreateGroup()
     fun routToListOfDeletedGroups()
     fun routToJoinGroup()
-
-    fun routToCreateInviteCode()
 }
