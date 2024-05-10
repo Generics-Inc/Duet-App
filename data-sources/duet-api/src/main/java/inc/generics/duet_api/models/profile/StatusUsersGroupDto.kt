@@ -8,8 +8,8 @@ data class StatusUsersGroupDto(
     @SerializedName("partner")
     private val partner: String
 ) {
-    fun getSelfStatus(): UserStatusInGroup? = getStatusWithTry(self)
-    fun getPartnerStatus(): UserStatusInGroup? = getStatusWithTry(partner)
+    fun getSelfStatus(): UserStatusInGroup? = getUserStatusWithTry(self)
+    fun getPartnerStatus(): PartnerStatusInGroup? = getPartnerStatusWithTry(partner)
 }
 
 enum class UserStatusInGroup(val value: String) {
@@ -18,9 +18,23 @@ enum class UserStatusInGroup(val value: String) {
     IN_GROUP("IN_GROUP")
 }
 
-internal fun StatusUsersGroupDto.getStatusWithTry(value: String) =
+enum class PartnerStatusInGroup(val value: String) {
+    NOT_IN_GROUP("NOT_IN_GROUP"),
+    NOT_IN_GROUP_WITH_ARCHIVE("NOT_IN_GROUP_WITH_ARCHIVE"),
+    IN_GROUP("IN_GROUP"),
+    LEAVED("LEAVED")
+}
+
+internal fun getUserStatusWithTry(value: String): UserStatusInGroup? =
     try {
         UserStatusInGroup.valueOf(value)
+    } catch (e: IllegalArgumentException) {
+        null
+    }
+
+internal fun getPartnerStatusWithTry(value: String): PartnerStatusInGroup? =
+    try {
+        PartnerStatusInGroup.valueOf(value)
     } catch (e: IllegalArgumentException) {
         null
     }
