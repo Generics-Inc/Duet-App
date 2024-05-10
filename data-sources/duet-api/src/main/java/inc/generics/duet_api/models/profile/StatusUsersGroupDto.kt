@@ -3,10 +3,16 @@ package inc.generics.duet_api.models.profile
 import com.google.gson.annotations.SerializedName
 
 data class StatusUsersGroupDto(
-    @SerializedName("self")
+    @SerializedName("selfId")
+    val selfId: Long,
+    @SerializedName("partnerId")
+    val partnerId: Long,
+    @SerializedName("selfStatus")
     private val self: String,
-    @SerializedName("partner")
-    private val partner: String
+    @SerializedName("partnerStatus")
+    private val partner: String,
+    @SerializedName("isMainInGroup")
+    val isMainInGroup: Boolean
 ) {
     fun getSelfStatus(): UserStatusInGroup? = getUserStatusWithTry(self)
     fun getPartnerStatus(): PartnerStatusInGroup? = getPartnerStatusWithTry(partner)
