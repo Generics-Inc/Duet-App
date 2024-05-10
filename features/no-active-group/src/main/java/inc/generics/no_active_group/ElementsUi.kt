@@ -12,6 +12,7 @@ import inc.generics.no_active_group.routing.NoActiveGroupRouting
 import inc.generics.presentation.R
 import inc.generics.presentation.components.DefaultFilledTonalButtonDuet
 import inc.generics.presentation.components.DefaultOutlinedButtonDuet
+import inc.generics.presentation.components.HeadTestAndIcon
 import inc.generics.presentation.components.defaultTextStyleDuet
 import inc.generics.presentation.theme.DuetTheme
 import org.koin.androidx.compose.koinViewModel
@@ -87,22 +88,5 @@ fun NoPartnerInGroup(
             .padding(top = 26.dp)
             .fillMaxWidth()
             .padding(horizontal = 80.dp)
-    )
-}
-
-@Composable
-fun HeadTestAndIcon(text: String) {
-    Icon(
-        painter = painterResource(id = R.drawable.ic_heart_broke),
-        contentDescription = "broke heart",
-        tint = DuetTheme.colors.mainColor,
-        modifier = Modifier.padding(top = 100.dp)
-    )
-
-    Text(
-        text = text,
-        style = defaultTextStyleDuet(),
-        modifier = Modifier
-            .padding(top = 35.dp)
     )
 }
