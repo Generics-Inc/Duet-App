@@ -40,6 +40,7 @@ android {
 
 dependencies {
     implementation(project(":core:presentation"))
+    implementation(project(":data:create-new-group-data"))
 
     implementation(libs.androidx.core.ktx)
 

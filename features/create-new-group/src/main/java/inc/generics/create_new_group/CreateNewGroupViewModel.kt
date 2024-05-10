@@ -4,11 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import inc.generics.create_new_group.interactors.CreateNewGroupInteractor
-import inc.generics.create_new_group.models.GroupSimple
+import inc.generics.create_new_group.models.Group
 import kotlinx.coroutines.launch
 
-class CreateNewGroupViewModel(private val interactor: CreateNewGroupInteractor) : ViewModel() {
+class CreateNewGroupViewModel(private val repository: CreateNewGroupRepository) : ViewModel() {
     companion object {
         data class State(
             val isGroupCreated: Boolean = false,
@@ -19,9 +18,10 @@ class CreateNewGroupViewModel(private val interactor: CreateNewGroupInteractor) 
 
     private val _screenState: MutableLiveData<State> = MutableLiveData(State())
     val screenState: LiveData<State> = _screenState
-    fun createGroup(newGroup: GroupSimple) {
+
+    fun createGroup(newGroup: Group) {
         viewModelScope.launch {
-            interactor.create(newGroup)
+            repository.create(newGroup)
             onGroupCreated() //если группа успешно создалась
         }
     }

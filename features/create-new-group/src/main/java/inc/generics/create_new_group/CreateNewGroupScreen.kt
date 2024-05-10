@@ -23,22 +23,23 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import inc.generics.create_new_group.routing.CreateNewGroupScreenRouting
 import inc.generics.presentation.R
 import inc.generics.presentation.components.DefaultFilledTonalButtonDuet
 import inc.generics.presentation.components.TitleTopAppBarDuet
 import inc.generics.presentation.components.defaultTextFieldStyle
-import inc.generics.presentation.theme.AppDuetThemeViewModel
 import inc.generics.presentation.theme.DuetTheme
-import inc.generics.presentation.theme.appDuetThemeViewModel
-import inc.generics.presentation.theme.localization.Language
 
 @Composable
-fun CreateNewGroupScreen() {
+fun CreateNewGroupScreen(
+    routing: CreateNewGroupScreenRouting
+) {
     Scaffold(
         topBar = {
             TitleTopAppBarDuet(
                 text = DuetTheme.localization.getString("createGroup"),
-                onClickNav = {})
+                onClickNav = { routing.back() }
+            )
         }
     ) {
         Column(
@@ -108,12 +109,12 @@ internal fun InputName() {
 }
 
 @Composable
-internal fun PhotoBox(themeViewModel: AppDuetThemeViewModel = appDuetThemeViewModel()) {
+internal fun PhotoBox() {
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .height(300.dp)
-            .clickable { themeViewModel.setLanguage(Language.Ru()) },
+            .clickable { /*open photo picker*/ },
         contentAlignment = Alignment.Center
     ) {
         Icon(

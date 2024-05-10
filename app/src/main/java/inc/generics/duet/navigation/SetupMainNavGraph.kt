@@ -10,8 +10,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import inc.generics.authorization.AuthorizationScreen
+import inc.generics.create_new_group.CreateNewGroupScreen
+import inc.generics.create_new_group.routing.CreateNewGroupScreenRouting
 import inc.generics.duet.Main
 import inc.generics.duet.glue.features.authorization.AuthorizationScreenRoutingImpl
+import inc.generics.duet.glue.features.create_new_group.CreateNewGroupScreenRoutingImpl
 import inc.generics.duet.glue.features.no_active_group.NoActiveGroupRoutingImpl
 import inc.generics.duet.navigation.screens.ExternalScreens
 import inc.generics.no_active_group.NoActiveGroupScreen
@@ -47,6 +50,9 @@ fun SetupMainNavGraph(navHostController: NavHostController) {
         }
         composable(route = ExternalScreens.Authorization.route) {
             AuthorizationScreen(router = AuthorizationScreenRoutingImpl(navHostController))
+        }
+        composable(route = ExternalScreens.CreateNewGroup.route) {
+            CreateNewGroupScreen(routing = CreateNewGroupScreenRoutingImpl(navHostController))
         }
     }
 }
