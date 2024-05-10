@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import inc.generics.no_active_group.models.NoActiveGroupUiData
 import inc.generics.no_active_group.routing.NoActiveGroupRouting
 import inc.generics.presentation.R
 import inc.generics.presentation.theme.DuetTheme
@@ -20,7 +21,8 @@ import inc.generics.presentation.theme.DuetTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NoActiveGroupScreen(
-    routing: NoActiveGroupRouting
+    routing: NoActiveGroupRouting,
+    noActiveGroupUiData: NoActiveGroupUiData
 ) {
     Scaffold(
         modifier = Modifier
@@ -47,7 +49,7 @@ fun NoActiveGroupScreen(
                 .background(DuetTheme.colors.backgroundColor),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            UserWithoutGroup()
+            UserWithoutGroup(routing = routing, noActiveGroupUiData = noActiveGroupUiData)
         }
     }
 }

@@ -1,5 +1,6 @@
 package inc.generics.duet.navigation
 
+import android.os.Parcelable
 import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
@@ -14,6 +15,7 @@ import inc.generics.duet.glue.features.authorization.AuthorizationScreenRoutingI
 import inc.generics.duet.glue.features.no_active_group.NoActiveGroupRoutingImpl
 import inc.generics.duet.navigation.screens.ExternalScreens
 import inc.generics.no_active_group.NoActiveGroupScreen
+import inc.generics.no_active_group.models.NoActiveGroupUiData
 
 @Composable
 fun SetupMainNavGraph(navHostController: NavHostController) {
@@ -35,14 +37,13 @@ fun SetupMainNavGraph(navHostController: NavHostController) {
             Main(mainNavController = navHostController)
         }
         composable(route = ExternalScreens.NoActiveGroup.route) {
-            /*val groupInf: GroupInf? = navHostController.getData("groupInf") as GroupInf?
-            groupInf?.let {
+            val uiData: Parcelable? = navHostController.getData(ExternalScreens.NoActiveGroup.dataKey)
+            if (uiData is NoActiveGroupUiData) {
                 NoActiveGroupScreen(
-                groupInf = it,
-                routing = NoActiveGroupRoutingImpl(navHostController)
+                    routing = NoActiveGroupRoutingImpl(navHostController),
+                    noActiveGroupUiData = uiData
                 )
-            }*/
-            NoActiveGroupScreen(routing = NoActiveGroupRoutingImpl(navHostController))
+            }
         }
         composable(route = ExternalScreens.Authorization.route) {
             AuthorizationScreen(router = AuthorizationScreenRoutingImpl(navHostController))

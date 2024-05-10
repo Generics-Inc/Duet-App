@@ -2,25 +2,21 @@ package inc.generics.no_active_group
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import inc.generics.no_active_group.models.NoActiveGroupUiData
 import inc.generics.no_active_group.routing.NoActiveGroupRouting
-import inc.generics.presentation.R
 import inc.generics.presentation.components.DefaultFilledTonalButtonDuet
 import inc.generics.presentation.components.DefaultOutlinedButtonDuet
 import inc.generics.presentation.components.HeadTestAndIcon
-import inc.generics.presentation.components.defaultTextStyleDuet
 import inc.generics.presentation.theme.DuetTheme
-import org.koin.androidx.compose.koinViewModel
 import org.koin.compose.koinInject
 
 @Composable
 fun UserWithoutGroup(
-    routing: NoActiveGroupRouting = koinInject()
+    routing: NoActiveGroupRouting,
+    noActiveGroupUiData: NoActiveGroupUiData
 ) {
     HeadTestAndIcon("У вас нет\nактивной группы")
 
@@ -41,15 +37,17 @@ fun UserWithoutGroup(
             .fillMaxWidth()
             .padding(horizontal = 80.dp)
     )
-
-    DefaultFilledTonalButtonDuet(
-        onClick = { routing.routToListOfDeletedGroups() },
-        text = "Корзина" ,
-        modifier = Modifier
-            .padding(top = 26.dp)
-            .fillMaxWidth()
-            .padding(horizontal = 80.dp)
-    )
+    
+    if (noActiveGroupUiData.userHaveArchive) {
+        DefaultFilledTonalButtonDuet(
+            onClick = { routing.routToListOfDeletedGroups() },
+            text = "Корзина" ,
+            modifier = Modifier
+                .padding(top = 26.dp)
+                .fillMaxWidth()
+                .padding(horizontal = 80.dp)
+        )
+    }
 }
 
 @Composable
