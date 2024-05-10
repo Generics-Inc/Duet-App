@@ -9,13 +9,13 @@ internal class DuetTokenInterceptor(private val tokenProvider: TokenProvider) : 
         val requestBuild = chain.request().newBuilder()
         val token = tokenProvider.token()
 
-        if (chain.proceed(chain.request()).headers("REFRESH").isEmpty()) {
+        if (chain.request().headers("REFRESH").isEmpty()) {
             token?.let {
                 requestBuild.addHeader("Authorization", "Bearer $token")
             }
         } else {
             val requestBody = FormBody.Builder()
-                .add("accessToken", token!!).build()
+                .add("accessToken", token ?: "").build()
             requestBuild.addHeader("Authorization", "Bearer ${tokenProvider.refToken()}")
             return chain.proceed(requestBuild.post(requestBody).build())
         }
