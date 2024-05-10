@@ -6,6 +6,7 @@ import inc.generics.duet.glue.data.authorizaton_data.di.authorizationDataModule
 import inc.generics.duet.glue.data_sources.duet_api.di.duetApiModule
 import inc.generics.duet.glue.data_sources.duet_local.di.duetLocalModule
 import inc.generics.duet.glue.features.authorization.di.authorizationFeatureModule
+import inc.generics.duet.glue.main.di.mainModule
 import inc.generics.duet.glue.presentation.di.presentationModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -20,6 +21,7 @@ class DuetApp: Application() {
             androidLogger(Level.DEBUG)
             androidContext(this@DuetApp)
             modules(
+                mainModule,
                 androidUtilsModule,
                 authorizationDataModule,
                 authorizationFeatureModule,
