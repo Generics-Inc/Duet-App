@@ -5,7 +5,9 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.navigation.NavHostController
+import inc.generics.duet.navigation.navigateWithData
 import inc.generics.duet.navigation.screens.ExternalScreens
+import inc.generics.no_active_group.models.NoActiveGroupUiData
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -20,9 +22,15 @@ fun Main(mainViewModel: MainViewModel = koinViewModel(), mainNavController: NavH
         when(statusGroup) {
             is StatusGroup.NotAuthorize ->
                 mainNavController.navigate(ExternalScreens.Authorization.route)
-            is StatusGroup.NotActiveGroup ->
-                mainNavController.navigate(ExternalScreens.NoActiveGroup.route)
-                // с инфой по корзине navigateWithData()
+            is StatusGroup.NotActiveGroup -> {
+                mainNavController.navigateWithData(
+                    ExternalScreens.NoActiveGroup.route,
+                    Pair(
+                        ExternalScreens.NoActiveGroup.dataKey,
+                        NoActiveGroupUiData((statusGroup as StatusGroup.NotActiveGroup).hashArchive)
+                    )
+                )
+            }
             is StatusGroup.InGroupNoPartner -> {
                 // экран редактирования группы
             }
