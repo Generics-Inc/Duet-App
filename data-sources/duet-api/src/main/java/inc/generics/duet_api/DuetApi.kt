@@ -1,4 +1,6 @@
 package inc.generics.duet_api
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.skydoves.retrofit.adapters.result.ResultCallAdapterFactory
 import inc.generics.duet_api.api.DuetApi
 import inc.generics.duet_api.util.DuetTokenInterceptor
@@ -13,19 +15,30 @@ fun duetApi(
     tokenProvider: TokenProvider
 ): DuetApi {
     val okHttpClient = okHttpClient(tokenProvider)
-    val retrofit = retrofit(okHttpClient, baseUrl)
+    val gson = gson()
+    val retrofit = retrofit(okHttpClient, baseUrl, gson)
 
     return retrofit.create(DuetApi::class.java)
 }
 
-internal fun retrofit(okHttpClient: OkHttpClient, baseUrl: String): Retrofit {
+internal fun retrofit(
+    okHttpClient: OkHttpClient,
+    baseUrl: String,
+    gson: Gson
+): Retrofit {
     return Retrofit
         .Builder()
         .client(okHttpClient)
         .baseUrl(baseUrl)
-        .addConverterFactory(GsonConverterFactory.create())
+        .addConverterFactory(GsonConverterFactory.create(gson))
         .addCallAdapterFactory(ResultCallAdapterFactory.create())
         .build()
+}
+
+internal fun gson(): Gson {
+    return GsonBuilder()
+        .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+        .create()
 }
 
 internal fun okHttpClient(tokenProvider: TokenProvider): OkHttpClient {
