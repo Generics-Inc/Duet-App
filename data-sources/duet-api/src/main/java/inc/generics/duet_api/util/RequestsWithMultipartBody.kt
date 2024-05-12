@@ -25,6 +25,6 @@ suspend fun sendRequestToCreateGroup(
 }
 
 internal fun fileToMultipartBodyPart(file: File): MultipartBody.Part {
-    val requestFile = file.asRequestBody("application/octet-stream".toMediaTypeOrNull())
+    val requestFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
     return MultipartBody.Part.createFormData("file", file.name, requestFile)
 }

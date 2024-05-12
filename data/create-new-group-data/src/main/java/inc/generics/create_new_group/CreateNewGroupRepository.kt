@@ -16,7 +16,7 @@ import java.util.Date
 
 class CreateNewGroupRepository(private val api: DuetApi, private val context: Context) {
     suspend fun create(group: Group): Boolean {
-        val file = getPathFromUri(context, group.fileUri!!)
+        val file = File(getRealPathFromURI(group.fileUri!!))
 
         Log.d("File", file.toString())
         Log.d("File", file.isFile.toString())
@@ -32,24 +32,17 @@ class CreateNewGroupRepository(private val api: DuetApi, private val context: Co
 
         return result.isSuccess
     }
-    private fun getPathFromUri(context: Context, uri: Uri): File {
-        var filePath = ""
+    private fun getRealPathFromURI(uri: Uri): String {
+        var result = ""
         val cursor = context.contentResolver.query(uri, null, null, null, null)
-        cursor?.let {
-            it.moveToFirst()
-            val columnIndex = it.getColumnIndex(MediaStore.Images.ImageColumns.DATA)
-            filePath = it.getString(columnIndex)
-            it.close()
+        if (cursor == null) {
+            result = uri.path ?: ""
+        } else {
+            cursor.moveToFirst()
+            val idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA)
+            result = cursor.getString(idx)
+            cursor.close()
         }
-
-        val file = File(filePath)
-
-        val bitmap = BitmapFactory.decodeFile(filePath)
-        val fos = FileOutputStream(file)
-        bitmap?.compress(Bitmap.CompressFormat.PNG, 80, fos)
-
-        fos.close()
-
-        return file
+        return result
     }
 }
