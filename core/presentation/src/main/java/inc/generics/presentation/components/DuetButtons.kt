@@ -19,11 +19,13 @@ fun OutlinedButtonDuet(
     modifier: Modifier = Modifier,
     hasBorder: Boolean = true,
     hasElevation: Boolean = true,
+    enabled: Boolean = true,
     onClick: () -> Unit, content: @Composable() (RowScope.() -> Unit)
 ) {
     OutlinedButton(
         onClick = onClick,
         modifier = modifier,
+        enabled = enabled,
         colors = ButtonDefaults.outlinedButtonColors(
             containerColor = DuetTheme.colors.backgroundColor,
             contentColor = DuetTheme.colors.secondColor
@@ -39,11 +41,13 @@ fun OutlinedButtonDuet(
 fun FilledTonalButtonDuet(
     modifier: Modifier = Modifier,
     color: Color = DuetTheme.colors.secondColor,
+    enabled: Boolean = true,
     onClick: () -> Unit, content: @Composable() (RowScope.() -> Unit)
 ) {
     FilledTonalButton(
         onClick = onClick,
         modifier = modifier,
+        enabled = enabled,
         colors = ButtonDefaults.outlinedButtonColors(
             containerColor = color,
             contentColor = DuetTheme.colors.textContrastColor
@@ -57,11 +61,13 @@ fun FilledTonalButtonDuet(
 fun DefaultOutlinedButtonDuet(
     onClick: () -> Unit,
     text: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true
 ) {
     OutlinedButtonDuet(
         onClick = onClick,
-        modifier = modifier.height(45.dp)
+        modifier = modifier.height(45.dp),
+        enabled = enabled
     ) {
         Text(
             text = text,
@@ -76,11 +82,13 @@ fun DefaultFilledTonalButtonDuet(
     text: String,
     modifier: Modifier = Modifier,
     color: Color = DuetTheme.colors.secondColor,
+    enabled: Boolean = true
 ) {
     FilledTonalButtonDuet(
         onClick = onClick,
         modifier = modifier.size(187.dp, 45.dp),
-        color = color
+        color = color,
+        enabled = enabled
     ) {
         Text(
             text = text,
