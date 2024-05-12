@@ -25,54 +25,54 @@ import java.util.Date
  * */
 interface DuetApi {
     /* Authorization */
-    @POST("api/auth/vkSignIn")
+    @POST("auth/vkSignIn")
     suspend fun vkSignIn(@Body body: VkSignInDto): Result<AuthResponseDto>
 
-    @POST("api/auth/signIn")
+    @POST("auth/signIn")
     suspend fun signIn(@Body body: SignInDto): Result<AuthResponseDto>
 
-    @POST("api/auth/logout")
+    @POST("auth/logout")
     suspend fun logout()
 
     @Headers("REFRESH:ON")
-    @POST("api/auth/refresh")
+    @POST("auth/refresh")
     suspend fun refreshToken(): Result<AuthResponseDto>
 
     /* Profile */
-    @GET("api/profiles/status")
+    @GET("profiles/status")
     suspend fun getStatusUsersInGroup(): Result<StatusUsersGroupDto>
 
-    @GET("api/profiles/me")
+    @GET("profiles/me")
     suspend fun getMyProfilesInformation(): Result<ProfileInfDto>
 
-    @GET("api/profiles/{id}")
+    @GET("profiles/{id}")
     suspend fun getProfilesInformationById(@Path("id") id: Long): Result<ProfileInfDto>
 
     /* Groups */
-    @GET("/api/groups/me")
+    @GET("groups/me")
     suspend fun getUserGroup(): Result<Group>
 
-    @GET("/api/groups/me/full")
+    @GET("groups/me/full")
     suspend fun getUserGroupFull(): Result<GroupFull>
 
     @Multipart
-    @POST("/api/groups")
+    @POST("groups")
     suspend fun createGroup(
         @Part("name") name: String,
         @Part("relationStartedAt") relationStartedAt: Date,
         @Part("description") description: String,
-        @Part file: MultipartBody.Part
+        @Part file: MultipartBody.Part?
     ): Result<Group>
 
-    @PATCH("/api/groups/generateInviteCode")
+    @PATCH("groups/generateInviteCode")
     suspend fun generateNewInviteCode(): Result<Group>
 
-    @PATCH("/api/groups/join/{inviteCode}")
+    @PATCH("groups/join/{inviteCode}")
     suspend fun joinToGroup(@Path("inviteCode") inviteCode: String): Result<JoinToGroup>
 
-    @DELETE("/api/groups/kickPartner")
+    @DELETE("groups/kickPartner")
     suspend fun deletePartnerInGroup()
 
-    @DELETE("/api/groups/leave")
+    @DELETE("groups/leave")
     suspend fun leaveGroup()
 }

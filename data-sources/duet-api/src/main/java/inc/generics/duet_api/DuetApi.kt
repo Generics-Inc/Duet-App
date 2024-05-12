@@ -37,7 +37,7 @@ internal fun retrofit(
 
 internal fun gson(): Gson {
     return GsonBuilder()
-        .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+        .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
         .create()
 }
 
