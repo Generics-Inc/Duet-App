@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import inc.generics.presentation.theme.DuetTheme
 
 @Composable
@@ -93,6 +94,27 @@ fun DefaultFilledTonalButtonDuet(
         Text(
             text = text,
             style = defaultTextStyleForButtonDuet()
+        )
+    }
+}
+
+@Composable
+fun DefaultDialogOutlinedButtonDuet(
+    onClick: () -> Unit,
+    text: String,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true
+) {
+    OutlinedButtonDuet(
+        onClick = onClick,
+        enabled = enabled,
+        modifier = modifier,
+        hasBorder = false,
+        hasElevation = false
+    ) {
+        Text(
+            text = text,
+            style = defaultTextStyleForButtonDuet().copy(fontSize = 14.sp),
         )
     }
 }
