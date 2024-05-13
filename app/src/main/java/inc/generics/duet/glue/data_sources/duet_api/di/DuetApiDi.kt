@@ -9,5 +9,5 @@ import org.koin.dsl.module
 
 val duetApiModule = module {
     singleOf(::TokenProviderImpl) { bind<TokenProvider>() }
-    single { duetApi("http://server.lorexiq.ru:4000/api/", get()) }
+    single { duetApi("https://duet.lorexiq.ru/api/", get()) }
 }
