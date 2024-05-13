@@ -18,11 +18,11 @@ fun UserWithoutGroup(
     routing: NoActiveGroupRouting,
     noActiveGroupUiData: NoActiveGroupUiData
 ) {
-    HeadTestAndIcon("У вас нет\nактивной группы")
+    HeadTestAndIcon(text = DuetTheme.localization.getString("noActiveGroup"))
 
     DefaultOutlinedButtonDuet(
         onClick = { routing.routToCreateGroup() },
-        text = "Создать",
+        text = DuetTheme.localization.getString("create"),
         modifier = Modifier
             .padding(top = 65.dp)
             .fillMaxWidth()
@@ -31,7 +31,7 @@ fun UserWithoutGroup(
 
     DefaultOutlinedButtonDuet(
         onClick = { routing.routToJoinGroup() },
-        text = "Присоединиться",
+        text = DuetTheme.localization.getString("intoToGroup"),
         modifier = Modifier
             .padding(top = 26.dp)
             .fillMaxWidth()
@@ -41,7 +41,7 @@ fun UserWithoutGroup(
     if (noActiveGroupUiData.userHaveArchive) {
         DefaultFilledTonalButtonDuet(
             onClick = { routing.routToListOfDeletedGroups() },
-            text = "Корзина" ,
+            text = DuetTheme.localization.getString("basket") ,
             modifier = Modifier
                 .padding(top = 26.dp)
                 .fillMaxWidth()
