@@ -1,7 +1,6 @@
 package inc.generics.create_new_group
 
 import android.annotation.SuppressLint
-import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -14,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ModalBottomSheet
@@ -34,11 +34,17 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.Dialog
 import coil.compose.AsyncImage
 import inc.generics.create_new_group.routing.CreateNewGroupScreenRouting
 import inc.generics.presentation.R
+import inc.generics.presentation.components.DefaultDialogOutlinedButtonDuet
 import inc.generics.presentation.components.DefaultFilledTonalButtonDuet
+import inc.generics.presentation.components.DefaultOutlinedButtonDuet
+import inc.generics.presentation.components.DuetAlertDialogError
 import inc.generics.presentation.components.TitleTopAppBarDuet
+import inc.generics.presentation.components.defaultDialogTextStyleDuet
 import inc.generics.presentation.components.defaultTextFieldStyle
 import inc.generics.presentation.components.defaultTextStyleDuet
 import inc.generics.presentation.theme.DuetTheme
@@ -56,6 +62,7 @@ fun CreateNewGroupScreen(
 
     SetupEmptyNameGroupBottomSheet()
     SetupRoutOnCreateGroup(routing = routing)
+    SetupErrorDialog()
 
     Scaffold(
         topBar = {
@@ -95,6 +102,7 @@ fun CreateNewGroupScreen(
 }
 
 internal const val maxLengthName = 40
+internal const val minLengthName = 3
 
 @SuppressLint("DefaultLocale")
 @Composable
@@ -118,7 +126,7 @@ internal fun InputName(nameGroupState: MutableState<String>) {
             Text(
                 text = String.format(
                     DuetTheme.localization.getString("NoMore"),
-                    maxLengthName
+                    maxLengthName, minLengthName
                 )
             )
         },
@@ -204,7 +212,7 @@ internal fun SetupEmptyNameGroupBottomSheet(viewModel: CreateNewGroupViewModel =
                 )
 
                 Text(
-                    text = "Имя группы - обязательное поле.\nВведите имя группы",
+                    text = DuetTheme.localization.getString("errorNameGroup"),
                     style = defaultTextStyleDuet().copy(color = DuetTheme.colors.errorColor),
                     textAlign = TextAlign.Center,
                     modifier = Modifier
@@ -215,6 +223,21 @@ internal fun SetupEmptyNameGroupBottomSheet(viewModel: CreateNewGroupViewModel =
 
         }
     }
+}
+
+@Composable
+fun SetupErrorDialog(viewModel: CreateNewGroupViewModel = koinViewModel()) {
+    val statusCreateGroup by viewModel.statusCreateGroup.observeAsState()
+
+    if (statusCreateGroup == StatusCreateGroup.ERROR) {
+        DuetAlertDialogError(
+            messageText = DuetTheme.localization.getString("checkInternetOrFile"),
+            onClose = {
+                viewModel.setNoneInStatusCreate()
+            }
+        )
+    }
+
 }
 
 @Composable

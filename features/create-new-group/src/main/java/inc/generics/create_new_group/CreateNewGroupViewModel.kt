@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import inc.generics.create_new_group.models.Group
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class CreateNewGroupViewModel(private val repository: CreateNewGroupRepository) : ViewModel() {
@@ -24,7 +23,6 @@ class CreateNewGroupViewModel(private val repository: CreateNewGroupRepository) 
 
         _statusCreateGroup.value = StatusCreateGroup.IN_PROCESS
         viewModelScope.launch {
-            delay(2000)
             val result = repository.create(
                 Group(
                     _screenState.value?.name!!,
@@ -52,7 +50,7 @@ class CreateNewGroupViewModel(private val repository: CreateNewGroupRepository) 
     }
 
     private fun checkNameGroup(): Boolean {
-        return if (_screenState.value?.name.isNullOrEmpty()) {
+        return if ((_screenState.value?.name?.length ?: 0) < minLengthName) {
             _statusCreateGroup.value = StatusCreateGroup.ERROR_START_CREATE_EMPTY_NAME
             false
         } else true
