@@ -10,7 +10,16 @@ internal val russianStrings = hashMapOf(
     Pair("createGroup", "Создание группы"),
     Pair("create", "Создать"),
     Pair("inputNameGroup", "Введите название группы"),
-    Pair("NoMore", "*не больше %d символов"),
+    Pair("NoMore", "*не больше %d символов\n*и не меньше %d символов"),
+    Pair("dialogErrorTitle", "Что-то пошло не так..."),
+    Pair("okOnError", "Понятно("),
+    Pair("checkInternetOrFile", "Проверьте интернет соединение или загрузите другой файл"),
+    Pair("errorNameGroup", "Имя группы - обязательное поле.\n" +
+            "Введите имя группы"),
+    Pair("noActiveGroup", "У вас нет\n" +
+            "активной группы"),
+    Pair("intoToGroup", "Присоединиться"),
+    Pair("basket", "Корзина")
 )
 
 internal val englishStrings = hashMapOf(
@@ -22,5 +31,14 @@ internal val englishStrings = hashMapOf(
     Pair("createGroup", "Group creation"),
     Pair("create", "Create"),
     Pair("inputNameGroup", "Enter group name"),
-    Pair("NoMore", "*not more than %d characters"),
+    Pair("NoMore", "*no more than %d characters\n*and no less than %d characters"),
+    Pair("dialogErrorTitle", "Something went wrong..."),
+    Pair("okOnError", "Got it:("),
+    Pair("checkInternetOrFile", "Check your internet connection or upload another file"),
+    Pair("errorNameGroup", "Group name is a required field.\n" +
+            "Enter the group name"),
+    Pair("noActiveGroup", "You don't have\n" +
+            "an active group"),
+    Pair("intoToGroup", "Join"),
+    Pair("basket", "Basket")
 )
