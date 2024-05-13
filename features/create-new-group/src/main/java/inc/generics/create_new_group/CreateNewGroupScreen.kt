@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ModalBottomSheet
@@ -34,17 +33,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import androidx.compose.ui.window.Dialog
 import coil.compose.AsyncImage
 import inc.generics.create_new_group.routing.CreateNewGroupScreenRouting
 import inc.generics.presentation.R
-import inc.generics.presentation.components.DefaultDialogOutlinedButtonDuet
 import inc.generics.presentation.components.DefaultFilledTonalButtonDuet
-import inc.generics.presentation.components.DefaultOutlinedButtonDuet
 import inc.generics.presentation.components.DuetAlertDialogError
 import inc.generics.presentation.components.TitleTopAppBarDuet
-import inc.generics.presentation.components.defaultDialogTextStyleDuet
 import inc.generics.presentation.components.defaultTextFieldStyle
 import inc.generics.presentation.components.defaultTextStyleDuet
 import inc.generics.presentation.theme.DuetTheme
