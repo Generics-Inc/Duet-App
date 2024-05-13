@@ -47,3 +47,39 @@ fun DuetAlertDialogError(
         containerColor = DuetTheme.colors.backgroundColor
     )
 }
+
+@Composable
+fun DuetAlertDialogRequest(
+    messageText: String,
+    onClose: () -> Unit
+) {
+    AlertDialog(
+        icon = {
+            Icon(
+                painterResource(id = R.drawable.ic_question),
+                contentDescription = "question icon",
+                tint = DuetTheme.colors.mainColor
+            )
+        },
+        title = {
+            Text(
+                text = DuetTheme.localization.getString("titleRequestDialog"),
+                style = defaultTextStyleDuet()
+            )
+        },
+        text = {
+            Text(
+                text = messageText,
+                style = defaultDialogTextStyleDuet()
+            )
+        },
+        onDismissRequest = { onClose() },
+        confirmButton = {
+            DefaultDialogOutlinedButtonDuet(
+                onClick = { onClose() },
+                text = DuetTheme.localization.getString("Yes")
+            )
+        },
+        containerColor = DuetTheme.colors.backgroundColor
+    )
+}
