@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import inc.generics.duet_api.api.DuetApi
+import inc.generics.duet_api.models.profile.PartnerStatusInGroup
 import inc.generics.duet_api.models.profile.UserStatusInGroup
 import inc.generics.duet_api.util.DuetHttpException
 import inc.generics.duet_api.util.toDuetHttpException
@@ -50,10 +51,19 @@ class MainViewModel(private val api: DuetApi, private val spHelper: SPHelper) : 
                 UserStatusInGroup.NOT_IN_GROUP_WITH_ARCHIVE -> {
                     _statusGroup.value = StatusGroup.NotActiveGroup(true)
                 }
-                UserStatusInGroup.IN_GROUP -> {/*check parentStatus */}
+                UserStatusInGroup.IN_GROUP -> {
+                    when(parentStatus) {
+                        PartnerStatusInGroup.NO_PARTNER -> {
+                            _statusGroup.value = StatusGroup.InGroupNoPartner
+                        }
+                        PartnerStatusInGroup.GROUP_IN_ARCHIVE -> {}
+                        PartnerStatusInGroup.IN_GROUP -> {}
+                        PartnerStatusInGroup.LEAVED -> {}
+                        null -> TODO()
+                    }
+                }
                 null -> {}
             }
-
         }
     }
 }
