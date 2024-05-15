@@ -65,12 +65,18 @@ dependencies {
     implementation(project(":data-sources:duet-local"))
     implementation(project(":data-sources:duet-api"))
 
+    //features and features-data <----
     implementation(project(":features:no-active-group"))
+
     implementation(project(":features:authorization"))
     implementation(project(":data:authorization-data"))
+
     implementation(project(":features:create-new-group"))
     implementation(project(":data:create-new-group-data"))
+
+    implementation(project(":features:group-without-partner"))
     implementation(project(":data:group-without-partner-data"))
+    //----/>
 
     implementation(project(":android-utils"))
 
