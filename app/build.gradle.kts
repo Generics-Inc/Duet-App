@@ -70,6 +70,7 @@ dependencies {
     implementation(project(":data:authorization-data"))
     implementation(project(":features:create-new-group"))
     implementation(project(":data:create-new-group-data"))
+    implementation(project(":data:group-without-partner-data"))
 
     implementation(project(":android-utils"))
 
