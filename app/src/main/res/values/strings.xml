@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Duet</string>
+    <string name="base_url">https://duetapp.ru/api/</string>
 </resources>
