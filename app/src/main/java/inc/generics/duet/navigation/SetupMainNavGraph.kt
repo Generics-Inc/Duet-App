@@ -15,8 +15,10 @@ import inc.generics.create_new_group.routing.CreateNewGroupScreenRouting
 import inc.generics.duet.Main
 import inc.generics.duet.glue.features.authorization.AuthorizationScreenRoutingImpl
 import inc.generics.duet.glue.features.create_new_group.CreateNewGroupScreenRoutingImpl
+import inc.generics.duet.glue.features.group_without_partner.GroupWithoutPartnerRoutingImpl
 import inc.generics.duet.glue.features.no_active_group.NoActiveGroupRoutingImpl
 import inc.generics.duet.navigation.screens.ExternalScreens
+import inc.generics.group_without_partner.GroupWithoutPartnerScreen
 import inc.generics.no_active_group.NoActiveGroupScreen
 import inc.generics.no_active_group.models.NoActiveGroupUiData
 
@@ -53,6 +55,9 @@ fun SetupMainNavGraph(navHostController: NavHostController) {
         }
         composable(route = ExternalScreens.CreateNewGroup.route) {
             CreateNewGroupScreen(routing = CreateNewGroupScreenRoutingImpl(navHostController))
+        }
+        composable(route = ExternalScreens.GroupWithoutPartner.route) {
+            GroupWithoutPartnerScreen(routing = GroupWithoutPartnerRoutingImpl(navHostController))
         }
     }
 }
