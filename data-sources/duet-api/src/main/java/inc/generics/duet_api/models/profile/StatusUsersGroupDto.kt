@@ -25,8 +25,8 @@ enum class UserStatusInGroup(val value: String) {
 }
 
 enum class PartnerStatusInGroup(val value: String) {
-    NOT_IN_GROUP("NOT_IN_GROUP"),
-    NOT_IN_GROUP_WITH_ARCHIVE("NOT_IN_GROUP_WITH_ARCHIVE"),
+    NO_PARTNER("NO_PARTNER"),
+    GROUP_IN_ARCHIVE("GROUP_IN_ARCHIVE"),
     IN_GROUP("IN_GROUP"),
     LEAVED("LEAVED")
 }
