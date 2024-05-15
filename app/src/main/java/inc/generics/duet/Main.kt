@@ -5,6 +5,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.navigation.NavHostController
+import inc.generics.duet.navigation.navigateInclusive
 import inc.generics.duet.navigation.navigateWithData
 import inc.generics.duet.navigation.screens.ExternalScreens
 import inc.generics.no_active_group.models.NoActiveGroupUiData
@@ -32,7 +33,7 @@ fun Main(mainViewModel: MainViewModel = koinViewModel(), mainNavController: NavH
                 )
             }
             is StatusGroup.InGroupNoPartner -> {
-                // экран редактирования группы
+                mainNavController.navigateInclusive(ExternalScreens.GroupWithoutPartner.route)
             }
             is StatusGroup.InGroupPartnerLeaved -> {
                 // переход с инфой по ситатусу партнера
