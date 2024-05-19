@@ -1,17 +1,17 @@
 package inc.generics.duet.navigation
 
-import android.os.Parcelable
 import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import inc.generics.authorization.AuthorizationScreen
 import inc.generics.create_new_group.CreateNewGroupScreen
-import inc.generics.create_new_group.routing.CreateNewGroupScreenRouting
 import inc.generics.duet.Main
 import inc.generics.duet.glue.features.authorization.AuthorizationScreenRoutingImpl
 import inc.generics.duet.glue.features.create_new_group.CreateNewGroupScreenRoutingImpl
@@ -41,12 +41,15 @@ fun SetupMainNavGraph(navHostController: NavHostController) {
         composable(route = ExternalScreens.Main.route) {
             Main(mainNavController = navHostController)
         }
-        composable(route = ExternalScreens.NoActiveGroup.route) {
-            val uiData: Parcelable? = navHostController.getData(ExternalScreens.NoActiveGroup.dataKey)
-            if (uiData is NoActiveGroupUiData) {
+        composable(
+            route = "${ExternalScreens.NoActiveGroup.route}/{data}",
+            arguments = listOf(navArgument("data") { type = NavType.BoolType })
+        ) {
+            val data = navHostController.currentBackStackEntry?.arguments?.getBoolean("data")
+            data?.let {
                 NoActiveGroupScreen(
                     routing = NoActiveGroupRoutingImpl(navHostController),
-                    noActiveGroupUiData = uiData
+                    noActiveGroupUiData = NoActiveGroupUiData(data)
                 )
             }
         }

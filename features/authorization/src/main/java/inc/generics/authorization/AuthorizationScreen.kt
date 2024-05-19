@@ -10,6 +10,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
@@ -33,7 +34,9 @@ fun AuthorizationScreen(
     val authStatus by viewModel.authorizationStatus.observeAsState(AuthStatus.NoAuthorized)
 
     if (authStatus == AuthStatus.Successes) {
-        router.routToMain()
+        LaunchedEffect(Unit) {
+            router.routToMain()
+        }
         return
     } else if (authStatus == AuthStatus.Error) {
         //show bottomSheet about Error

@@ -95,6 +95,8 @@ dependencies {
     implementation(libs.di.koin.android)
     implementation(libs.di.koin.androidx.compose)
 
+    implementation(libs.coil.compose)
+
     implementation(libs.androidx.navigation.compose)
 
     coreLibraryDesugaring(libs.desugar.android)

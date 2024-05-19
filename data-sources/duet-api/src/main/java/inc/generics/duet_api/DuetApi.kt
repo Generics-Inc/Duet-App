@@ -1,4 +1,5 @@
 package inc.generics.duet_api
+
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.skydoves.retrofit.adapters.result.ResultCallAdapterFactory
@@ -12,9 +13,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 fun duetApi(
     baseUrl: String,
-    tokenProvider: TokenProvider
+    okHttpClient: OkHttpClient
 ): DuetApi {
-    val okHttpClient = okHttpClient(tokenProvider)
     val gson = gson()
     val retrofit = retrofit(okHttpClient, baseUrl, gson)
 
@@ -41,7 +41,7 @@ internal fun gson(): Gson {
         .create()
 }
 
-internal fun okHttpClient(tokenProvider: TokenProvider): OkHttpClient {
+fun okHttpClient(tokenProvider: TokenProvider): OkHttpClient {
     val interceptorLogging = HttpLoggingInterceptor()
     interceptorLogging.level = HttpLoggingInterceptor.Level.BODY
 
