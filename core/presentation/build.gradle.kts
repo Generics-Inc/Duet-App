@@ -52,6 +52,8 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.runtime.livedata)
 
+    implementation(libs.coil.compose)
+
     implementation(libs.accompanist.systemuicontroller)
 
     implementation(libs.di.koin.core)

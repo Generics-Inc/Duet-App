@@ -45,6 +45,7 @@ import inc.generics.presentation.R
 import inc.generics.presentation.components.DefaultFilledTonalButtonDuet
 import inc.generics.presentation.components.DefaultOutlinedButtonDuet
 import inc.generics.presentation.components.DefaultTopAppBarDuet
+import inc.generics.presentation.components.DuetAsyncImage
 import inc.generics.presentation.components.OutlinedButtonDuet
 import inc.generics.presentation.components.defaultTextStyleDuet
 import inc.generics.presentation.theme.DuetTheme
@@ -221,34 +222,10 @@ fun InviteCodeFragment(viewModel: GroupWithoutPartnerViewModel = koinViewModel()
 fun ImageGroup(viewModel: GroupWithoutPartnerViewModel = koinViewModel()) {
     val groupWithoutPartner by viewModel.groupWithoutPartner.observeAsState(null)
 
-    Box(
-        modifier = Modifier
-            .size(80.dp)
-            .padding(top = 14.dp)
-            .background(
-                color = DuetTheme.colors.backgroundColor,
-                shape = RoundedCornerShape(8.dp)
-            )
-    ) {
-        groupWithoutPartner?.let {
-            if (it.photoUrl == null) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_load_img),
-                    tint = DuetTheme.colors.mainColor,
-                    contentDescription = "icon load image",
-                    modifier = Modifier.align(Alignment.Center)
-                )
-            } else {
-                AsyncImage(
-                    model = LocalContext.current.getString(R.string.base_url) + it.photoUrl,
-                    contentDescription = "",
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier.clip(RoundedCornerShape(8.dp))
-                )
-            }
-        }
-    }
-
+    DuetAsyncImage(
+        painterIconIfNotImg = painterResource(id = R.drawable.ic_load_img),
+        imgUrl = groupWithoutPartner?.photoUrl
+    )
 }
 
 @Composable
