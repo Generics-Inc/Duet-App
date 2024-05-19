@@ -8,6 +8,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.navigation.NavHostController
 import inc.generics.duet.navigation.navigateInclusive
+import inc.generics.duet.navigation.navigateReplace
+import inc.generics.duet.navigation.navigateReplaceWithData
 import inc.generics.duet.navigation.navigateWithDataInclusive
 import inc.generics.duet.navigation.screens.ExternalScreens
 import org.koin.androidx.compose.koinViewModel
@@ -25,15 +27,16 @@ fun Main(mainViewModel: MainViewModel = koinViewModel(), mainNavController: NavH
     LaunchedEffect(key1 = statusGroup) {
         when(statusGroup) {
             is StatusGroup.NotAuthorize ->
-                mainNavController.navigateInclusive(ExternalScreens.Authorization.route)
+                mainNavController.navigateReplace(ExternalScreens.Authorization.route, ExternalScreens.Main.route)
             is StatusGroup.NotActiveGroup -> {
-                mainNavController.navigateWithDataInclusive(
+                mainNavController.navigateReplaceWithData(
                     ExternalScreens.NoActiveGroup.route,
-                    (statusGroup as StatusGroup.NotActiveGroup).hashArchive.toString()
+                    ExternalScreens.Main.route,
+                    (statusGroup as StatusGroup.NotActiveGroup).hashArchive.toString(),
                 )
             }
             is StatusGroup.InGroupNoPartner -> {
-                mainNavController.navigateInclusive(ExternalScreens.GroupWithoutPartner.route)
+                mainNavController.navigateReplace(ExternalScreens.GroupWithoutPartner.route, ExternalScreens.Main.route)
             }
             is StatusGroup.InGroupPartnerLeaved -> {
                 // переход с инфой по ситатусу партнера

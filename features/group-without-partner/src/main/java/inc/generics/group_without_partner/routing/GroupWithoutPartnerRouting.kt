@@ -4,5 +4,5 @@ interface GroupWithoutPartnerRouting {
     fun routToEditingGroup()
     fun routToAllRequestsToJoin()
 
-    fun routToMain()
+    fun routToNoActiveGroup()
 }

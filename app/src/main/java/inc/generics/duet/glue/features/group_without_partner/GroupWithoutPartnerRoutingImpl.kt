@@ -1,9 +1,7 @@
 package inc.generics.duet.glue.features.group_without_partner
 
 import androidx.navigation.NavHostController
-import inc.generics.duet.StatusGroup
-import inc.generics.duet.navigation.navigateInclusive
-import inc.generics.duet.navigation.navigateWithDataInclusive
+import inc.generics.duet.navigation.navigateReplaceWithData
 import inc.generics.duet.navigation.screens.ExternalScreens
 import inc.generics.group_without_partner.routing.GroupWithoutPartnerRouting
 
@@ -18,9 +16,10 @@ class GroupWithoutPartnerRoutingImpl(
         //navigator.navigate()
     }
 
-    override fun routToMain() {
-        navigator.navigateWithDataInclusive(
+    override fun routToNoActiveGroup() {
+        navigator.navigateReplaceWithData(
             ExternalScreens.NoActiveGroup.route,
+            ExternalScreens.GroupWithoutPartner.route,
             true.toString()
         )
     }
