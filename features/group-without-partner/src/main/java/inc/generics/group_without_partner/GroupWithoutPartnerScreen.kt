@@ -65,7 +65,9 @@ fun GroupWithoutPartnerScreen(
 
     val isLeaved by viewModel.isLeaved.observeAsState(false)
     if (isLeaved) {
-        routing.routToMain()
+        LaunchedEffect(Unit) {
+            routing.routToMain()
+        }
         return
     }
 

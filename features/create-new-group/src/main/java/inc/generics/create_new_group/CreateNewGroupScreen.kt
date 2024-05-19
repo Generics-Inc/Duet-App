@@ -21,6 +21,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -241,6 +242,8 @@ fun SetupRoutOnCreateGroup(
 ) {
     val statusCreateGroup by viewModel.statusCreateGroup.observeAsState()
     if (statusCreateGroup == StatusCreateGroup.FINISH) {
-        routing.routToMain()
+        LaunchedEffect(Unit) {
+            routing.routToMain()
+        }
     }
 }
