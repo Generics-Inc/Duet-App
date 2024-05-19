@@ -66,7 +66,7 @@ fun GroupWithoutPartnerScreen(
     val isLeaved by viewModel.isLeaved.observeAsState(false)
     if (isLeaved) {
         LaunchedEffect(Unit) {
-            routing.routToMain()
+            routing.routToNoActiveGroup()
         }
         return
     }
@@ -226,7 +226,7 @@ fun ImageGroup(viewModel: GroupWithoutPartnerViewModel = koinViewModel()) {
             .size(80.dp)
             .padding(top = 14.dp)
             .background(
-                color = DuetTheme.colors.mainColor.copy(0.4f),
+                color = DuetTheme.colors.backgroundColor,
                 shape = RoundedCornerShape(8.dp)
             )
     ) {
@@ -236,6 +236,7 @@ fun ImageGroup(viewModel: GroupWithoutPartnerViewModel = koinViewModel()) {
                     painter = painterResource(id = R.drawable.ic_load_img),
                     tint = DuetTheme.colors.mainColor,
                     contentDescription = "icon load image",
+                    modifier = Modifier.align(Alignment.Center)
                 )
             } else {
                 AsyncImage(
