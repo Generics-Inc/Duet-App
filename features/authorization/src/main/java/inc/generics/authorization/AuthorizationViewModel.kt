@@ -17,6 +17,10 @@ class AuthorizationViewModel(private val repository: AuthorizationRepository) : 
             _authorizationStatus.value = if(result) AuthStatus.Successes else AuthStatus.Error
         }
     }
+
+    fun clearStatus() {
+        _authorizationStatus.value = AuthStatus.NoAuthorized
+    }
 }
 
 enum class AuthStatus {

@@ -3,10 +3,15 @@ package inc.generics.authorization
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -16,14 +21,17 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.vk.id.onetap.compose.onetap.sheet.OneTapBottomSheet
 import com.vk.id.onetap.compose.onetap.sheet.rememberOneTapBottomSheetState
 import inc.generics.authorization.routing.AuthorizationScreenRouting
-import inc.generics.presentation.components.DefaultOutlinedButtonDuet
 import inc.generics.presentation.components.DefaultTopAppBarDuet
+import inc.generics.presentation.components.DuetAlertDialogError
 import inc.generics.presentation.components.defaultTextStyleDuet
 import inc.generics.presentation.theme.DuetTheme
+import inc.generics.presentation.theme.colors.vkColors
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -39,8 +47,10 @@ fun AuthorizationScreen(
         }
         return
     } else if (authStatus == AuthStatus.Error) {
-        //show bottomSheet about Error
-        return
+        DuetAlertDialogError(
+            messageText = DuetTheme.localization.getString("checkInternetOrTryAgain"),
+            onClose = { viewModel.clearStatus() }
+        )
     }
 
     Scaffold(
@@ -54,20 +64,20 @@ fun AuthorizationScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-                .background(DuetTheme.colors.backgroundColor),
+                .background(DuetTheme.colors.mainColor),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Top
         ) {
             Icon(
                 painterResource(id = R.drawable.ic_auth),
                 contentDescription = "auth icon",
-                tint = DuetTheme.colors.mainColor,
+                tint = DuetTheme.colors.backgroundColor,
                 modifier = Modifier.size(200.dp)
             )
 
             Text(
                 text = DuetTheme.localization.getString("authText"),
-                style = defaultTextStyleDuet(),
+                style = defaultTextStyleDuet().copy(color = DuetTheme.colors.backgroundColor),
                 modifier = Modifier.padding(16.dp)
             )
 
@@ -95,9 +105,37 @@ internal fun VkAuth(viewModel: AuthorizationViewModel = koinViewModel()) {
         serviceName = "Duet"
     )
 
-    DefaultOutlinedButtonDuet(
+    OutlinedButton(
         onClick = { bottomSheetState.show() },
-        text = DuetTheme.localization.getString("authByVk"),
-        modifier = Modifier.padding(24.dp)
-    )
+        colors = ButtonDefaults.outlinedButtonColors(
+            containerColor = vkColors.mainColor,
+            contentColor = DuetTheme.colors.backgroundColor
+        ),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(24.dp),
+        shape = RoundedCornerShape(8.dp),
+        border = null,
+        elevation = null
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Icon(
+                painter = painterResource(id = inc.generics.presentation.R.drawable.ic_vk_logo),
+                contentDescription = "vk logo",
+                tint = DuetTheme.colors.backgroundColor
+            )
+            Text(
+                text = DuetTheme.localization.getString("authByVk"),
+                fontSize = 18.sp,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f),
+                textAlign = TextAlign.Center
+            )
+        }
+
+    }
 }
