@@ -6,6 +6,7 @@ import inc.generics.duet_api.models.auth.VkSignInDto
 import inc.generics.duet_api.models.groups.Group
 import inc.generics.duet_api.models.groups.GroupFull
 import inc.generics.duet_api.models.groups.JoinToGroup
+import inc.generics.duet_api.models.groups.RequestToGroup
 import inc.generics.duet_api.models.profile.ProfileInfDto
 import inc.generics.duet_api.models.profile.StatusUsersGroupDto
 import okhttp3.MultipartBody
@@ -75,4 +76,14 @@ interface DuetApi {
 
     @DELETE("groups/leave")
     suspend fun leaveGroup()
+
+    /* Requests to Group */
+    @GET("groups/requests")
+    suspend fun requests(): Result<List<RequestToGroup>>
+
+    @PATCH("groups/requests/{id}")
+    suspend fun acceptRequest(@Path("id") id: Long)
+
+    @PATCH("groups/cancel/{id}")
+    suspend fun cancelRequest(@Path("id") id: Long)
 }
