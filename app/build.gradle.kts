@@ -61,6 +61,7 @@ android {
 
 dependencies {
     implementation(project(":core:presentation"))
+    implementation(project(":core:utils-data"))
 
     implementation(project(":data-sources:duet-local"))
     implementation(project(":data-sources:duet-api"))
@@ -76,6 +77,9 @@ dependencies {
 
     implementation(project(":features:group-without-partner"))
     implementation(project(":data:group-without-partner-data"))
+
+    implementation(project(":features:requests"))
+    implementation(project(":data:requests-data"))
     //----/>
 
     implementation(project(":android-utils"))
