@@ -13,7 +13,7 @@ class GroupWithoutPartnerRoutingImpl(
     }
 
     override fun routToAllRequestsToJoin() {
-        //navigator.navigate()
+        navigator.navigate(ExternalScreens.Requests.route)
     }
 
     override fun routToNoActiveGroup() {

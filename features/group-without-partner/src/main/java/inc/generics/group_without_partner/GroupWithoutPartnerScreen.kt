@@ -107,8 +107,8 @@ fun ContentScreen(
             ) {
                 ImageGroup()
                 NameGroup()
-                ButtonEdit()
-                ButtonToJoinRequests()
+                ButtonEdit(routing)
+                ButtonToJoinRequests(routing)
             }
 
             Column(
@@ -237,18 +237,22 @@ fun NameGroup(viewModel: GroupWithoutPartnerViewModel = koinViewModel()) {
 }
 
 @Composable
-fun ButtonEdit() {
+fun ButtonEdit(routing: GroupWithoutPartnerRouting) {
     DefaultFilledTonalButtonDuet(
-        onClick = {},
+        onClick = {
+            routing.routToEditingGroup()
+        },
         text = "Редактировать",
         modifier = Modifier.padding(top = 10.dp)
     )
 }
 
 @Composable
-fun ButtonToJoinRequests() {
+fun ButtonToJoinRequests(routing: GroupWithoutPartnerRouting) {
     DefaultOutlinedButtonDuet(
-        onClick = {},
+        onClick = {
+            routing.routToAllRequestsToJoin()
+        },
         text = "Заявки",
         modifier = Modifier.padding(top = 8.dp)
     )
