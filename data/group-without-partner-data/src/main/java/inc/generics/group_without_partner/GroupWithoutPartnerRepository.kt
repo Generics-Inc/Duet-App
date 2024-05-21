@@ -2,6 +2,7 @@ package inc.generics.group_without_partner
 
 import inc.generics.duet_api.api.DuetApi
 import inc.generics.group_without_partner.models.GroupWithoutPartner
+import inc.generics.utils_data.exceptions.safeRequest
 
 class GroupWithoutPartnerRepository(private val api: DuetApi) {
     suspend fun getGroup(): GroupWithoutPartner? {
@@ -9,11 +10,8 @@ class GroupWithoutPartnerRepository(private val api: DuetApi) {
     }
 
     suspend fun leaveGroup(): Boolean {
-        try {
+        return safeRequest {
             api.leaveGroup()
-            return true
-        } catch (e: Exception) {
-            return false
         }
     }
 }
