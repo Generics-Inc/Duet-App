@@ -30,13 +30,36 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.1"
+    }
 }
 
 dependencies {
+    implementation(project(":core:presentation"))
+    implementation(project(":data:requests-data"))
 
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.material3)
+
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.runtime.livedata)
+
+    implementation(libs.di.koin.androidx.compose)
+
+    implementation(libs.coil.compose)
+    implementation("com.google.accompanist:accompanist-swiperefresh:0.27.0")
+
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
