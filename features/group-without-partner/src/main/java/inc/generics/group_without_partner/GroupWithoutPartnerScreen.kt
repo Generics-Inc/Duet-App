@@ -128,7 +128,7 @@ fun ContentScreen(
             ) {
                 DefaultFilledTonalButtonDuet(
                     onClick = { viewModel.leaveGroup() },
-                    text = "Выйти",
+                    text = DuetTheme.localization.getString("getOut"),
                     color = DuetTheme.colors.errorColor,
                     modifier = Modifier.padding(bottom = 24.dp)
                 )
@@ -156,7 +156,7 @@ fun InviteCodeFragment(viewModel: GroupWithoutPartnerViewModel = koinViewModel()
             exit = shrinkHorizontally()
         ) {
             Text(
-                text = "Код скопирован",
+                text = DuetTheme.localization.getString("codeIsCopied"),
                 Modifier
                     .background(
                         color = DuetTheme.colors.secondColor,
@@ -200,7 +200,7 @@ fun InviteCodeFragment(viewModel: GroupWithoutPartnerViewModel = koinViewModel()
                     )
 
                     Text(
-                        text = "нажмите чтобы скопировать код",
+                        text = DuetTheme.localization.getString("clickToCopyCode"),
                         style = defaultTextStyleDuet().copy(
                             color = DuetTheme.colors.secondColor,
                             fontSize = 14.sp
@@ -242,7 +242,7 @@ fun ButtonEdit(routing: GroupWithoutPartnerRouting) {
         onClick = {
             routing.routToEditingGroup()
         },
-        text = "Редактировать",
+        text = DuetTheme.localization.getString("edit"),
         modifier = Modifier.padding(top = 10.dp)
     )
 }
@@ -253,7 +253,7 @@ fun ButtonToJoinRequests(routing: GroupWithoutPartnerRouting) {
         onClick = {
             routing.routToAllRequestsToJoin()
         },
-        text = "Заявки",
+        text = DuetTheme.localization.getString("requests"),
         modifier = Modifier.padding(top = 8.dp)
     )
 }

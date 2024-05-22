@@ -40,6 +40,10 @@ internal val russianStrings = hashMapOf(
     Pair("swipeRefreshRequests", "Для обновления cписка\n" +
             "потяните экран вниз"),
     Pair("emptyList", "Список пуст"),
+
+    Pair("codeIsCopied", "Код скопирован"),
+    Pair("clickToCopyCode", "нажмите чтобы скопировать код"),
+    Pair("edit", "Редактировать"),
 )
 
 internal val englishStrings = hashMapOf(
@@ -80,4 +84,8 @@ internal val englishStrings = hashMapOf(
     Pair("cancel", "Cancel"),
     Pair("swipeRefreshRequests", "Pull the screen down to\nrefresh the list"),
     Pair("emptyList", "List is empty"),
+
+    Pair("codeIsCopied", "Code is copied"),
+    Pair("clickToCopyCode", "click to copy code"),
+    Pair("edit", "Edit"),
 )
