@@ -27,6 +27,7 @@
             <option value="$PROJECT_DIR$/features/authorization" />
             <option value="$PROJECT_DIR$/features/create-new-group" />
             <option value="$PROJECT_DIR$/features/group-without-partner" />
+            <option value="$PROJECT_DIR$/features/join-to-group" />
             <option value="$PROJECT_DIR$/features/no-active-group" />
             <option value="$PROJECT_DIR$/features/requests" />
           </set>
