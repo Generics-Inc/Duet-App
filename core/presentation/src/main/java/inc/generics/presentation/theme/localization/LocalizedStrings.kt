@@ -33,6 +33,13 @@ internal val russianStrings = hashMapOf(
             "поместил группу\n" +
             "в корзину"),
     Pair("requestDeleteGroup", "Вы уверены, что хотети отправить группу в корзину?"),
+
+    Pair("requests", "Заявки"),
+    Pair("accept", "Принять"),
+    Pair("cancel", "Отклониться"),
+    Pair("swipeRefreshRequests", "Для обновления cписка\n" +
+            "потяните экран вниз"),
+    Pair("emptyList", "Список пуст"),
 )
 
 internal val englishStrings = hashMapOf(
@@ -67,4 +74,10 @@ internal val englishStrings = hashMapOf(
             "has placed the group\n" +
             "in the basket"),
     Pair("requestDeleteGroup", "Are you sure you want to send the group to the basket?"),
+
+    Pair("requests", "Requests"),
+    Pair("accept", "Accept"),
+    Pair("cancel", "Cancel"),
+    Pair("swipeRefreshRequests", "Pull the screen down to\nrefresh the list"),
+    Pair("emptyList", "List is empty"),
 )
