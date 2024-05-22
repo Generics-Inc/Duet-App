@@ -2,4 +2,5 @@
     <string name="app_name">Duet</string>
     <string name="base_ur2l">http://server.lorexiq.ru:4000/api/</string>
     <string name="base_url">https://duetapp.ru/api/</string>
+    <string name="base_url_without_backslash">https://duetapp.ru/api</string>
 </resources>
