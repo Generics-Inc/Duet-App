@@ -8,13 +8,14 @@ import inc.generics.duet.glue.android_utils.di.androidUtilsModule
 import inc.generics.duet.glue.data.authorizaton_data.di.authorizationDataModule
 import inc.generics.duet.glue.data.create_new_group_data.di.createNewGroupDataModule
 import inc.generics.duet.glue.data.group_without_partner_data.di.groupWithoutPartnerDataModule
+import inc.generics.duet.glue.data.join_to_group_data.di.joinToGroupModule
 import inc.generics.duet.glue.data.requests_data.di.requestsDataModule
 import inc.generics.duet.glue.data_sources.duet_api.di.duetApiModule
 import inc.generics.duet.glue.data_sources.duet_local.di.duetLocalModule
 import inc.generics.duet.glue.features.authorization.di.authorizationFeatureModule
 import inc.generics.duet.glue.features.create_new_group.di.CreateNewGroupFeatureModule
 import inc.generics.duet.glue.features.group_without_partner.di.groupWithoutPartnerFeaturesModule
-import inc.generics.duet.glue.features.requests.di.requestsFeatureDI
+import inc.generics.duet.glue.features.requests.di.requestsFeatureModule
 import inc.generics.duet.glue.main.di.mainModule
 import inc.generics.duet.glue.presentation.di.presentationModule
 import okhttp3.OkHttpClient
@@ -41,7 +42,8 @@ class DuetApp : Application(), ImageLoaderFactory {
                 groupWithoutPartnerDataModule,
                 groupWithoutPartnerFeaturesModule,
                 requestsDataModule,
-                requestsFeatureDI,
+                requestsFeatureModule,
+                joinToGroupModule,
                 presentationModule,
                 duetLocalModule,
                 duetApiModule

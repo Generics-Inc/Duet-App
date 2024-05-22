@@ -80,6 +80,8 @@ dependencies {
 
     implementation(project(":features:requests"))
     implementation(project(":data:requests-data"))
+
+    implementation(project(":data:join-to-group-data"))
     //----/>
 
     implementation(project(":android-utils"))

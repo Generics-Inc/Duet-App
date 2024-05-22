@@ -21,6 +21,7 @@
             <option value="$PROJECT_DIR$/data/authorization-data" />
             <option value="$PROJECT_DIR$/data/create-new-group-data" />
             <option value="$PROJECT_DIR$/data/group-without-partner-data" />
+            <option value="$PROJECT_DIR$/data/join-to-group-data" />
             <option value="$PROJECT_DIR$/data/requests-data" />
             <option value="$PROJECT_DIR$/features" />
             <option value="$PROJECT_DIR$/features/authorization" />

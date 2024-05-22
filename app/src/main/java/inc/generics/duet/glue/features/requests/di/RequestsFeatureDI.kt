@@ -4,6 +4,6 @@ import inc.generics.requests.RequestsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.dsl.module
 
-val requestsFeatureDI = module {
+val requestsFeatureModule = module {
     viewModelOf(::RequestsViewModel)
 }
