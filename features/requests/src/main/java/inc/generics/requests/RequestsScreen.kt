@@ -56,7 +56,7 @@ fun RequestsScreen(
 
     Scaffold(
         topBar = {
-            TitleTopAppBarDuet(text = "Заявки", onClickNav = {
+            TitleTopAppBarDuet(text = DuetTheme.localization.getString("requests"), onClickNav = {
                 routing.goBack()
             })
         }
@@ -121,11 +121,10 @@ fun EmptyListOfRequests(paddingValues: PaddingValues) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
-        Text(text = "Список пуст", style = defaultTextStyleDuet())
+        Text(text = DuetTheme.localization.getString("emptyList"), style = defaultTextStyleDuet())
 
         Text(
-            text = "Для обновления страницы\n" +
-                    "потяните экран вниз",
+            text = DuetTheme.localization.getString("swipeRefreshRequests"),
             style = defaultTextStyleDuet().copy(fontSize = 14.sp),
             modifier = Modifier.padding(top = 8.dp)
         )
@@ -161,7 +160,7 @@ fun RequestItem(
                 painterIconIfNotImg = painterResource(
                     id = inc.generics.presentation.R.drawable.ic_load_img
                 ),
-                imgUrl = null
+                imgUrl = photoUrl
             )
 
             Column(
@@ -169,7 +168,7 @@ fun RequestItem(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = "Наруто Узумаки",
+                    text = name,
                     style = defaultTextStyleDuet().copy(fontSize = 16.sp),
                     modifier = Modifier
                         .fillMaxWidth()
@@ -189,7 +188,7 @@ fun RequestItem(
                         hasElevation = false
                     ) {
                         Text(
-                            text = "Отклонить",
+                            text = DuetTheme.localization.getString("cancel"),
                             style = defaultDialogTextStyleDuet().copy(
                                 color = DuetTheme.colors.errorColor,
                                 fontSize = 12.sp
@@ -205,7 +204,7 @@ fun RequestItem(
                         hasElevation = false
                     ) {
                         Text(
-                            text = "Принять",
+                            text = DuetTheme.localization.getString("accept"),
                             style = defaultDialogTextStyleDuet().copy(
                                 color = DuetTheme.colors.successColor,
                                 fontSize = 12.sp
