@@ -25,12 +25,20 @@ class RequestsViewModel(
             this.map {
                 RequestUi(
                     it.id,
-                    (it.firstName ?: "") + (it.lastName ?: ""),
+                    (it.firstName ?: "") + " " + (it.lastName ?: ""),
                     it.photoUrl
                 )
             }
         }
-        _statusLoading.value = if (requestsUi != null) StatusLoading.FINISH else StatusLoading.ERROR
+
+        _statusLoading.value = requestsUi.run {
+            if (this == null)
+                StatusLoading.ERROR
+            else {
+                _listOfRequests.value = this
+            }
+            StatusLoading.FINISH
+        }
     }
 
     fun acceptRequest(id: Long) = viewModelScope.launch {
@@ -39,7 +47,11 @@ class RequestsViewModel(
     }
 
     fun cancelRequest(id: Long) = viewModelScope.launch {
-        repository.cancel(id)
+        repository.cancel(id).let {
+            if (it) {
+                getAllRequests()
+            }
+        }
         // here set flag error for dialog
     }
 }

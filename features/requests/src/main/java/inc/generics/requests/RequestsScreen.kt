@@ -197,7 +197,7 @@ fun RequestItem(
                     }
 
                     OutlinedButtonDuet(
-                        onClick = onCancel::invoke,
+                        onClick = onAccept::invoke,
                         modifier = Modifier
                             .padding(horizontal = 10.dp),
                         hasBorder = false,

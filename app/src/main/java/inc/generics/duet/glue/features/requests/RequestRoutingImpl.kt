@@ -1,7 +1,7 @@
 package inc.generics.duet.glue.features.requests
 
 import androidx.navigation.NavHostController
-import inc.generics.duet.navigation.navigateReplace
+import inc.generics.duet.navigation.navigateInclusive
 import inc.generics.duet.navigation.screens.ExternalScreens
 import inc.generics.requests.routing.RequestsRouting
 
@@ -11,6 +11,6 @@ class RequestRoutingImpl(private val navHostController: NavHostController) : Req
     }
 
     override fun toMain() {
-        navHostController.navigateReplace(ExternalScreens.Requests.route, ExternalScreens.Main.route)
+        navHostController.navigateInclusive(ExternalScreens.Main.route)
     }
 }
