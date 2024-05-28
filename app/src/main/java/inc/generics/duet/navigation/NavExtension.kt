@@ -1,5 +1,6 @@
 package inc.generics.duet.navigation
 
+import android.annotation.SuppressLint
 import android.os.Parcelable
 import androidx.navigation.NavHostController
 
@@ -46,6 +47,7 @@ fun NavHostController.getData(key: String): Parcelable? {
     return this.previousBackStackEntry?.savedStateHandle?.get<Parcelable>(key)
 }
 
+@SuppressLint("RestrictedApi")
 fun NavHostController.clearBackStack() {
     repeat(this.currentBackStack.value.size) {
         this.popBackStack()
