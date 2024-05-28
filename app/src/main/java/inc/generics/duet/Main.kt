@@ -7,10 +7,8 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.navigation.NavHostController
-import inc.generics.duet.navigation.navigateInclusive
 import inc.generics.duet.navigation.navigateReplace
 import inc.generics.duet.navigation.navigateReplaceWithData
-import inc.generics.duet.navigation.navigateWithDataInclusive
 import inc.generics.duet.navigation.screens.ExternalScreens
 import org.koin.androidx.compose.koinViewModel
 
