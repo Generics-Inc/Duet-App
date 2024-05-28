@@ -81,9 +81,9 @@ interface DuetApi {
     @GET("groups/requests")
     suspend fun requests(): Result<List<RequestToGroup>>
 
-    @PATCH("groups/requests/{id}")
+    @PATCH("groups/requests/accept/{id}")
     suspend fun acceptRequest(@Path("id") id: Long)
 
-    @PATCH("groups/cancel/{id}")
+    @PATCH("groups/requests/cancel/{id}")
     suspend fun cancelRequest(@Path("id") id: Long)
 }
