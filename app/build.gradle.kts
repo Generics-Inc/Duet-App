@@ -81,6 +81,7 @@ dependencies {
     implementation(project(":features:requests"))
     implementation(project(":data:requests-data"))
 
+    implementation(project(":features:join-to-group"))
     implementation(project(":data:join-to-group-data"))
     //----/>
 

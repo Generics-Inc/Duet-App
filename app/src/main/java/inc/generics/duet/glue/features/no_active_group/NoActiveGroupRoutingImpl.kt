@@ -11,5 +11,7 @@ class NoActiveGroupRoutingImpl(private val navController: NavHostController) : N
 
     override fun routToListOfDeletedGroups() {}
 
-    override fun routToJoinGroup() {}
+    override fun routToJoinGroup() {
+        navController.navigate(ExternalScreens.JoinToGroup.route)
+    }
 }

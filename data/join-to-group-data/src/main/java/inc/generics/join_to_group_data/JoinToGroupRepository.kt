@@ -4,6 +4,6 @@ import inc.generics.duet_api.api.DuetApi
 
 class JoinToGroupRepository(private val api: DuetApi) {
     suspend fun joinToGroupByInviteCode(inviteCode: String): Boolean {
-        return api.joinToGroup(inviteCode).isFailure
+        return api.joinToGroup(inviteCode).isSuccess
     }
 }

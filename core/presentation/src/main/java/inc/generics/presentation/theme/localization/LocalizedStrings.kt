@@ -14,6 +14,7 @@ internal val russianStrings = hashMapOf(
     Pair("NoMore", "*не больше %d символов\n*и не меньше %d символов"),
     Pair("dialogErrorTitle", "Что-то пошло не так..."),
     Pair("okOnError", "Понятно("),
+    Pair("ok", "Понятно"),
     Pair("checkInternetOrFile", "Проверьте интернет соединение или загрузите другой файл"),
     Pair("checkInternetOrTryAgain", "Проверьте интернет соединение или попробуйте позже"),
     Pair("errorNameGroup", "Имя группы - обязательное поле.\n" +
@@ -59,6 +60,7 @@ internal val englishStrings = hashMapOf(
     Pair("NoMore", "*no more than %d characters\n*and no less than %d characters"),
     Pair("dialogErrorTitle", "Something went wrong..."),
     Pair("okOnError", "Got it:("),
+    Pair("ok", "Ok"),
     Pair("checkInternetOrFile", "Check your internet connection or upload another file"),
     Pair("checkInternetOrTryAgain", "Check your internet connection or try again later"),
     Pair("errorNameGroup", "Group name is a required field.\n" +

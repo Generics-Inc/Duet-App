@@ -7,4 +7,5 @@ sealed class ExternalScreens(val route: String, val dataKey: String) {
     data object CreateNewGroup: ExternalScreens(route = "createNewGroup", "")
     data object GroupWithoutPartner: ExternalScreens(route = "groupWithoutPartner", "")
     data object Requests: ExternalScreens(route = "requestsScreen", "")
+    data object JoinToGroup: ExternalScreens(route = "joinToGroup", "")
 }
