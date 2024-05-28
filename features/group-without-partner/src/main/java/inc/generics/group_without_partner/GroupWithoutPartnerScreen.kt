@@ -88,7 +88,7 @@ fun GroupWithoutPartnerScreen(
 }
 
 @Composable
-fun ContentScreen(
+internal fun ContentScreen(
     routing: GroupWithoutPartnerRouting,
     paddingValues: PaddingValues,
     viewModel: GroupWithoutPartnerViewModel = koinViewModel()
@@ -138,7 +138,7 @@ fun ContentScreen(
 }
 
 @Composable
-fun InviteCodeFragment(viewModel: GroupWithoutPartnerViewModel = koinViewModel()) {
+internal fun InviteCodeFragment(viewModel: GroupWithoutPartnerViewModel = koinViewModel()) {
     val groupWithoutPartner by viewModel.groupWithoutPartner.observeAsState()
     val clipboardManager =
         LocalContext.current.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
@@ -214,7 +214,7 @@ fun InviteCodeFragment(viewModel: GroupWithoutPartnerViewModel = koinViewModel()
 }
 
 @Composable
-fun ImageGroup(viewModel: GroupWithoutPartnerViewModel = koinViewModel()) {
+internal fun ImageGroup(viewModel: GroupWithoutPartnerViewModel = koinViewModel()) {
     val groupWithoutPartner by viewModel.groupWithoutPartner.observeAsState(null)
 
     DuetAsyncImage(
@@ -224,7 +224,7 @@ fun ImageGroup(viewModel: GroupWithoutPartnerViewModel = koinViewModel()) {
 }
 
 @Composable
-fun NameGroup(viewModel: GroupWithoutPartnerViewModel = koinViewModel()) {
+internal fun NameGroup(viewModel: GroupWithoutPartnerViewModel = koinViewModel()) {
     val groupWithoutPartner by viewModel.groupWithoutPartner.observeAsState()
     Log.d("groupWithoutPartner",groupWithoutPartner.toString())
     groupWithoutPartner?.let {
@@ -237,7 +237,7 @@ fun NameGroup(viewModel: GroupWithoutPartnerViewModel = koinViewModel()) {
 }
 
 @Composable
-fun ButtonEdit(routing: GroupWithoutPartnerRouting) {
+internal fun ButtonEdit(routing: GroupWithoutPartnerRouting) {
     DefaultFilledTonalButtonDuet(
         onClick = {
             routing.routToEditingGroup()
@@ -248,7 +248,7 @@ fun ButtonEdit(routing: GroupWithoutPartnerRouting) {
 }
 
 @Composable
-fun ButtonToJoinRequests(routing: GroupWithoutPartnerRouting) {
+internal fun ButtonToJoinRequests(routing: GroupWithoutPartnerRouting) {
     DefaultOutlinedButtonDuet(
         onClick = {
             routing.routToAllRequestsToJoin()
