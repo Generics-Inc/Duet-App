@@ -11,6 +11,7 @@ import inc.generics.presentation.components.DefaultFilledTonalButtonDuet
 import inc.generics.presentation.components.DefaultOutlinedButtonDuet
 import inc.generics.presentation.components.HeadTestAndIcon
 import inc.generics.presentation.theme.DuetTheme
+import inc.generics.presentation.utils.CutterType
 import org.koin.compose.koinInject
 
 @Composable
@@ -23,6 +24,7 @@ fun UserWithoutGroup(
     DefaultOutlinedButtonDuet(
         onClick = { routing.routToCreateGroup() },
         text = DuetTheme.localization.getString("create"),
+        cutterType = CutterType.ONLY_ONE_CLICK,
         modifier = Modifier
             .padding(top = 65.dp)
             .fillMaxWidth()
@@ -32,6 +34,7 @@ fun UserWithoutGroup(
     DefaultOutlinedButtonDuet(
         onClick = { routing.routToJoinGroup() },
         text = DuetTheme.localization.getString("intoToGroup"),
+        cutterType = CutterType.ONLY_ONE_CLICK,
         modifier = Modifier
             .padding(top = 26.dp)
             .fillMaxWidth()
@@ -42,6 +45,7 @@ fun UserWithoutGroup(
         DefaultFilledTonalButtonDuet(
             onClick = { routing.routToListOfDeletedGroups() },
             text = DuetTheme.localization.getString("basket") ,
+            cutterType = CutterType.ONLY_ONE_CLICK,
             modifier = Modifier
                 .padding(top = 26.dp)
                 .fillMaxWidth()
