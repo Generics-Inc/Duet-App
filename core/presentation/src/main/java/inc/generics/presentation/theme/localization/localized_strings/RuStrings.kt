@@ -47,4 +47,12 @@ internal val russianStrings = hashMapOf(
     Pair(CODE_IS_COPIED, "Код скопирован"),
     Pair(CLICK_TO_COPY_CODE, "нажмите чтобы скопировать код"),
     Pair(EDIT, "Редактировать"),
+
+    Pair(JOIN_TO_GROUP, "Запрос в группу"),
+    Pair(INPUT_INVITE_CODE, "Введите код приглашения"),
+    Pair(INPUT_INVITE_CODE_TEXT, "Введите код приглашения, который\nсгенерировал партнер"),
+    Pair(SEND, "Отправить"),
+    Pair(EMPTY_INPUT_FIELD_INVITE_CODE, "Пустое поле ввода. Вставьте код приглашения"),
+    Pair(CHECK_INVITE_CODE_OR_TRY_AGAIN, "Проверьте корректность кода приглашения или попробуйте позже"),
+    Pair(REQUEST_TO_JOIN_IS_SENT_WAIT, "Заявка отправлена.\nДождитесь пока\nпартнер примет её"),
 )

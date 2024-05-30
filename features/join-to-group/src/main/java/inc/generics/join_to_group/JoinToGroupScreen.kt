@@ -34,6 +34,7 @@ import inc.generics.presentation.components.TitleTopAppBarDuet
 import inc.generics.presentation.components.defaultTextFieldStyle
 import inc.generics.presentation.components.defaultTextStyleDuet
 import inc.generics.presentation.theme.DuetTheme
+import inc.generics.presentation.theme.localization.StringsKeys
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -44,7 +45,7 @@ fun JoinToGroupScreen(routing: JoinToGroupRouting) {
 
     Scaffold(
         topBar = {
-            TitleTopAppBarDuet(text = "Присоединиться к группе", onClickNav = {
+            TitleTopAppBarDuet(text = DuetTheme.localization[StringsKeys.JOIN_TO_GROUP], onClickNav = {
                 routing.goBack()
             })
         }
@@ -78,9 +79,7 @@ internal fun Content(
         ) {
             Text(
                 modifier = Modifier.fillMaxWidth(),
-                text = "Введите код приглашения,\n" +
-                        "который  сгенерировал\n" +
-                        "партнер\n",
+                text = DuetTheme.localization[StringsKeys.INPUT_INVITE_CODE_TEXT],
                 style = defaultTextStyleDuet(),
                 textAlign = TextAlign.Center
             )
@@ -90,7 +89,7 @@ internal fun Content(
                 onValueChange = { newText ->
                     inviteCodeText = newText
                 },
-                label = { Text(text = "Введите код приглашения") },
+                label = { Text(text = DuetTheme.localization[StringsKeys.INPUT_INVITE_CODE]) },
                 singleLine = true,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -112,7 +111,7 @@ internal fun Content(
             onClick = {
                 viewModel.sendInviteCode(inviteCodeText)
             },
-            text = "Отправить"
+            text = DuetTheme.localization[StringsKeys.SEND]
         )
     }
 }
@@ -148,7 +147,7 @@ internal fun SetupEmptyNameGroupBottomSheet(viewModel: JoinToGroupViewModel = ko
                 )
 
                 Text(
-                    text = "Пустое поле ввода. Вставьте код приглашения",
+                    text = DuetTheme.localization[StringsKeys.EMPTY_INPUT_FIELD_INVITE_CODE],
                     style = defaultTextStyleDuet().copy(color = DuetTheme.colors.errorColor),
                     textAlign = TextAlign.Center,
                     modifier = Modifier
@@ -169,7 +168,7 @@ fun SetupErrorDialog(viewModel: JoinToGroupViewModel = koinViewModel()) {
 
     if (statusInviteCode == StatusInviteCode.ERROR) {
         DuetAlertDialogError(
-            messageText = "Проверьте корректность кода приглашения или попробуйте позже",
+            messageText = DuetTheme.localization[StringsKeys.CHECK_INVITE_CODE_OR_TRY_AGAIN],
             onClose = {
                 viewModel.setNoneToStatusInviteCode()
             }
@@ -195,8 +194,7 @@ fun SetupFinishDialog(
                     tint = DuetTheme.colors.successColor
                 )
             },
-            messageText = "Заявка отправлена.\nДождитесь пока\n" +
-                    "партнер примет её",
+            messageText = DuetTheme.localization[StringsKeys.REQUEST_TO_JOIN_IS_SENT_WAIT],
             onClose = {
                 viewModel.setNoneToStatusInviteCode()
                 routing.goBack()
