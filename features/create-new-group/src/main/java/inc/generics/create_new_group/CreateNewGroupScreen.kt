@@ -43,6 +43,7 @@ import inc.generics.presentation.components.TitleTopAppBarDuet
 import inc.generics.presentation.components.defaultTextFieldStyle
 import inc.generics.presentation.components.defaultTextStyleDuet
 import inc.generics.presentation.theme.DuetTheme
+import inc.generics.presentation.theme.localization.StringsKeys
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -62,7 +63,7 @@ fun CreateNewGroupScreen(
     Scaffold(
         topBar = {
             TitleTopAppBarDuet(
-                text = DuetTheme.localization.getString("createGroup"),
+                text = DuetTheme.localization[StringsKeys.CREATE_GROUP],
                 onClickNav = { routing.back() }
             )
         }
@@ -87,7 +88,7 @@ fun CreateNewGroupScreen(
                         viewModel.setNameGroup(nameGroupState.value)
                         viewModel.createGroup()
                     },
-                    text = DuetTheme.localization.getString("create"),
+                    text = DuetTheme.localization[StringsKeys.CREATE],
                     modifier = Modifier.padding(24.dp),
                     enabled = createStatus != StatusCreateGroup.IN_PROCESS
                 )
@@ -116,11 +117,11 @@ internal fun InputName(nameGroupState: MutableState<String>) {
                 isErrorInput = true
             }
         },
-        label = { Text(text = DuetTheme.localization.getString("inputNameGroup")) },
+        label = { Text(text = DuetTheme.localization[StringsKeys.INPUT_NAME_GROUP]) },
         supportingText = {
             Text(
                 text = String.format(
-                    DuetTheme.localization.getString("NoMore"),
+                    DuetTheme.localization[StringsKeys.NO_MORE],
                     maxLengthName, minLengthName
                 )
             )
@@ -207,7 +208,7 @@ internal fun SetupEmptyNameGroupBottomSheet(viewModel: CreateNewGroupViewModel =
                 )
 
                 Text(
-                    text = DuetTheme.localization.getString("errorNameGroup"),
+                    text = DuetTheme.localization[StringsKeys.ERROR_NAME_GROUP],
                     style = defaultTextStyleDuet().copy(color = DuetTheme.colors.errorColor),
                     textAlign = TextAlign.Center,
                     modifier = Modifier
@@ -226,7 +227,7 @@ fun SetupErrorDialog(viewModel: CreateNewGroupViewModel = koinViewModel()) {
 
     if (statusCreateGroup == StatusCreateGroup.ERROR) {
         DuetAlertDialogError(
-            messageText = DuetTheme.localization.getString("checkInternetOrFile"),
+            messageText = DuetTheme.localization[StringsKeys.CHECK_INTERNET_OR_FILE],
             onClose = {
                 viewModel.setNoneInStatusCreate()
             }

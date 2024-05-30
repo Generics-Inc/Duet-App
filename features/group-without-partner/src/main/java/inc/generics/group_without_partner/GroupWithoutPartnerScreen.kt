@@ -44,6 +44,7 @@ import inc.generics.presentation.components.DuetAsyncImage
 import inc.generics.presentation.components.OutlinedButtonDuet
 import inc.generics.presentation.components.defaultTextStyleDuet
 import inc.generics.presentation.theme.DuetTheme
+import inc.generics.presentation.theme.localization.StringsKeys
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -128,7 +129,7 @@ internal fun ContentScreen(
             ) {
                 DefaultFilledTonalButtonDuet(
                     onClick = { viewModel.leaveGroup() },
-                    text = DuetTheme.localization.getString("getOut"),
+                    text = DuetTheme.localization[StringsKeys.GET_OUT],
                     color = DuetTheme.colors.errorColor,
                     modifier = Modifier.padding(bottom = 24.dp)
                 )
@@ -156,7 +157,7 @@ internal fun InviteCodeFragment(viewModel: GroupWithoutPartnerViewModel = koinVi
             exit = shrinkHorizontally()
         ) {
             Text(
-                text = DuetTheme.localization.getString("codeIsCopied"),
+                text = DuetTheme.localization[StringsKeys.CODE_IS_COPIED],
                 Modifier
                     .background(
                         color = DuetTheme.colors.secondColor,
@@ -200,7 +201,7 @@ internal fun InviteCodeFragment(viewModel: GroupWithoutPartnerViewModel = koinVi
                     )
 
                     Text(
-                        text = DuetTheme.localization.getString("clickToCopyCode"),
+                        text = DuetTheme.localization[StringsKeys.CLICK_TO_COPY_CODE],
                         style = defaultTextStyleDuet().copy(
                             color = DuetTheme.colors.secondColor,
                             fontSize = 14.sp
@@ -242,7 +243,7 @@ internal fun ButtonEdit(routing: GroupWithoutPartnerRouting) {
         onClick = {
             routing.routToEditingGroup()
         },
-        text = DuetTheme.localization.getString("edit"),
+        text = DuetTheme.localization[StringsKeys.EDIT],
         modifier = Modifier.padding(top = 10.dp)
     )
 }
@@ -253,7 +254,7 @@ internal fun ButtonToJoinRequests(routing: GroupWithoutPartnerRouting) {
         onClick = {
             routing.routToAllRequestsToJoin()
         },
-        text = DuetTheme.localization.getString("requests"),
+        text = DuetTheme.localization[StringsKeys.REQUESTS],
         modifier = Modifier.padding(top = 8.dp)
     )
 }

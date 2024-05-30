@@ -1,8 +1,10 @@
 package inc.generics.presentation.theme.localization
 
-sealed class Language(private val strings: HashMap<String, String>) {
-    class Ru() : Language(russianStrings)
-    class En() : Language(englishStrings)
+import inc.generics.presentation.theme.localization.localized_strings.*
 
-    fun getString(key: String) = strings[key].toString()
+sealed class Language(private val strings: HashMap<StringsKeys, String>) {
+    class Ru : Language(russianStrings)
+    class En : Language(englishStrings)
+
+    operator fun get(key: StringsKeys): String = strings[key].toString()
 }

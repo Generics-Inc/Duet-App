@@ -1,0 +1,39 @@
+package inc.generics.presentation.theme.localization
+
+enum class StringsKeys {
+    DUET,
+    YES,
+    AUTH_BY_VK,
+    AUTH_TEXT,
+    CREATE_GROUP,
+    CREATE,
+    INPUT_NAME_GROUP,
+    NO_MORE,
+    DIALOG_ERROR_TITLE,
+    OK_ON_ERROR,
+    OK,
+    CHECK_INTERNET_OR_FILE,
+    CHECK_INTERNET_OR_TRY_AGAIN,
+    ERROR_NAME_GROUP,
+    NO_ACTIVE_GROUP,
+    INTO_TO_GROUP,
+    BASKET,
+
+    TITLE_REQUEST_DIALOG,
+    NEW_CODE,
+    SAVE_ARCHIVE,
+    PARTNER_DELETE_GROUP,
+    GET_OUT,
+    PARTNER_LEAVE,
+    REQUEST_DELETE_GROUP,
+
+    REQUESTS,
+    ACCEPT,
+    CANCEL,
+    SWIPE_REFRESH_REQUESTS,
+    EMPTY_LIST,
+
+    CODE_IS_COPIED,
+    CLICK_TO_COPY_CODE,
+    EDIT,
+}

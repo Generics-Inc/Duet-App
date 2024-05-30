@@ -8,6 +8,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.sp
 import inc.generics.presentation.R
 import inc.generics.presentation.theme.DuetTheme
+import inc.generics.presentation.theme.localization.StringsKeys.*
 
 @Composable
 fun DuetAlertDialogError(
@@ -24,7 +25,7 @@ fun DuetAlertDialogError(
         },
         title = {
             Text(
-                text = DuetTheme.localization.getString("dialogErrorTitle"),
+                text = DuetTheme.localization[DIALOG_ERROR_TITLE],
                 style = defaultDialogTextStyleDuet().copy(
                     color = DuetTheme.colors.errorColor,
                     fontSize = 18.sp
@@ -41,7 +42,7 @@ fun DuetAlertDialogError(
         confirmButton = {
             DefaultDialogOutlinedButtonDuet(
                 onClick = { onClose() },
-                text = DuetTheme.localization.getString("okOnError")
+                text = DuetTheme.localization[OK_ON_ERROR]
             )
         },
         containerColor = DuetTheme.colors.backgroundColor
@@ -68,7 +69,7 @@ fun DuetAlertDialogMessage(
         confirmButton = {
             DefaultDialogOutlinedButtonDuet(
                 onClick = { onClose() },
-                text = DuetTheme.localization.getString("ok")
+                text = DuetTheme.localization[OK]
             )
         },
         containerColor = DuetTheme.colors.backgroundColor
@@ -91,7 +92,7 @@ fun DuetAlertDialogRequest(
         },
         title = {
             Text(
-                text = DuetTheme.localization.getString("titleRequestDialog"),
+                text = DuetTheme.localization[TITLE_REQUEST_DIALOG],
                 style = defaultTextStyleDuet()
             )
         },
@@ -105,7 +106,7 @@ fun DuetAlertDialogRequest(
         confirmButton = {
             DefaultDialogOutlinedButtonDuet(
                 onClick = { onClose() },
-                text = DuetTheme.localization.getString("Yes")
+                text = DuetTheme.localization[YES]
             )
         },
         containerColor = DuetTheme.colors.backgroundColor

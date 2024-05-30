@@ -32,6 +32,7 @@ import inc.generics.presentation.components.DuetAlertDialogError
 import inc.generics.presentation.components.defaultTextStyleDuet
 import inc.generics.presentation.theme.DuetTheme
 import inc.generics.presentation.theme.colors.vkColors
+import inc.generics.presentation.theme.localization.StringsKeys
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -48,7 +49,7 @@ fun AuthorizationScreen(
         return
     } else if (authStatus == AuthStatus.Error) {
         DuetAlertDialogError(
-            messageText = DuetTheme.localization.getString("checkInternetOrTryAgain"),
+            messageText = DuetTheme.localization[StringsKeys.CHECK_INTERNET_OR_TRY_AGAIN],
             onClose = { viewModel.clearStatus() }
         )
     }
@@ -76,7 +77,7 @@ fun AuthorizationScreen(
             )
 
             Text(
-                text = DuetTheme.localization.getString("authText"),
+                text = DuetTheme.localization[StringsKeys.AUTH_TEXT],
                 style = defaultTextStyleDuet().copy(color = DuetTheme.colors.backgroundColor),
                 modifier = Modifier.padding(16.dp)
             )
@@ -128,7 +129,7 @@ internal fun VkAuth(viewModel: AuthorizationViewModel = koinViewModel()) {
                 tint = DuetTheme.colors.backgroundColor
             )
             Text(
-                text = DuetTheme.localization.getString("authByVk"),
+                text = DuetTheme.localization[StringsKeys.AUTH_BY_VK],
                 fontSize = 18.sp,
                 modifier = Modifier
                     .fillMaxWidth()

@@ -11,6 +11,7 @@ import inc.generics.presentation.components.DefaultFilledTonalButtonDuet
 import inc.generics.presentation.components.DefaultOutlinedButtonDuet
 import inc.generics.presentation.components.HeadTestAndIcon
 import inc.generics.presentation.theme.DuetTheme
+import inc.generics.presentation.theme.localization.StringsKeys
 import inc.generics.presentation.utils.CutterType
 import org.koin.compose.koinInject
 
@@ -19,11 +20,11 @@ fun UserWithoutGroup(
     routing: NoActiveGroupRouting,
     noActiveGroupUiData: NoActiveGroupUiData
 ) {
-    HeadTestAndIcon(text = DuetTheme.localization.getString("noActiveGroup"))
+    HeadTestAndIcon(text = DuetTheme.localization[StringsKeys.NO_ACTIVE_GROUP])
 
     DefaultOutlinedButtonDuet(
         onClick = { routing.routToCreateGroup() },
-        text = DuetTheme.localization.getString("create"),
+        text = DuetTheme.localization[StringsKeys.CREATE],
         cutterType = CutterType.ONLY_ONE_CLICK,
         modifier = Modifier
             .padding(top = 65.dp)
@@ -33,7 +34,7 @@ fun UserWithoutGroup(
 
     DefaultOutlinedButtonDuet(
         onClick = { routing.routToJoinGroup() },
-        text = DuetTheme.localization.getString("intoToGroup"),
+        text = DuetTheme.localization[StringsKeys.INTO_TO_GROUP],
         cutterType = CutterType.ONLY_ONE_CLICK,
         modifier = Modifier
             .padding(top = 26.dp)
@@ -44,7 +45,7 @@ fun UserWithoutGroup(
     if (noActiveGroupUiData.userHaveArchive) {
         DefaultFilledTonalButtonDuet(
             onClick = { routing.routToListOfDeletedGroups() },
-            text = DuetTheme.localization.getString("basket") ,
+            text = DuetTheme.localization[StringsKeys.BASKET] ,
             cutterType = CutterType.ONLY_ONE_CLICK,
             modifier = Modifier
                 .padding(top = 26.dp)

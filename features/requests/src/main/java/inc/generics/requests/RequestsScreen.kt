@@ -35,6 +35,7 @@ import inc.generics.presentation.components.TitleTopAppBarDuet
 import inc.generics.presentation.components.defaultDialogTextStyleDuet
 import inc.generics.presentation.components.defaultTextStyleDuet
 import inc.generics.presentation.theme.DuetTheme
+import inc.generics.presentation.theme.localization.StringsKeys
 import inc.generics.requests.routing.RequestsRouting
 import org.koin.androidx.compose.koinViewModel
 
@@ -56,7 +57,7 @@ fun RequestsScreen(
 
     Scaffold(
         topBar = {
-            TitleTopAppBarDuet(text = DuetTheme.localization.getString("requests"), onClickNav = {
+            TitleTopAppBarDuet(text = DuetTheme.localization[StringsKeys.REQUESTS], onClickNav = {
                 routing.goBack()
             })
         }
@@ -121,10 +122,10 @@ fun EmptyListOfRequests(paddingValues: PaddingValues) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
-        Text(text = DuetTheme.localization.getString("emptyList"), style = defaultTextStyleDuet())
+        Text(text = DuetTheme.localization[StringsKeys.EMPTY_LIST], style = defaultTextStyleDuet())
 
         Text(
-            text = DuetTheme.localization.getString("swipeRefreshRequests"),
+            text = DuetTheme.localization[StringsKeys.SWIPE_REFRESH_REQUESTS],
             style = defaultTextStyleDuet().copy(fontSize = 14.sp),
             modifier = Modifier.padding(top = 8.dp)
         )
@@ -188,7 +189,7 @@ fun RequestItem(
                         hasElevation = false
                     ) {
                         Text(
-                            text = DuetTheme.localization.getString("cancel"),
+                            text = DuetTheme.localization[StringsKeys.CANCEL],
                             style = defaultDialogTextStyleDuet().copy(
                                 color = DuetTheme.colors.errorColor,
                                 fontSize = 12.sp
@@ -204,7 +205,7 @@ fun RequestItem(
                         hasElevation = false
                     ) {
                         Text(
-                            text = DuetTheme.localization.getString("accept"),
+                            text = DuetTheme.localization[StringsKeys.ACCEPT],
                             style = defaultDialogTextStyleDuet().copy(
                                 color = DuetTheme.colors.successColor,
                                 fontSize = 12.sp
