@@ -52,7 +52,7 @@ dependencies {
     implementation(libs.di.koin.androidx.compose)
 
     implementation(libs.coil.compose)
-    implementation("com.google.accompanist:accompanist-swiperefresh:0.27.0")
+    implementation(libs.google.swiperefresh)
 
 
     testImplementation(libs.junit)
