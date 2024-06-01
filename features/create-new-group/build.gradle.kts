@@ -52,6 +52,7 @@ dependencies {
     implementation(libs.di.koin.androidx.compose)
 
     implementation(libs.coil.compose)
+    implementation(libs.google.permissions)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
