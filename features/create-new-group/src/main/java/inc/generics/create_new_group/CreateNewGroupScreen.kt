@@ -1,5 +1,6 @@
 package inc.generics.create_new_group
 
+import android.Manifest
 import android.annotation.SuppressLint
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
@@ -35,6 +36,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
+import com.google.accompanist.permissions.isGranted
+import com.google.accompanist.permissions.rememberPermissionState
 import inc.generics.create_new_group.routing.CreateNewGroupScreenRouting
 import inc.generics.presentation.R
 import inc.generics.presentation.components.DefaultFilledTonalButtonDuet
@@ -136,11 +140,15 @@ internal fun InputName(nameGroupState: MutableState<String>) {
     )
 }
 
+@OptIn(ExperimentalPermissionsApi::class)
 @Composable
 internal fun PhotoBox(viewModel: CreateNewGroupViewModel = koinViewModel()) {
     var selectedPhotoUri by remember {
         mutableStateOf(viewModel.screenState.value?.photoUri)
     }
+    val readExternalStoragePermissionState = rememberPermissionState(
+        Manifest.permission.READ_EXTERNAL_STORAGE
+    )
 
     val photoPiker = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.PickVisualMedia()
@@ -156,9 +164,14 @@ internal fun PhotoBox(viewModel: CreateNewGroupViewModel = koinViewModel()) {
             .fillMaxWidth()
             .height(400.dp)
             .clickable {
-                photoPiker.launch(
-                    PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
-                )
+                if (readExternalStoragePermissionState.status.isGranted) {
+                    photoPiker.launch(
+                        PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
+                    )
+                } else {
+                    readExternalStoragePermissionState.launchPermissionRequest()
+                }
+
             },
         contentAlignment = Alignment.Center
     ) {
