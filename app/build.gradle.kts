@@ -78,6 +78,8 @@ dependencies {
 
     implementation(project(":features:join-to-group"))
     implementation(project(":data:join-to-group-data"))
+
+    implementation(project(":data:group-left-by-partner-data"))
     //----/>
 
     implementation(project(":android-utils"))

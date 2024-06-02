@@ -7,6 +7,7 @@ import coil.util.DebugLogger
 import inc.generics.duet.glue.android_utils.di.androidUtilsModule
 import inc.generics.duet.glue.data.authorizaton_data.di.authorizationDataModule
 import inc.generics.duet.glue.data.create_new_group_data.di.createNewGroupDataModule
+import inc.generics.duet.glue.data.group_left_by_partner_data.di.groupLeftByPartnerDataModule
 import inc.generics.duet.glue.data.group_without_partner_data.di.groupWithoutPartnerDataModule
 import inc.generics.duet.glue.data.join_to_group_data.di.joinToGroupDataModule
 import inc.generics.duet.glue.data.requests_data.di.requestsDataModule
@@ -36,6 +37,7 @@ class DuetApp : Application(), ImageLoaderFactory {
             modules(
                 mainModule,
                 androidUtilsModule,
+
                 authorizationDataModule,
                 authorizationFeatureModule,
                 createNewGroupDataModule,
@@ -46,9 +48,11 @@ class DuetApp : Application(), ImageLoaderFactory {
                 requestsFeatureModule,
                 joinToGroupDataModule,
                 joinToGroupFeatureModule,
+                groupLeftByPartnerDataModule,
+
                 presentationModule,
                 duetLocalModule,
-                duetApiModule
+                duetApiModule,
             )
         }
     }
