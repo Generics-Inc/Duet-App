@@ -3,6 +3,7 @@ package inc.generics.presentation.theme.localization
 enum class StringsKeys {
     DUET,
     YES,
+    NO,
     AUTH_BY_VK,
     AUTH_TEXT,
     CREATE_GROUP,

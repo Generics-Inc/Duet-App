@@ -5,6 +5,7 @@ import inc.generics.presentation.theme.localization.StringsKeys.*
 internal val russianStrings = hashMapOf(
     Pair(DUET, "Дуэт"),
     Pair(YES, "Да"),
+    Pair(NO, "Нет"),
     Pair(AUTH_BY_VK, "Войти через ВК"),
     Pair(AUTH_TEXT, "Войдите или зарегестрируйтесь.\n" +
             "Используйте любой из предложенных\n" +

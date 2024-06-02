@@ -5,6 +5,7 @@ import inc.generics.presentation.theme.localization.StringsKeys.*
 internal val englishStrings = hashMapOf(
     Pair(DUET, "Duet"),
     Pair(YES, "Yes"),
+    Pair(NO, "No"),
     Pair(AUTH_BY_VK, "Login via VK"),
     Pair(AUTH_TEXT, "Login or register.\n" +
             "Use any of the suggested\n" +
