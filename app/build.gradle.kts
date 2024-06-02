@@ -79,6 +79,7 @@ dependencies {
     implementation(project(":features:join-to-group"))
     implementation(project(":data:join-to-group-data"))
 
+    implementation(project(":features:group-left-by-partner"))
     implementation(project(":data:group-left-by-partner-data"))
     //----/>
 
