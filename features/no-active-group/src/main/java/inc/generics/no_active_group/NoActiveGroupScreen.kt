@@ -16,6 +16,7 @@ import androidx.compose.ui.res.painterResource
 import inc.generics.no_active_group.models.NoActiveGroupUiData
 import inc.generics.no_active_group.routing.NoActiveGroupRouting
 import inc.generics.presentation.R
+import inc.generics.presentation.components.DefaultTopAppBarDuet
 import inc.generics.presentation.theme.DuetTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -28,18 +29,7 @@ fun NoActiveGroupScreen(
         modifier = Modifier
             .fillMaxSize(),
         topBar = {
-            TopAppBar(
-                title = {
-                    Icon(
-                        painterResource(R.drawable.ic_logo_duet),
-                        tint = DuetTheme.colors.backgroundColor,
-                        contentDescription = "logo"
-                    )
-                },
-                colors = TopAppBarDefaults.topAppBarColors().copy(
-                    containerColor = DuetTheme.colors.mainColor
-                )
-            )
+            DefaultTopAppBarDuet()
         }
     ) { paddingValues ->
         Column(
