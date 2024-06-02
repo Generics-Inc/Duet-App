@@ -48,9 +48,10 @@ fun DuetAlertDialogError(
         containerColor = DuetTheme.colors.backgroundColor
     )
 }
+
 @Composable
 fun DuetAlertDialogMessage(
-    icon:  @Composable (() -> Unit),
+    icon: @Composable (() -> Unit),
     messageText: String,
     onClose: () -> Unit
 ) {
@@ -80,7 +81,9 @@ fun DuetAlertDialogMessage(
 @Composable
 fun DuetAlertDialogRequest(
     messageText: String,
-    onClose: () -> Unit
+    onClose: () -> Unit,
+    onAccept: () -> Unit,
+    onDismiss: () -> Unit
 ) {
     AlertDialog(
         icon = {
@@ -105,8 +108,18 @@ fun DuetAlertDialogRequest(
         onDismissRequest = { onClose() },
         confirmButton = {
             DefaultDialogOutlinedButtonDuet(
-                onClick = { onClose() },
+                onClick = {
+                    onAccept()
+                },
                 text = DuetTheme.localization[YES]
+            )
+        },
+        dismissButton = {
+            DefaultDialogOutlinedButtonDuet(
+                onClick = {
+                    onDismiss()
+                },
+                text = DuetTheme.localization[NO]
             )
         },
         containerColor = DuetTheme.colors.backgroundColor
