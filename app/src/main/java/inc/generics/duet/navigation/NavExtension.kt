@@ -2,11 +2,26 @@ package inc.generics.duet.navigation
 
 import android.annotation.SuppressLint
 import android.os.Parcelable
+import android.util.Log
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.lifecycle.SavedStateHandle
 import androidx.navigation.NavHostController
 
 fun NavHostController.navigateWithData(route: String, pair: Pair<String, Parcelable>) {
     this.currentBackStackEntry?.savedStateHandle?.set(pair.first, pair.second)
     this.navigate(route)
+}
+
+
+fun NavHostController.navigateReplaceWithData(routeTo: String, routeFrom: String, pair: Pair<String, Parcelable>) {
+    this.navigate(routeTo) {
+        popUpTo(routeFrom) {
+            inclusive = true
+            saveState = true
+        }
+    }
+    this.currentBackStackEntry?.savedStateHandle?.set(pair.first, pair.second)
 }
 
 fun NavHostController.navigateWithDataInclusive(route: String, dataAsString: String) {
@@ -44,7 +59,7 @@ fun NavHostController.navigateReplace(routeTo: String, routeFrom: String) {
 }
 
 fun NavHostController.getData(key: String): Parcelable? {
-    return this.previousBackStackEntry?.savedStateHandle?.get<Parcelable>(key)
+    return this.currentBackStackEntry?.savedStateHandle?.get<Parcelable>(key)
 }
 
 @SuppressLint("RestrictedApi")
