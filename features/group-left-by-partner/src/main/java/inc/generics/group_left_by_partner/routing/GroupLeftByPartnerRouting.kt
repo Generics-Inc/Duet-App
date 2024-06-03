@@ -4,4 +4,6 @@ interface GroupLeftByPartnerRouting {
     fun toNewInviteCode()
 
     fun toSaveArchive()
+
+    fun toMain()
 }
