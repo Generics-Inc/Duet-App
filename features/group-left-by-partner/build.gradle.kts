@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.jetpack.compose.compiler)
+    id("kotlin-parcelize")
 }
 
 android {
