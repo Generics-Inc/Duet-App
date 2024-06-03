@@ -1,4 +1,4 @@
-package inc.generics.group_left_by_partner
+package inc.generics.group_left_by_partner.view_models
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

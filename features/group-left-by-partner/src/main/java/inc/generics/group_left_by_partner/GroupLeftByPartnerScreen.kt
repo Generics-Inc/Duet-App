@@ -16,9 +16,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import inc.generics.group_left_by_partner.models.StatusGroupLeftByPartner
 import inc.generics.group_left_by_partner.routing.GroupLeftByPartnerRouting
+import inc.generics.group_left_by_partner.view_models.GroupLeftByPartnerDialogViewModel
+import inc.generics.group_left_by_partner.view_models.GroupLeftByPartnerViewModel
+import inc.generics.group_left_by_partner.view_models.StateDialogs
+import inc.generics.group_left_by_partner.view_models.StateScreen
 import inc.generics.presentation.components.DefaultFilledTonalButtonDuet
 import inc.generics.presentation.components.DefaultOutlinedButtonDuet
 import inc.generics.presentation.components.DefaultTopAppBarDuet
+import inc.generics.presentation.components.DuetAlertDialogRequest
 import inc.generics.presentation.components.HeadTestAndIcon
 import inc.generics.presentation.theme.DuetTheme
 import inc.generics.presentation.utils.CutterType
@@ -32,12 +37,14 @@ fun GroupLeftByPartnerScreen(
 ) {
     val stateScreen by viewModel.stateScreen.observeAsState(StateScreen.NONE)
     LaunchedEffect(stateScreen) {
-        when(stateScreen) {
+        when (stateScreen) {
             StateScreen.NONE -> Unit
             StateScreen.DELETE_PARTNER -> routing.toMain()
             StateScreen.LEAVE_GROUP -> routing.toMain()
         }
     }
+
+    SetupDialogs()
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -58,7 +65,8 @@ internal fun NoPartnerInGroup(
     status: StatusGroupLeftByPartner,
     routing: GroupLeftByPartnerRouting,
     paddingValues: PaddingValues,
-    viewModel: GroupLeftByPartnerViewModel = koinViewModel()
+    viewModel: GroupLeftByPartnerViewModel = koinViewModel(),
+    dialogViewModel: GroupLeftByPartnerDialogViewModel = koinViewModel()
 ) {
     Column(
         modifier = Modifier
@@ -81,13 +89,15 @@ internal fun NoPartnerInGroup(
                     .padding(horizontal = 80.dp)
             )
         } else {
-            HeadTestAndIcon("Ваш партнер \n" +
-                    "поместил группу\n" +
-                    "в корзину\n")
+            HeadTestAndIcon(
+                "Ваш партнер \n" +
+                        "поместил группу\n" +
+                        "в корзину\n"
+            )
         }
 
         DefaultOutlinedButtonDuet(
-            onClick = {  },
+            onClick = { },
             text = "Скачать архив",
             modifier = Modifier
                 .padding(top = 26.dp)
@@ -97,7 +107,7 @@ internal fun NoPartnerInGroup(
 
         if (status.isMainInGroup && !status.isPartnerDeleteGroup) {
             DefaultFilledTonalButtonDuet(
-                onClick = { viewModel.deletePartner() },
+                onClick = { dialogViewModel.tryDeletePartner() },
                 text = "Удалить партнера",
                 color = DuetTheme.colors.errorColor,
                 modifier = Modifier
@@ -108,7 +118,7 @@ internal fun NoPartnerInGroup(
         }
 
         DefaultFilledTonalButtonDuet(
-            onClick = { viewModel.leaveGroup() },
+            onClick = { dialogViewModel.tryLeaveGroup() },
             text = "Удалить",
             color = DuetTheme.colors.errorColor,
             modifier = Modifier
@@ -117,4 +127,52 @@ internal fun NoPartnerInGroup(
                 .padding(horizontal = 80.dp)
         )
     }
+}
+
+@Composable
+internal fun SetupDialogs(
+    dialogViewModel: GroupLeftByPartnerDialogViewModel = koinViewModel()
+) {
+    val stateDialogs by dialogViewModel.stateDialogs.observeAsState()
+
+    when (stateDialogs) {
+        null -> Unit
+        StateDialogs.NO_DIALOG -> Unit
+        StateDialogs.TRY_DELETE_PARTNER -> DialogDeletePartner()
+        StateDialogs.TRY_LEAVE_GROUP -> DialogLeaveGroup()
+    }
+}
+
+@Composable
+internal fun DialogDeletePartner(
+    viewModel: GroupLeftByPartnerViewModel = koinViewModel(),
+    dialogViewModel: GroupLeftByPartnerDialogViewModel = koinViewModel()
+) {
+    DuetAlertDialogRequest(
+        "Вы уверены что хотите удалить партнера из группы?",
+        onClose = {},
+        onAccept = {
+            viewModel.deletePartner()
+        },
+        onDismiss = {
+            dialogViewModel.dismissDialog()
+        }
+    )
+}
+
+@Composable
+internal fun DialogLeaveGroup(
+    viewModel: GroupLeftByPartnerViewModel = koinViewModel(),
+    dialogViewModel: GroupLeftByPartnerDialogViewModel = koinViewModel()
+) {
+    DuetAlertDialogRequest(
+        "Вы уверены что хотите выйте из группы? Группа будет перемещена в корзину.",
+        onClose = {},
+        onAccept = {
+            viewModel.leaveGroup()
+        },
+        onDismiss = {
+            dialogViewModel.dismissDialog()
+        }
+    )
 }
