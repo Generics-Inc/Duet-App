@@ -10,7 +10,7 @@ class GroupLeftByPartnerRepository(
         api.leaveGroup()
     }
 
-    suspend fun deletePartner() {
-        //todo
+    suspend fun deletePartner(): Boolean = safeRequest {
+        api.deletePartnerInGroup()
     }
 }
