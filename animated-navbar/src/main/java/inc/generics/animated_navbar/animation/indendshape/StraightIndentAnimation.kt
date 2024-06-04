@@ -14,10 +14,10 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.exyte.animatednavbar.ballSize
 import com.exyte.animatednavbar.shape.IndentRectShape
 import com.exyte.animatednavbar.shape.IndentShapeData
 import com.exyte.animatednavbar.utils.toPxf
+import inc.generics.animated_navbar.ballSize
 
 @Stable
 class StraightIndent(
