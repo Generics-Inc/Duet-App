@@ -56,15 +56,30 @@ class MainViewModel(private val api: DuetApi, private val spHelper: SPHelper) : 
                         PartnerStatusInGroup.NO_PARTNER -> {
                             _statusGroup.value = StatusGroup.InGroupNoPartner
                         }
-                        PartnerStatusInGroup.GROUP_IN_ARCHIVE -> {}
+                        PartnerStatusInGroup.GROUP_IN_ARCHIVE -> {
+                            _statusGroup.value = StatusGroup.InGroupPartnerLeaved(
+                                false,
+                                it.isMainInGroup
+                            )
+                        }
+                        PartnerStatusInGroup.LEAVED -> {
+                            _statusGroup.value = StatusGroup.InGroupPartnerLeaved(
+                                true,
+                                it.isMainInGroup
+                            )
+                        }
                         PartnerStatusInGroup.IN_GROUP -> {}
-                        PartnerStatusInGroup.LEAVED -> {}
                         null -> TODO()
                     }
                 }
                 null -> {}
             }
         }
+    }
+
+    //todo: delete method. it is for a test
+    fun leaveGroup() = viewModelScope.launch {
+        api.leaveGroup()
     }
 }
 
