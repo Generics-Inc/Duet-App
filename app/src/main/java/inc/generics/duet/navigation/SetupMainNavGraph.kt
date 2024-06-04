@@ -43,9 +43,17 @@ fun SetupMainNavGraph(navHostController: NavHostController) {
             fadeOut(animationSpec = tween(500)) + slideOutOfContainer(
                 AnimatedContentTransitionScope.SlideDirection.Left, tween(500)
             )
-        }
+        },
     ) {
-        composable(route = Main.route) {
+        composable(
+            route = Main.route,
+            enterTransition = {
+                fadeIn(animationSpec = tween(200))
+            },
+            exitTransition = {
+                fadeOut(animationSpec = tween(200))
+            }
+        ) {
             Main(mainNavController = navHostController)
         }
         composable(
