@@ -1,5 +1,5 @@
 package inc.generics.duet.navigation.screens
 
-sealed class NavBarScreens(val route: String) {
-    data object Profile : NavBarScreens(route = "ProfileScreen")
+sealed class NavBarScreens(val route: String, val id: Int) {
+    data object Profile : NavBarScreens(route = "ProfileScreen", id = 0)
 }

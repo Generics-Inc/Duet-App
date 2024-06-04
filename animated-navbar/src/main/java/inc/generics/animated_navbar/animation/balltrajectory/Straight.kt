@@ -12,8 +12,8 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.isUnspecified
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
+import com.exyte.animatednavbar.my.defaultSize
 import com.exyte.animatednavbar.utils.toPxf
-import inc.generics.animated_navbar.ballSize
 
 /**
  *Describing straight ball animation
@@ -32,7 +32,7 @@ class Straight(
 
         val density = LocalDensity.current
         val verticalOffset = remember { 2.dp.toPxf(density) }
-        val ballSizePx = remember { ballSize.toPxf(density) }
+        val ballSizePx = remember { defaultSize.toPxf(density) }
 
         val offset = animateOffsetAsState(
             targetValue = calculateOffset(targetOffset, ballSizePx, verticalOffset),

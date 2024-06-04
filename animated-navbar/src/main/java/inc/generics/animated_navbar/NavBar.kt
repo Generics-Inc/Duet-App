@@ -1,4 +1,4 @@
-package inc.generics.animated_navbar
+package com.exyte.animatednavbar.my
 
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
@@ -30,7 +30,6 @@ import com.exyte.animatednavbar.animation.indendshape.ShapeCornerRadius
 import com.exyte.animatednavbar.animation.indendshape.shapeCornerRadius
 import com.exyte.animatednavbar.layout.animatedNavBarMeasurePolicy
 import com.exyte.animatednavbar.utils.ballTransform
-import inc.generics.presentation.theme.DuetTheme
 
 /**
  *A composable function that creates an animated navigation bar with a moving ball and indent
@@ -51,7 +50,7 @@ fun AnimatedNavigationBar(
     modifier: Modifier = Modifier,
     selectedIndex: Int,
     barColor: Color = Color.White,
-    ballColor: Color = Color.Black,
+    ballComposable: @Composable () -> Unit,
     cornerRadius: ShapeCornerRadius = shapeCornerRadius(0f),
     ballAnimation: BallAnimation = Parabolic(tween(300)),
     indentAnimation: IndentAnimation = Height(tween(300)),
@@ -97,8 +96,8 @@ fun AnimatedNavigationBar(
         if (ballAnimInfoState.value.offset.isSpecified) {
             ColorBall(
                 ballAnimInfo = ballAnimInfoState.value,
-                ballColor = ballColor,
-                sizeDp = ballSize
+                sizeDp = ballSize,
+                ballComposable = ballComposable
             )
         }
     }
@@ -110,9 +109,9 @@ val defaultSize = 10.dp
 @Composable
 private fun ColorBall(
     modifier: Modifier = Modifier,
-    ballColor: Color,
     ballAnimInfo: BallAnimInfo,
     sizeDp: Dp,
+    ballComposable: @Composable () -> Unit
 ) {
     Box(
         modifier = modifier
@@ -120,10 +119,7 @@ private fun ColorBall(
             .size(sizeDp)
             .offset(x = (defaultSize - ballSize) / 2, y = defaultSize - ballSize)
     ) {
-        Icon(
-            painterResource(id = inc.generics.presentation.R.drawable.ic_like), contentDescription = "",
-            tint = DuetTheme.colors.secondColor
-        )
+        ballComposable()
     }
 
 }

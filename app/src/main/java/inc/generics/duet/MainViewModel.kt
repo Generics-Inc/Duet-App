@@ -68,7 +68,9 @@ class MainViewModel(private val api: DuetApi, private val spHelper: SPHelper) : 
                                 it.isMainInGroup
                             )
                         }
-                        PartnerStatusInGroup.IN_GROUP -> {}
+                        PartnerStatusInGroup.IN_GROUP -> {
+                            _statusGroup.value = StatusGroup.ActiveGroup
+                        }
                         null -> TODO()
                     }
                 }

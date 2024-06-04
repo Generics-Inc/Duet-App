@@ -71,7 +71,10 @@ fun Main(mainViewModel: MainViewModel = koinViewModel(), mainNavController: NavH
                 )
             },
             onActiveGroup = {
-                // доступ к контенту приложения
+                mainNavController.navigateReplace(
+                    routeTo = ExternalScreens.SubNavigation.route,
+                    routeFrom = ExternalScreens.Main.route
+                )
             }
         )
     }

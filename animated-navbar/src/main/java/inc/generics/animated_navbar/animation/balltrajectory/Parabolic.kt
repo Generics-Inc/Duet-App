@@ -19,8 +19,8 @@ import androidx.compose.ui.geometry.isUnspecified
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.exyte.animatednavbar.my.defaultSize
 import com.exyte.animatednavbar.utils.toPxf
-import inc.generics.animated_navbar.ballSize
 
 /**
  *Describing parabola ball animation
@@ -83,7 +83,7 @@ class Parabolic(
         }
 
         val verticalOffset = remember { 2.dp.toPxf(density) }
-        val ballSizePx = remember { ballSize.toPxf(density) }
+        val ballSizePx = remember { defaultSize.toPxf(density) }
 
         return produceState(
             initialValue = BallAnimInfo(),

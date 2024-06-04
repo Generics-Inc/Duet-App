@@ -57,6 +57,7 @@ android {
 dependencies {
     implementation(project(":core:presentation"))
     implementation(project(":core:utils-data"))
+    implementation(project(":animated-navbar"))
 
     implementation(project(":data-sources:duet-local"))
     implementation(project(":data-sources:duet-api"))
@@ -81,6 +82,8 @@ dependencies {
 
     implementation(project(":features:group-left-by-partner"))
     implementation(project(":data:group-left-by-partner-data"))
+
+    implementation(project(":features:profile"))
     //----/>
 
     implementation(project(":android-utils"))

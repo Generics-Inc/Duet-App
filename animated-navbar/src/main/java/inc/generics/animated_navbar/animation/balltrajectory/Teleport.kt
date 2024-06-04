@@ -1,5 +1,6 @@
 package com.exyte.animatednavbar.animation.balltrajectory
 
+import android.util.Log
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.spring
@@ -8,8 +9,8 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.isUnspecified
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
+import com.exyte.animatednavbar.my.defaultSize
 import com.exyte.animatednavbar.utils.toPxf
-import inc.generics.animated_navbar.ballSize
 
 /**
  *Describing teleport ball animation. Ball disappears in old location and reappears in the new one
@@ -38,12 +39,13 @@ class Teleport(
             derivedStateOf {
                 mutableStateOf(
                     Offset(
-                        x = targetOffset.x - ballSize.toPxf(density) / 2,
+                        x = targetOffset.x - defaultSize.toPxf(density) / 2,
                         y = targetOffset.y - verticalOffset
                     )
                 )
             }
         }
+
 
         suspend fun setNewAnimationPoints() {
             if (from == Offset.Unspecified) {

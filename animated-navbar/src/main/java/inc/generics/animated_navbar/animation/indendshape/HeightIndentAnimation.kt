@@ -18,11 +18,11 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.exyte.animatednavbar.my.defaultSize
 import com.exyte.animatednavbar.shape.IndentRectShape
 import com.exyte.animatednavbar.shape.IndentShapeData
 import com.exyte.animatednavbar.utils.lerp
 import com.exyte.animatednavbar.utils.toPxf
-import inc.generics.animated_navbar.ballSize
 
 @Stable
 class Height(
@@ -82,7 +82,7 @@ class Height(
         return produceState(
             initialValue = IndentRectShape(
                 indentShapeData = IndentShapeData(
-                    ballOffset = ballSize.toPxf(density) / 2f,
+                    ballOffset = defaultSize.toPxf(density) / 2f,
                     width = indentWidth.toPxf(density),
                 )
             ),
