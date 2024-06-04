@@ -13,6 +13,7 @@ import androidx.navigation.navArgument
 import inc.generics.authorization.AuthorizationScreen
 import inc.generics.create_new_group.CreateNewGroupScreen
 import inc.generics.duet.Main
+import inc.generics.duet.SubNavBar
 import inc.generics.duet.glue.features.authorization.AuthorizationScreenRoutingImpl
 import inc.generics.duet.glue.features.create_new_group.CreateNewGroupScreenRoutingImpl
 import inc.generics.duet.glue.features.group_left_by_partner.GroupLeftByPartnerRoutingImpl
@@ -93,6 +94,10 @@ fun SetupMainNavGraph(navHostController: NavHostController) {
                     status = dataScreen
                 )
             }
+        }
+
+        composable(route = SubNavigation.route) {
+            SubNavBar()
         }
     }
 }

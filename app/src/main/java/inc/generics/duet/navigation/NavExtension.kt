@@ -2,10 +2,6 @@ package inc.generics.duet.navigation
 
 import android.annotation.SuppressLint
 import android.os.Parcelable
-import android.util.Log
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.lifecycle.SavedStateHandle
 import androidx.navigation.NavHostController
 
 fun NavHostController.navigateWithData(route: String, pair: Pair<String, Parcelable>) {
