@@ -28,6 +28,7 @@ import inc.generics.group_without_partner.GroupWithoutPartnerScreen
 import inc.generics.join_to_group.JoinToGroupScreen
 import inc.generics.no_active_group.NoActiveGroupScreen
 import inc.generics.no_active_group.models.NoActiveGroupUiData
+import inc.generics.profile.ProfileScreen
 import inc.generics.requests.RequestsScreen
 
 @Composable
@@ -94,6 +95,9 @@ fun SetupMainNavGraph(navHostController: NavHostController) {
                     status = dataScreen
                 )
             }
+        }
+        composable(route = Profile.route) {
+            ProfileScreen()
         }
 
         composable(route = SubNavigation.route) {

@@ -83,7 +83,7 @@ fun SubNavBar() {
                         contentAlignment = Alignment.Center
                     ) {
                         Icon(
-                            painterResource(id = inc.generics.presentation.R.drawable.ic_profile),
+                            painterResource(id = navItem.idIcon),
                             tint = DuetTheme.colors.backgroundColor,
                             contentDescription = "profile"
                         )
