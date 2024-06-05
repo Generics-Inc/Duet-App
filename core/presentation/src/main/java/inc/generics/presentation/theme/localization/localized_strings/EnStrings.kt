@@ -64,5 +64,6 @@ internal val englishStrings = hashMapOf(
     Pair(NO_PARTNER, "No partner"),
     Pair(SETTINGS, "Settings"),
     Pair(LANGUAGE, "language"),
-    Pair(COLOR_THEME, "color theme")
+    Pair(COLOR_THEME, "color theme"),
+    Pair(REQUEST_TO_LOGOUT, "Are you sure you want to log out of the account?"),
 )

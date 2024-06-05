@@ -65,4 +65,5 @@ internal val russianStrings = hashMapOf(
     Pair(SETTINGS, "Настройки"),
     Pair(LANGUAGE, "язык"),
     Pair(COLOR_THEME, "тема"),
+    Pair(REQUEST_TO_LOGOUT, "Вы уверены что хотите выйти из аккаунта?"),
 )

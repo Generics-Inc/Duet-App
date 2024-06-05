@@ -55,4 +55,5 @@ enum class StringsKeys {
     SETTINGS,
     LANGUAGE,
     COLOR_THEME,
+    REQUEST_TO_LOGOUT
 }
