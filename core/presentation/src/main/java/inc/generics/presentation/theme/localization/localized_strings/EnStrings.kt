@@ -63,4 +63,6 @@ internal val englishStrings = hashMapOf(
     Pair(NO_ACTIVE_GROUP_ONE_LINE, "You don't have an active group"),
     Pair(NO_PARTNER, "No partner"),
     Pair(SETTINGS, "Settings"),
+    Pair(LANGUAGE, "language"),
+    Pair(COLOR_THEME, "color theme")
 )

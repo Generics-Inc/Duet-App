@@ -53,4 +53,6 @@ enum class StringsKeys {
     NO_ACTIVE_GROUP_ONE_LINE,
     NO_PARTNER,
     SETTINGS,
+    LANGUAGE,
+    COLOR_THEME,
 }

@@ -3,6 +3,7 @@ package inc.generics.presentation.theme.colors
 import androidx.compose.ui.graphics.Color
 
 internal val defaultDarkPalette= DuetColors(
+    themeName = "Default Dark",
     mainColor = Color(0xFFB0ACCE),
     secondColor = Color(0xFFCEACC8),
     thirdColor = Color(0xFF9E7E98),

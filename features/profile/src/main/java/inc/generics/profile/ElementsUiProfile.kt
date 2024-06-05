@@ -27,7 +27,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import inc.generics.presentation.components.DefaultFilledTonalButtonDuet
 import inc.generics.presentation.components.DuetAsyncImage
+import inc.generics.presentation.components.RouteButtonModel
+import inc.generics.presentation.components.RouteIconButton
 import inc.generics.presentation.components.defaultTextStyleDuet
 import inc.generics.presentation.components.secondTextStyleDuet
 import inc.generics.presentation.theme.DuetTheme
@@ -258,12 +261,42 @@ internal fun GroupInfo(
 @Composable
 internal fun Settings() {
     Column(
-        modifier = Modifier.fillMaxWidth().padding(top = 20.dp)
+        modifier = Modifier.fillMaxWidth().padding(top = 20.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
+            modifier = Modifier.fillMaxWidth(),
             text = DuetTheme.localization[StringsKeys.SETTINGS],
             style = defaultTextStyleDuet().copy(textAlign = TextAlign.Start, fontSize = 20.sp),
             fontWeight = FontWeight.Bold
+        )
+
+        RouteIconButton(
+            RouteButtonModel(
+                title = DuetTheme.localization.nameLanguage,
+                additionalText = DuetTheme.localization[StringsKeys.LANGUAGE],
+                icon = DuetTheme.localization.iconId
+            ),
+            onClick = {
+                //todo: открывать выбор языка
+            }
+        )
+
+        RouteIconButton(
+            RouteButtonModel(
+                title = DuetTheme.colors.themeName,
+                additionalText = DuetTheme.localization[StringsKeys.COLOR_THEME],
+                icon = null
+            ),
+            onClick = {
+                //todo: открывать выбор темы
+            }
+        )
+
+        DefaultFilledTonalButtonDuet(
+            modifier = Modifier.padding(top = 30.dp),
+            text = DuetTheme.localization[StringsKeys.GET_OUT],
+            onClick = {}
         )
     }
 }

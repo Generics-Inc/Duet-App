@@ -3,6 +3,7 @@ package inc.generics.presentation.theme.colors
 import androidx.compose.ui.graphics.Color
 
 internal val defaultLightPalette = DuetColors(
+    themeName = "Default Light",
     mainColor = Color(0xFFB0ACCE),
     secondColor = Color(0xFFCEACC8),
     thirdColor = Color(0xFF9E7E98),

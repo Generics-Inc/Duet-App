@@ -3,6 +3,7 @@ package inc.generics.presentation.theme.colors
 import androidx.compose.ui.graphics.Color
 
 data class DuetColors(
+    val themeName: String,
     val mainColor: Color,
     val secondColor: Color,
     val thirdColor: Color,

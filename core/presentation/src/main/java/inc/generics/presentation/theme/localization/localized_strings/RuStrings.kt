@@ -62,5 +62,7 @@ internal val russianStrings = hashMapOf(
     Pair(PROFILE, "Профиль"),
     Pair(NO_ACTIVE_GROUP_ONE_LINE, "У вас нет активной группы"),
     Pair(NO_PARTNER, "Нет партнера"),
-    Pair(SETTINGS, "Настройки")
+    Pair(SETTINGS, "Настройки"),
+    Pair(LANGUAGE, "язык"),
+    Pair(COLOR_THEME, "тема"),
 )
