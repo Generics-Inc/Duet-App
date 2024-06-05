@@ -58,7 +58,9 @@ fun AuthorizationScreen(
         modifier = Modifier
             .fillMaxSize(),
         topBar = {
-            DefaultTopAppBarDuet()
+            DefaultTopAppBarDuet(
+                showProfileIcon = false
+            )
         }
     ) { paddingValues ->
         Column(

@@ -20,4 +20,8 @@ class GroupLeftByPartnerRoutingImpl(
     override fun toMain() {
         navHostController.navigateInclusive(ExternalScreens.Main.route)
     }
+
+    override fun toProfile() {
+        navHostController.navigate(ExternalScreens.Profile.route)
+    }
 }

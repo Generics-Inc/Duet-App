@@ -20,6 +20,7 @@ import inc.generics.duet.glue.features.group_left_by_partner.GroupLeftByPartnerR
 import inc.generics.duet.glue.features.group_without_partner.GroupWithoutPartnerRoutingImpl
 import inc.generics.duet.glue.features.join_to_group.JoinToGroupRoutingImpl
 import inc.generics.duet.glue.features.no_active_group.NoActiveGroupRoutingImpl
+import inc.generics.duet.glue.features.profile.di.ProfileRoutingImpl
 import inc.generics.duet.glue.features.requests.RequestRoutingImpl
 import inc.generics.duet.navigation.screens.ExternalScreens.*
 import inc.generics.group_left_by_partner.GroupLeftByPartnerScreen
@@ -97,7 +98,7 @@ fun SetupMainNavGraph(navHostController: NavHostController) {
             }
         }
         composable(route = Profile.route) {
-            ProfileScreen()
+            ProfileScreen(ProfileRoutingImpl(navHostController))
         }
 
         composable(route = SubNavigation.route) {

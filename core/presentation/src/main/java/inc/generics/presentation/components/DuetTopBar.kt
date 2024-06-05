@@ -2,7 +2,9 @@ package inc.generics.presentation.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -14,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -25,14 +28,43 @@ import inc.generics.presentation.utils.get
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DefaultTopAppBarDuet() {
+fun DefaultTopAppBarDuet(
+    cutterType: CutterType = CutterType.MULTIPLE_EVENTS,
+    showProfileIcon: Boolean = true,
+    clickOnProfile: () -> Unit = {}
+) {
+    val eventsCutter by remember {
+        mutableStateOf(EventsCutter.get(cutterType))
+    }
+
     TopAppBar(
         title = {
-            Icon(
-                painterResource(R.drawable.ic_logo_duet),
-                tint = DuetTheme.colors.backgroundColor,
-                contentDescription = "logo"
-            )
+            Box(
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                Icon(
+                    painterResource(R.drawable.ic_logo_duet),
+                    tint = DuetTheme.colors.backgroundColor,
+                    contentDescription = "logo",
+                    modifier = Modifier.align(Alignment.CenterStart)
+                )
+
+                if (showProfileIcon) {
+                    Icon(
+                        painterResource(R.drawable.ic_profile),
+                        tint = DuetTheme.colors.backgroundColor,
+                        contentDescription = "logo",
+                        modifier = Modifier
+                            .align(Alignment.CenterEnd)
+                            .clickable {
+                                eventsCutter?.processEvent { clickOnProfile() }
+                                    ?: clickOnProfile()
+                            }
+                            .padding(16.dp)
+                    )
+                }
+            }
+
         },
         colors = TopAppBarDefaults.topAppBarColors().copy(
             containerColor = DuetTheme.colors.mainColor

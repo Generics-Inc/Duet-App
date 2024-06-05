@@ -49,7 +49,9 @@ fun GroupLeftByPartnerScreen(
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
-            DefaultTopAppBarDuet()
+            DefaultTopAppBarDuet(
+                clickOnProfile = { routing.toProfile() }
+            )
         }
     ) {
         NoPartnerInGroup(

@@ -71,7 +71,9 @@ fun GroupWithoutPartnerScreen(
     val loadStatus by viewModel.loadStatus.observeAsState(initial = LoadStatus.NONE)
     Scaffold(
         topBar = {
-            DefaultTopAppBarDuet()
+            DefaultTopAppBarDuet(
+                clickOnProfile = { routing.routToProfile() }
+            )
         }
     ) {
         when (loadStatus) {

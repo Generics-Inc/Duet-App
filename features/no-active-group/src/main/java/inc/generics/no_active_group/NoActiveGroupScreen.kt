@@ -22,7 +22,9 @@ fun NoActiveGroupScreen(
         modifier = Modifier
             .fillMaxSize(),
         topBar = {
-            DefaultTopAppBarDuet()
+            DefaultTopAppBarDuet(
+                clickOnProfile = { routing.routToProfile() }
+            )
         }
     ) { paddingValues ->
         Column(

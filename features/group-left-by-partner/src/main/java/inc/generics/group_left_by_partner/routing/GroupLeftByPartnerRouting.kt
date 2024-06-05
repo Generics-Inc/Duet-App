@@ -6,4 +6,6 @@ interface GroupLeftByPartnerRouting {
     fun toSaveArchive()
 
     fun toMain()
+
+    fun toProfile()
 }

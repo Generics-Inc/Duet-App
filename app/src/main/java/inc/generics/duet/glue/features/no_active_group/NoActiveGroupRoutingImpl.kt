@@ -14,4 +14,8 @@ class NoActiveGroupRoutingImpl(private val navController: NavHostController) : N
     override fun routToJoinGroup() {
         navController.navigate(ExternalScreens.JoinToGroup.route)
     }
+
+    override fun routToProfile() {
+        navController.navigate(ExternalScreens.Profile.route)
+    }
 }

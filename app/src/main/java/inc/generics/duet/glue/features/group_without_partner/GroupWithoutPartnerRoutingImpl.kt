@@ -23,4 +23,8 @@ class GroupWithoutPartnerRoutingImpl(
             true.toString()
         )
     }
+
+    override fun routToProfile() {
+        navigator.navigate(ExternalScreens.Profile.route)
+    }
 }
