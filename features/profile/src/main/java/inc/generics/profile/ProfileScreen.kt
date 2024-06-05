@@ -5,6 +5,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import inc.generics.presentation.components.TitleTopAppBarDuet
+import inc.generics.presentation.theme.DuetTheme
+import inc.generics.presentation.theme.localization.StringsKeys
 import inc.generics.profile.routing.ProfileRouting
 
 @Composable
@@ -14,7 +16,7 @@ fun ProfileScreen(
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = { TitleTopAppBarDuet(
-            text = "Профиль",
+            text = DuetTheme.localization[StringsKeys.PROFILE],
             onClickNav = {
                 routing.toBack()
             }

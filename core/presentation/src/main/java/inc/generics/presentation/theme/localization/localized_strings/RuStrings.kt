@@ -58,4 +58,9 @@ internal val russianStrings = hashMapOf(
     Pair(EMPTY_INPUT_FIELD_INVITE_CODE, "Пустое поле ввода. Вставьте код приглашения"),
     Pair(CHECK_INVITE_CODE_OR_TRY_AGAIN, "Проверьте корректность кода приглашения или попробуйте позже"),
     Pair(REQUEST_TO_JOIN_IS_SENT_WAIT, "Заявка отправлена.\nДождитесь пока\nпартнер примет её"),
+
+    Pair(PROFILE, "Профиль"),
+    Pair(NO_ACTIVE_GROUP_ONE_LINE, "У вас нет активной группы"),
+    Pair(NO_PARTNER, "Нет партнера"),
+    Pair(SETTINGS, "Настройки")
 )

@@ -48,4 +48,9 @@ enum class StringsKeys {
 
     DELETE_PARTNER,
     REQUEST_DELETE_PARTNER,
+
+    PROFILE,
+    NO_ACTIVE_GROUP_ONE_LINE,
+    NO_PARTNER,
+    SETTINGS,
 }

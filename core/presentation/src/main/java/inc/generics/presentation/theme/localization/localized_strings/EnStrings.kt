@@ -59,4 +59,8 @@ internal val englishStrings = hashMapOf(
             "Wait for the\n" +
             "partner accepts it"),
 
+    Pair(PROFILE, "Profile"),
+    Pair(NO_ACTIVE_GROUP_ONE_LINE, "You don't have an active group"),
+    Pair(NO_PARTNER, "No partner"),
+    Pair(SETTINGS, "Settings"),
 )

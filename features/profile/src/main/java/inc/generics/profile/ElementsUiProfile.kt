@@ -31,6 +31,7 @@ import inc.generics.presentation.components.DuetAsyncImage
 import inc.generics.presentation.components.defaultTextStyleDuet
 import inc.generics.presentation.components.secondTextStyleDuet
 import inc.generics.presentation.theme.DuetTheme
+import inc.generics.presentation.theme.localization.StringsKeys
 import inc.generics.profile.view_models.ProfileViewModel
 import inc.generics.profile.view_models.TypeAccount
 import org.koin.androidx.compose.koinViewModel
@@ -178,7 +179,8 @@ internal fun GroupInfo(
             modifier = Modifier.fillMaxWidth().padding(top = 20.dp)
         ) {
             Text(
-                text = state.groupInfo?.nameGroup ?: "У вас нет активной группы",
+                text = state.groupInfo?.nameGroup
+                    ?: DuetTheme.localization[StringsKeys.NO_ACTIVE_GROUP_ONE_LINE],
                 style = defaultTextStyleDuet().copy(textAlign = TextAlign.Start, fontSize = 20.sp),
                 fontWeight = FontWeight.Bold
             )
@@ -241,7 +243,7 @@ internal fun GroupInfo(
                         }
                     } else {
                         Text(
-                            text = "Нет партнера",
+                            text = DuetTheme.localization[StringsKeys.NO_PARTNER],
                             style = defaultTextStyleDuet().copy(
                                 textAlign = TextAlign.Start
                             )
@@ -259,7 +261,7 @@ internal fun Settings() {
         modifier = Modifier.fillMaxWidth().padding(top = 20.dp)
     ) {
         Text(
-            text = "Настройки",
+            text = DuetTheme.localization[StringsKeys.SETTINGS],
             style = defaultTextStyleDuet().copy(textAlign = TextAlign.Start, fontSize = 20.sp),
             fontWeight = FontWeight.Bold
         )
