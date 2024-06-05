@@ -272,7 +272,7 @@ internal fun Settings(routing: ProfileRouting) {
     }
 
     if (isDialogShow) {
-        DialogGetOut(routing) { newStatus ->
+        DialogGetOut(routing = routing) { newStatus ->
             isDialogShow = newStatus
         }
     }
@@ -322,14 +322,17 @@ internal fun Settings(routing: ProfileRouting) {
 
 @Composable
 fun DialogGetOut(
+    viewModel: ProfileViewModel = koinViewModel(),
     routing: ProfileRouting,
-    onCloseDialog: (Boolean) -> Unit
+    onCloseDialog: (newDialogStatus: Boolean) -> Unit
 ) {
     DuetAlertDialogRequest(
         messageText = "Вы уверены что хотете выйте из аккаунта?",
         onClose = {},
         onAccept = {
-
+            onCloseDialog(false)
+            viewModel.logout()
+            routing.toAuth()
         },
         onDismiss = {
             onCloseDialog(false)

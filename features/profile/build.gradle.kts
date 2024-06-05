@@ -35,6 +35,7 @@ android {
 
 dependencies {
     implementation(project(":core:presentation"))
+    implementation(project(":data:profile-data"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

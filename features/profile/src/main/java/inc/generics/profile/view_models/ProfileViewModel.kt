@@ -4,10 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import inc.generics.profile_data.ProfileRepository
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class ProfileViewModel : ViewModel() {
+class ProfileViewModel(
+    private val repository: ProfileRepository
+) : ViewModel() {
     private val _screenState = MutableLiveData<ScreenState?>(null)
     val screenState: LiveData<ScreenState?> = _screenState
 
@@ -33,7 +36,9 @@ class ProfileViewModel : ViewModel() {
         )
     }
 
-    fun logout() {}
+    fun logout() {
+        repository.logout()
+    }
 
 }
 
