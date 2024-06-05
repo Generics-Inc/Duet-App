@@ -84,6 +84,7 @@ dependencies {
     implementation(project(":data:group-left-by-partner-data"))
 
     implementation(project(":features:profile"))
+    implementation(project(":data:profile-data"))
     //----/>
 
     implementation(project(":android-utils"))

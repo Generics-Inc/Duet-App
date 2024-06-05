@@ -10,6 +10,7 @@ import inc.generics.duet.glue.data.create_new_group_data.di.createNewGroupDataMo
 import inc.generics.duet.glue.data.group_left_by_partner_data.di.groupLeftByPartnerDataModule
 import inc.generics.duet.glue.data.group_without_partner_data.di.groupWithoutPartnerDataModule
 import inc.generics.duet.glue.data.join_to_group_data.di.joinToGroupDataModule
+import inc.generics.duet.glue.data.profile_data.di.profileDataModule
 import inc.generics.duet.glue.data.requests_data.di.requestsDataModule
 import inc.generics.duet.glue.data_sources.duet_api.di.duetApiModule
 import inc.generics.duet.glue.data_sources.duet_local.di.duetLocalModule
@@ -53,6 +54,7 @@ class DuetApp : Application(), ImageLoaderFactory {
                 groupLeftByPartnerFeaturesModule,
                 groupLeftByPartnerDataModule,
                 profileFeaturesModule,
+                profileDataModule,
 
                 presentationModule,
                 duetLocalModule,
