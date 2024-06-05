@@ -36,6 +36,8 @@ internal val englishStrings = hashMapOf(
             "has placed the group\n" +
             "in the basket"),
     Pair(REQUEST_DELETE_GROUP, "Are you sure you want to send the group to the basket?"),
+    Pair(REQUEST_DELETE_PARTNER, "Are you sure you want to remove a partner from the group?"),
+    Pair(DELETE_PARTNER, "Delete partner"),
 
     Pair(REQUESTS, "Requests"),
     Pair(ACCEPT, "Accept"),

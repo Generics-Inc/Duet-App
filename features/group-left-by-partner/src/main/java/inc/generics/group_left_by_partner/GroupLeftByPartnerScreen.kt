@@ -26,6 +26,7 @@ import inc.generics.presentation.components.DefaultTopAppBarDuet
 import inc.generics.presentation.components.DuetAlertDialogRequest
 import inc.generics.presentation.components.HeadTestAndIcon
 import inc.generics.presentation.theme.DuetTheme
+import inc.generics.presentation.theme.localization.StringsKeys
 import inc.generics.presentation.utils.CutterType
 import org.koin.androidx.compose.koinViewModel
 
@@ -78,13 +79,13 @@ internal fun NoPartnerInGroup(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         if (status.isPartnerDeleteGroup) {
-            HeadTestAndIcon("Ваш партнер\nвышел из группы")
+            HeadTestAndIcon(DuetTheme.localization[StringsKeys.PARTNER_DELETE_GROUP])
             DefaultOutlinedButtonDuet(
                 onClick = {
                     routing.toNewInviteCode()
                 },
                 cutterType = CutterType.ONLY_ONE_CLICK,
-                text = "Новый код",
+                text = DuetTheme.localization[StringsKeys.NEW_CODE],
                 modifier = Modifier
                     .padding(top = 65.dp)
                     .fillMaxWidth()
@@ -92,15 +93,13 @@ internal fun NoPartnerInGroup(
             )
         } else {
             HeadTestAndIcon(
-                "Ваш партнер \n" +
-                        "поместил группу\n" +
-                        "в корзину\n"
+                DuetTheme.localization[StringsKeys.PARTNER_LEAVE]
             )
         }
 
         DefaultOutlinedButtonDuet(
             onClick = { },
-            text = "Скачать архив",
+            text = DuetTheme.localization[StringsKeys.SAVE_ARCHIVE],
             modifier = Modifier
                 .padding(top = 26.dp)
                 .fillMaxWidth()
@@ -110,7 +109,7 @@ internal fun NoPartnerInGroup(
         if (status.isMainInGroup && !status.isPartnerDeleteGroup) {
             DefaultFilledTonalButtonDuet(
                 onClick = { dialogViewModel.tryDeletePartner() },
-                text = "Удалить партнера",
+                text = DuetTheme.localization[StringsKeys.DELETE_PARTNER],
                 color = DuetTheme.colors.errorColor,
                 modifier = Modifier
                     .padding(top = 26.dp)
@@ -121,7 +120,7 @@ internal fun NoPartnerInGroup(
 
         DefaultFilledTonalButtonDuet(
             onClick = { dialogViewModel.tryLeaveGroup() },
-            text = "Удалить",
+            text = DuetTheme.localization[StringsKeys.GET_OUT],
             color = DuetTheme.colors.errorColor,
             modifier = Modifier
                 .padding(top = 26.dp)
@@ -151,7 +150,7 @@ internal fun DialogDeletePartner(
     dialogViewModel: GroupLeftByPartnerDialogViewModel = koinViewModel()
 ) {
     DuetAlertDialogRequest(
-        "Вы уверены что хотите удалить партнера из группы?",
+        DuetTheme.localization[StringsKeys.REQUEST_DELETE_PARTNER],
         onClose = {},
         onAccept = {
             viewModel.deletePartner()
@@ -168,7 +167,7 @@ internal fun DialogLeaveGroup(
     dialogViewModel: GroupLeftByPartnerDialogViewModel = koinViewModel()
 ) {
     DuetAlertDialogRequest(
-        "Вы уверены что хотите выйте из группы? Группа будет перемещена в корзину.",
+        DuetTheme.localization[StringsKeys.REQUEST_DELETE_GROUP],
         onClose = {},
         onAccept = {
             viewModel.leaveGroup()

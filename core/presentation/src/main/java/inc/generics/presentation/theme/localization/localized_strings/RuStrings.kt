@@ -37,6 +37,8 @@ internal val russianStrings = hashMapOf(
             "поместил группу\n" +
             "в корзину"),
     Pair(REQUEST_DELETE_GROUP, "Вы уверены, что хотети отправить группу в корзину?"),
+    Pair(REQUEST_DELETE_PARTNER, "Вы уверены, что хотети выгнать партнера из группы?"),
+    Pair(DELETE_PARTNER, "Удалить партнера"),
 
     Pair(REQUESTS, "Заявки"),
     Pair(ACCEPT, "Принять"),
