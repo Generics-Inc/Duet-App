@@ -23,7 +23,8 @@ fun ProfileScreen(
         ) }
     ) {
         ScreenContent(
-            paddingValues = it
+            paddingValues = it,
+            routing = routing
         )
     }
 }

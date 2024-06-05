@@ -20,6 +20,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -28,6 +31,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import inc.generics.presentation.components.DefaultFilledTonalButtonDuet
+import inc.generics.presentation.components.DuetAlertDialogRequest
 import inc.generics.presentation.components.DuetAsyncImage
 import inc.generics.presentation.components.RouteButtonModel
 import inc.generics.presentation.components.RouteIconButton
@@ -35,6 +39,7 @@ import inc.generics.presentation.components.defaultTextStyleDuet
 import inc.generics.presentation.components.secondTextStyleDuet
 import inc.generics.presentation.theme.DuetTheme
 import inc.generics.presentation.theme.localization.StringsKeys
+import inc.generics.profile.routing.ProfileRouting
 import inc.generics.profile.view_models.ProfileViewModel
 import inc.generics.profile.view_models.TypeAccount
 import org.koin.androidx.compose.koinViewModel
@@ -42,7 +47,8 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 internal fun ScreenContent(
     paddingValues: PaddingValues,
-    viewModel: ProfileViewModel = koinViewModel()
+    viewModel: ProfileViewModel = koinViewModel(),
+    routing: ProfileRouting
 ) {
     val screenState by viewModel.screenState.observeAsState()
 
@@ -61,7 +67,7 @@ internal fun ScreenContent(
         } else {
             item { Loading() }
         }
-        item { Settings() }
+        item { Settings(routing = routing) }
     }
 
 }
@@ -224,7 +230,8 @@ internal fun GroupInfo(
                         )
 
                         Column(
-                            modifier = Modifier.padding(vertical = 2.dp).fillMaxHeight().padding(start = 8.dp)
+                            modifier = Modifier.padding(vertical = 2.dp).fillMaxHeight()
+                                .padding(start = 8.dp)
                         ) {
                             Text(
                                 text = groupInfo.namePartner,
@@ -259,7 +266,17 @@ internal fun GroupInfo(
 }
 
 @Composable
-internal fun Settings() {
+internal fun Settings(routing: ProfileRouting) {
+    var isDialogShow by remember {
+        mutableStateOf(false)
+    }
+
+    if (isDialogShow) {
+        DialogGetOut(routing) { newStatus ->
+            isDialogShow = newStatus
+        }
+    }
+
     Column(
         modifier = Modifier.fillMaxWidth().padding(top = 20.dp),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -296,7 +313,26 @@ internal fun Settings() {
         DefaultFilledTonalButtonDuet(
             modifier = Modifier.padding(top = 30.dp),
             text = DuetTheme.localization[StringsKeys.GET_OUT],
-            onClick = {}
+            onClick = {
+                isDialogShow = true
+            }
         )
     }
+}
+
+@Composable
+fun DialogGetOut(
+    routing: ProfileRouting,
+    onCloseDialog: (Boolean) -> Unit
+) {
+    DuetAlertDialogRequest(
+        messageText = "Вы уверены что хотете выйте из аккаунта?",
+        onClose = {},
+        onAccept = {
+
+        },
+        onDismiss = {
+            onCloseDialog(false)
+        }
+    )
 }
