@@ -1,13 +1,18 @@
 package inc.generics.profile
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -35,6 +40,7 @@ import inc.generics.presentation.components.DuetAlertDialogRequest
 import inc.generics.presentation.components.DuetAsyncImage
 import inc.generics.presentation.components.RouteButtonModel
 import inc.generics.presentation.components.RouteIconButton
+import inc.generics.presentation.components.RouteIconButtonAnimated
 import inc.generics.presentation.components.defaultTextStyleDuet
 import inc.generics.presentation.components.secondTextStyleDuet
 import inc.generics.presentation.theme.DuetTheme
@@ -57,17 +63,20 @@ internal fun ScreenContent(
     }
 
     LazyColumn(
-        modifier = Modifier.fillMaxSize().padding(paddingValues)
-            .background(DuetTheme.colors.backgroundColor).padding(horizontal = 16.dp)
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(paddingValues)
+            .background(DuetTheme.colors.backgroundColor)
+            .padding(horizontal = 16.dp)
     ) {
         if (screenState != null) {
-            item { UserInfo() }
-            item { AccountList() }
-            item { GroupInfo() }
+            item(key = 0) { UserInfo() }
+            item(key = 1) { AccountList() }
+            item(key = 2) { GroupInfo() }
         } else {
-            item { Loading() }
+            item(key = 0) { Loading() }
         }
-        item { Settings(routing = routing) }
+        item(key = 3) { Settings(routing = routing) }
     }
 
 }
@@ -79,7 +88,7 @@ internal fun UserInfo(
     val screenState by viewModel.screenState.observeAsState()
     screenState?.let { state ->
         Row(
-            modifier = Modifier.fillMaxWidth().padding(top = 20.dp),
+            modifier = Modifier.fillMaxWidth().padding(20.dp),
             horizontalArrangement = Arrangement.Center,
         ) {
             DuetAsyncImage(
@@ -270,6 +279,9 @@ internal fun Settings(routing: ProfileRouting) {
     var isDialogShow by remember {
         mutableStateOf(false)
     }
+    var isLanguagesShow by remember {
+        mutableStateOf(false)
+    }
 
     if (isDialogShow) {
         DialogGetOut(routing = routing) { newStatus ->
@@ -288,16 +300,30 @@ internal fun Settings(routing: ProfileRouting) {
             fontWeight = FontWeight.Bold
         )
 
-        RouteIconButton(
+        RouteIconButtonAnimated(
             RouteButtonModel(
                 title = DuetTheme.localization.nameLanguage,
                 additionalText = DuetTheme.localization[StringsKeys.LANGUAGE],
                 icon = DuetTheme.localization.iconId
             ),
             onClick = {
-                //todo: открывать выбор языка
+                isLanguagesShow = !isLanguagesShow
             }
         )
+
+        AnimatedVisibility(
+            visible = isLanguagesShow,
+            enter = expandVertically(),
+            exit = shrinkVertically()
+        ) {
+            //todo: показывать список доступных языков
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(300.dp)
+                    .background(DuetTheme.colors.mainColor.copy(alpha = 0.4f))
+            ) { }
+        }
 
         RouteIconButton(
             RouteButtonModel(
@@ -311,8 +337,9 @@ internal fun Settings(routing: ProfileRouting) {
         )
 
         DefaultFilledTonalButtonDuet(
-            modifier = Modifier.padding(top = 30.dp),
+            modifier = Modifier.padding(top = 30.dp, bottom = 20.dp),
             text = DuetTheme.localization[StringsKeys.GET_OUT],
+            color = DuetTheme.colors.errorColor,
             onClick = {
                 isDialogShow = true
             }
@@ -327,7 +354,7 @@ fun DialogGetOut(
     onCloseDialog: (newDialogStatus: Boolean) -> Unit
 ) {
     DuetAlertDialogRequest(
-        messageText = "Вы уверены что хотете выйте из аккаунта?",
+        messageText = DuetTheme.localization[StringsKeys.REQUEST_TO_LOGOUT],
         onClose = {},
         onAccept = {
             onCloseDialog(false)
