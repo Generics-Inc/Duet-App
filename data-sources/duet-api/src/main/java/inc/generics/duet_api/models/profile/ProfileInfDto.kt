@@ -1,14 +1,13 @@
 package inc.generics.duet_api.models.profile
 
 import com.google.gson.annotations.SerializedName
+import inc.generics.duet_api.models.groups.Group
 import inc.generics.duet_api.util.stringToLocalDateTime
 import java.time.LocalDateTime
 
 data class ProfileInfDto(
     @SerializedName("id")
     val id: Long,
-    @SerializedName("userId")
-    val userId: Long,
     @SerializedName("username")
     val username: String,
     @SerializedName("firstName")
@@ -30,7 +29,13 @@ data class ProfileInfDto(
     @SerializedName("createdAt")
     private val createdAt: String,
     @SerializedName("updatedAt")
-    val updatedAt: String
+    val updatedAt: String,
+    @SerializedName("group")
+    val group: Group?,
+    @SerializedName("partner")
+    val partner: PartnerDto?,
+    @SerializedName("groupStatus")
+    val groupStatus: StatusUsersGroupDto
 ) {
     fun getGender(): Gender? = try {
         Gender.valueOf(gender)
