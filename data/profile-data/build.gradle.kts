@@ -34,6 +34,7 @@ android {
 
 dependencies {
     implementation(project(":data-sources:duet-local"))
+    implementation(project(":data-sources:duet-api"))
 
     implementation(libs.androidx.core.ktx)
 
