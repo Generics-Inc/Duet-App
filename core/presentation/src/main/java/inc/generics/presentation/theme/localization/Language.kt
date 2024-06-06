@@ -1,8 +1,11 @@
 package inc.generics.presentation.theme.localization
 
 import inc.generics.presentation.R
+import inc.generics.presentation.theme.localization.localized_strings.belarusianStrings
 import inc.generics.presentation.theme.localization.localized_strings.englishStrings
+import inc.generics.presentation.theme.localization.localized_strings.kazakhStrings
 import inc.generics.presentation.theme.localization.localized_strings.russianStrings
+import inc.generics.presentation.theme.localization.localized_strings.ukrainianStrings
 
 sealed class Language(
     val id: Int,
@@ -10,17 +13,39 @@ sealed class Language(
     val iconId: Int?,
     private val strings: HashMap<StringsKeys, String>
 ) {
-    class Ru : Language(
+    class En : Language(
         id = 0,
+        nameLanguage = "English",
+        iconId = R.drawable.uk_flag,
+        strings = englishStrings
+    )
+
+    class Ru : Language(
+        id = 1,
         nameLanguage = "Русский",
         iconId = R.drawable.ru_flag,
         strings = russianStrings,
     )
-    class En : Language(
-        id = 1,
-        nameLanguage = "English",
-        iconId = R.drawable.uk_flag,
-        strings = englishStrings
+
+    class Ua: Language(
+        id = 2,
+        nameLanguage = "Українська",
+        iconId = R.drawable.ukraine,
+        strings = ukrainianStrings
+    )
+
+    class By: Language(
+        id = 3,
+        nameLanguage = "Беларуская",
+        iconId = R.drawable.brus_flag,
+        strings = belarusianStrings
+    )
+
+    class Kz: Language(
+        id = 4,
+        nameLanguage = "Қазақша",
+        iconId = R.drawable.kazakhstan,
+        strings = kazakhStrings
     )
 
     operator fun get(key: StringsKeys): String = strings[key].toString()
@@ -39,8 +64,11 @@ sealed class Language(
 }
 
 fun allLanguages(): List<Language> = listOf(
+    Language.En(),
     Language.Ru(),
-    Language.En()
+    Language.Ua(),
+    Language.By(),
+    Language.Kz(),
 )
 
 fun findLanguageElseDefault(id: Int?): Language {
