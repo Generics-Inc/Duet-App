@@ -47,7 +47,7 @@ import inc.generics.presentation.theme.DuetTheme
 import inc.generics.presentation.theme.localization.StringsKeys
 import inc.generics.profile.routing.ProfileRouting
 import inc.generics.profile.view_models.ProfileViewModel
-import inc.generics.profile.view_models.TypeAccount
+import inc.generics.profile_data.models.TypeAccount
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -88,11 +88,11 @@ internal fun UserInfo(
     val screenState by viewModel.screenState.observeAsState()
     screenState?.let { state ->
         Row(
-            modifier = Modifier.fillMaxWidth().padding(20.dp),
+            modifier = Modifier.fillMaxWidth().padding(top = 20.dp),
             horizontalArrangement = Arrangement.Center,
         ) {
             DuetAsyncImage(
-                imgUrl = null,
+                imgUrl = screenState?.userPhotoUrl,
                 painterIconIfNotImg = painterResource(inc.generics.presentation.R.drawable.ic_profile)
             )
 
@@ -243,7 +243,7 @@ internal fun GroupInfo(
                                 .padding(start = 8.dp)
                         ) {
                             Text(
-                                text = groupInfo.namePartner,
+                                text = groupInfo.namePartner!!,
                                 style = defaultTextStyleDuet().copy(
                                     fontSize = 14.sp,
                                     textAlign = TextAlign.Start
