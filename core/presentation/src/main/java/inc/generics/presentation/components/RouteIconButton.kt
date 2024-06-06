@@ -37,6 +37,53 @@ data class RouteButtonModel(
 )
 
 @Composable
+fun RouteButton(
+    model: RouteButtonModel,
+    onClick: () -> Unit = {},
+) {
+    Row(verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(78.dp)
+            .clickable {
+                onClick()
+            }
+    ) {
+        if (model.icon != null) {
+            Image(modifier = Modifier
+                .padding(start = 16.dp)
+                .size(24.dp)
+                .background(color = Color.Gray, shape = RoundedCornerShape(8.dp)),
+                painter = painterResource(model.icon),
+                contentDescription = ""
+            )
+        } else {
+            Box(modifier = Modifier
+                .padding(start = 16.dp)
+                .size(24.dp)
+                .background(color = DuetTheme.colors.mainColor, shape = RoundedCornerShape(8.dp))
+            )
+        }
+
+        Column(modifier = Modifier
+            .weight(1f)
+            .padding(start = 24.dp, end = 24.dp)
+        ) {
+            Text(text = model.title, style = defaultDialogTextStyleDuet())
+            model.additionalText?.let {
+                Text(text = it,
+                    style = TextStyle(
+                        color = DuetTheme.colors.textColor.copy(alpha = 0.5f),
+                        fontSize = 12.sp
+                    )
+                )
+            }
+
+        }
+    }
+}
+
+@Composable
 fun RouteIconButton(
     model: RouteButtonModel,
     onClick: () -> Unit = {},

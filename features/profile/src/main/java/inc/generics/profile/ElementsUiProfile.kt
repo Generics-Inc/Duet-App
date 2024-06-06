@@ -5,14 +5,12 @@ import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -38,13 +36,17 @@ import androidx.compose.ui.unit.sp
 import inc.generics.presentation.components.DefaultFilledTonalButtonDuet
 import inc.generics.presentation.components.DuetAlertDialogRequest
 import inc.generics.presentation.components.DuetAsyncImage
+import inc.generics.presentation.components.RouteButton
 import inc.generics.presentation.components.RouteButtonModel
 import inc.generics.presentation.components.RouteIconButton
 import inc.generics.presentation.components.RouteIconButtonAnimated
 import inc.generics.presentation.components.defaultTextStyleDuet
 import inc.generics.presentation.components.secondTextStyleDuet
+import inc.generics.presentation.theme.AppDuetThemeViewModel
 import inc.generics.presentation.theme.DuetTheme
+import inc.generics.presentation.theme.appDuetThemeViewModel
 import inc.generics.presentation.theme.localization.StringsKeys
+import inc.generics.presentation.theme.localization.allLanguages
 import inc.generics.profile.routing.ProfileRouting
 import inc.generics.profile.view_models.ProfileViewModel
 import inc.generics.profile_data.models.TypeAccount
@@ -316,13 +318,17 @@ internal fun Settings(routing: ProfileRouting) {
             enter = expandVertically(),
             exit = shrinkVertically()
         ) {
-            //todo: показывать список доступных языков
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(300.dp)
-                    .background(DuetTheme.colors.mainColor.copy(alpha = 0.4f))
-            ) { }
+            Column(
+                modifier = Modifier.padding(horizontal = 5.dp)
+            ) {
+                Text(
+                    text = DuetTheme.localization[StringsKeys.REPLACE_WITH],
+                    style = defaultTextStyleDuet().copy(fontSize = 12.sp)
+                )
+                LanguageList(
+                    modifier = Modifier.fillMaxWidth().padding(bottom = 5.dp)
+                )
+            }
         }
 
         RouteIconButton(
@@ -344,6 +350,33 @@ internal fun Settings(routing: ProfileRouting) {
                 isDialogShow = true
             }
         )
+    }
+}
+
+@Composable
+fun LanguageList(
+    modifier: Modifier = Modifier,
+    themeViewModel: AppDuetThemeViewModel = appDuetThemeViewModel()
+) {
+    val languages = allLanguages()
+
+    Column (
+        modifier = modifier
+    ) {
+        languages.map { language ->
+            if(language != DuetTheme.localization) {
+                RouteButton(
+                    RouteButtonModel(
+                        title = language.nameLanguage,
+                        additionalText = DuetTheme.localization[StringsKeys.LANGUAGE],
+                        icon = language.iconId
+                    ),
+                    onClick = {
+                        themeViewModel.setLanguage(language)
+                    }
+                )
+            }
+        }
     }
 }
 
