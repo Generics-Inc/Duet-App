@@ -9,6 +9,7 @@ class SPHelper(context: Context) {
 
         const val DUET_ACCESS_TOKE = "DUET_ACCESS_TOKE"
         const val DUET_REFRESH_TOKE = "DUET_REFRESH_TOKE"
+        const val DUET_LANGUAGE_ID = "DUET_LANGUAGE_ID"
     }
 
     private val sharedPreferences: SharedPreferences =
@@ -27,4 +28,12 @@ class SPHelper(context: Context) {
             .apply()
         get() =
             sharedPreferences.getString(DUET_REFRESH_TOKE, null)
+
+
+    var languageId: Int
+        set(value) = sharedPreferences.edit()
+            .putInt(DUET_LANGUAGE_ID, value)
+            .apply()
+        get() =
+            sharedPreferences.getInt(DUET_LANGUAGE_ID, -1)
 }

@@ -66,4 +66,5 @@ internal val englishStrings = hashMapOf(
     Pair(LANGUAGE, "language"),
     Pair(COLOR_THEME, "color theme"),
     Pair(REQUEST_TO_LOGOUT, "Are you sure you want to log out of the account?"),
+    Pair(REPLACE_WITH, "Replace with:"),
 )

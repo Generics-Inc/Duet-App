@@ -66,4 +66,5 @@ internal val russianStrings = hashMapOf(
     Pair(LANGUAGE, "язык"),
     Pair(COLOR_THEME, "тема"),
     Pair(REQUEST_TO_LOGOUT, "Вы уверены что хотите выйти из аккаунта?"),
+    Pair(REPLACE_WITH, "Заменить на:"),
 )
