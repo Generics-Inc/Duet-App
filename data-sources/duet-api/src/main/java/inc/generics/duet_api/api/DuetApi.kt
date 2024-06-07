@@ -4,7 +4,6 @@ import inc.generics.duet_api.models.auth.AuthResponseDto
 import inc.generics.duet_api.models.auth.SignInDto
 import inc.generics.duet_api.models.auth.VkSignInDto
 import inc.generics.duet_api.models.groups.Group
-import inc.generics.duet_api.models.groups.GroupFull
 import inc.generics.duet_api.models.groups.JoinToGroup
 import inc.generics.duet_api.models.groups.RequestToGroup
 import inc.generics.duet_api.models.profile.ProfileInfDto
@@ -52,9 +51,6 @@ interface DuetApi {
     /* Groups */
     @GET("groups/me")
     suspend fun getUserGroup(): Result<Group>
-
-    @GET("groups/me/full")
-    suspend fun getUserGroupFull(): Result<GroupFull>
 
     @Multipart
     @POST("groups")

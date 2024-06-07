@@ -1,5 +1,6 @@
 package inc.generics.profile_data
 
+import android.util.Log
 import inc.generics.duet_api.api.DuetApi
 import inc.generics.duet_local.sp.SPHelper
 import inc.generics.profile_data.models.ProfileInfo
@@ -12,6 +13,9 @@ class ProfileRepository(
         api.getMyProfilesInformation()
             .onSuccess {
                 return it.toProfileInfoUi()
+            }
+            .onFailure {
+                Log.d("getProfileInformation", it.message.toString())
             }
         return null
     }

@@ -6,7 +6,7 @@ import inc.generics.requests_data.models.Request
 internal fun RequestToGroup.toRequest(): Request = Request(
     id = this.id,
     profileId = this.profileId,
-    firstName = this.firstName,
-    lastName = this.lastName,
-    photoUrl = this.photoUrl
+    firstName = this.profile.firstName,
+    lastName = this.profile.lastName,
+    photoUrl = this.profile.photo
 )

@@ -27,6 +27,5 @@ class ProfileViewModel(
     fun logout() {
         repository.logout()
     }
-
 }
 

@@ -22,5 +22,5 @@ data class UserConnectedAccount(
 )
 
 enum class TypeAccount {
-    VK, TG, NONE
+    VK, TG, NONE, EMAIL
 }
