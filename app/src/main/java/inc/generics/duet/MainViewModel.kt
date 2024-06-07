@@ -78,11 +78,6 @@ class MainViewModel(private val api: DuetApi, private val spHelper: SPHelper) : 
             }
         }
     }
-
-    //todo: delete method. it is for a test
-    fun leaveGroup() = viewModelScope.launch {
-        api.leaveGroup()
-    }
 }
 
 sealed class StatusGroup {

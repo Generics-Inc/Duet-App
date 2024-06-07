@@ -90,13 +90,6 @@ fun Main(mainViewModel: MainViewModel = koinViewModel(), mainNavController: NavH
             color = DuetTheme.colors.secondColor
         )
 
-        //todo: delete button. it is for a test
-        DefaultFilledTonalButtonDuet(
-            text = "Выйти",
-            onClick = {
-                mainViewModel.leaveGroup()
-            }
-        )
     }
 }
 
