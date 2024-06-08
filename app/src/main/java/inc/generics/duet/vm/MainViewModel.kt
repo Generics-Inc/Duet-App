@@ -1,4 +1,4 @@
-package inc.generics.duet
+package inc.generics.duet.vm
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

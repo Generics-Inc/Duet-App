@@ -1,4 +1,4 @@
-package inc.generics.duet
+package inc.generics.duet.ui
 
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background

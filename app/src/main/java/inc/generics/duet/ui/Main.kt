@@ -1,4 +1,4 @@
-package inc.generics.duet
+package inc.generics.duet.ui
 
 import android.annotation.SuppressLint
 import android.util.Log
@@ -20,8 +20,9 @@ import androidx.navigation.NavHostController
 import inc.generics.duet.navigation.navigateReplace
 import inc.generics.duet.navigation.navigateReplaceWithData
 import inc.generics.duet.navigation.screens.ExternalScreens
+import inc.generics.duet.vm.MainViewModel
+import inc.generics.duet.vm.StatusGroup
 import inc.generics.group_left_by_partner.models.StatusGroupLeftByPartner
-import inc.generics.presentation.components.DefaultFilledTonalButtonDuet
 import inc.generics.presentation.theme.DuetTheme
 import org.koin.androidx.compose.koinViewModel
 
