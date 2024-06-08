@@ -5,6 +5,7 @@ import coil.ImageLoader
 import coil.ImageLoaderFactory
 import coil.util.DebugLogger
 import inc.generics.duet.glue.android_utils.di.androidUtilsModule
+import inc.generics.duet.glue.data.archive_data.di.archiveDataModule
 import inc.generics.duet.glue.data.authorizaton_data.di.authorizationDataModule
 import inc.generics.duet.glue.data.create_new_group_data.di.createNewGroupDataModule
 import inc.generics.duet.glue.data.group_left_by_partner_data.di.groupLeftByPartnerDataModule
@@ -14,8 +15,9 @@ import inc.generics.duet.glue.data.profile_data.di.profileDataModule
 import inc.generics.duet.glue.data.requests_data.di.requestsDataModule
 import inc.generics.duet.glue.data_sources.duet_api.di.duetApiModule
 import inc.generics.duet.glue.data_sources.duet_local.di.duetLocalModule
+import inc.generics.duet.glue.features.archive.di.archiveFeaturesModule
 import inc.generics.duet.glue.features.authorization.di.authorizationFeatureModule
-import inc.generics.duet.glue.features.create_new_group.di.CreateNewGroupFeatureModule
+import inc.generics.duet.glue.features.create_new_group.di.createNewGroupFeatureModule
 import inc.generics.duet.glue.features.group_left_by_partner.di.groupLeftByPartnerFeaturesModule
 import inc.generics.duet.glue.features.group_without_partner.di.groupWithoutPartnerFeaturesModule
 import inc.generics.duet.glue.features.join_to_group.di.joinToGroupFeatureModule
@@ -44,7 +46,7 @@ class DuetApp : Application(), ImageLoaderFactory {
                 authorizationDataModule,
                 authorizationFeatureModule,
                 createNewGroupDataModule,
-                CreateNewGroupFeatureModule,
+                createNewGroupFeatureModule,
                 groupWithoutPartnerDataModule,
                 groupWithoutPartnerFeaturesModule,
                 requestsDataModule,
@@ -53,6 +55,8 @@ class DuetApp : Application(), ImageLoaderFactory {
                 joinToGroupFeatureModule,
                 groupLeftByPartnerFeaturesModule,
                 groupLeftByPartnerDataModule,
+                archiveFeaturesModule,
+                archiveDataModule,
                 profileFeaturesModule,
                 profileDataModule,
 

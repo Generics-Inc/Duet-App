@@ -4,6 +4,6 @@ import inc.generics.create_new_group.CreateNewGroupViewModel
 import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.dsl.module
 
-val CreateNewGroupFeatureModule = module {
+val createNewGroupFeatureModule = module {
     viewModelOf(::CreateNewGroupViewModel)
 }

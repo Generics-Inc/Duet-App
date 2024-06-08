@@ -86,6 +86,9 @@ dependencies {
     implementation(project(":features:profile"))
     implementation(project(":data:profile-data"))
 
+    implementation(project(":data:archive-data"))
+    implementation(project(":features:archive"))
+
     implementation(project(":features:movie"))
     //----/>
 
