@@ -10,8 +10,10 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import inc.generics.archive.ArchiveScreen
 import inc.generics.authorization.AuthorizationScreen
 import inc.generics.create_new_group.CreateNewGroupScreen
+import inc.generics.duet.glue.features.archive.ArchiveRoutingImpl
 import inc.generics.duet.ui.Main
 import inc.generics.duet.ui.SubNavBar
 import inc.generics.duet.glue.features.authorization.AuthorizationScreenRoutingImpl
@@ -99,6 +101,9 @@ fun SetupMainNavGraph(navHostController: NavHostController) {
         }
         composable(route = Profile.route) {
             ProfileScreen(ProfileRoutingImpl(navHostController))
+        }
+        composable(route = Archive.route) {
+            ArchiveScreen(ArchiveRoutingImpl(navHostController))
         }
 
         composable(route = SubNavigation.route) {

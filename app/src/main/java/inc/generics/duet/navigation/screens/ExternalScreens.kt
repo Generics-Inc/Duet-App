@@ -12,5 +12,7 @@ sealed class ExternalScreens(val route: String, val dataKey: String) {
 
     data object Profile: ExternalScreens(route = "profileScreen", "")
 
+    data object Archive: ExternalScreens(route = "ArchiveScreen", "")
+
     data object SubNavigation: ExternalScreens(route = "SubNavigation", "")
 }
