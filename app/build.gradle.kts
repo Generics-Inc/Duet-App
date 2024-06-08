@@ -85,6 +85,8 @@ dependencies {
 
     implementation(project(":features:profile"))
     implementation(project(":data:profile-data"))
+
+    implementation(project(":features:movie"))
     //----/>
 
     implementation(project(":android-utils"))

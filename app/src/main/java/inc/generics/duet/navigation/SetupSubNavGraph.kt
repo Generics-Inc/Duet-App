@@ -10,7 +10,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import inc.generics.duet.navigation.screens.NavBarScreens
+import inc.generics.movie.MovieScreen
 
 @Composable
 fun SetupSubNavGraph(
@@ -19,7 +21,7 @@ fun SetupSubNavGraph(
 ) {
     NavHost(
         navController = navHostController,
-        startDestination = ""/* todo: set startDestination */,
+        startDestination = NavBarScreens.MoviesScreen.route,
         modifier = Modifier.padding(paddingValues),
         enterTransition = {
             fadeIn(animationSpec = tween(300)) + slideIntoContainer(
@@ -32,8 +34,12 @@ fun SetupSubNavGraph(
             )
         }
     ) {
-
+        composable(route = NavBarScreens.MoviesScreen.route) {
+            MovieScreen()
+        }
     }
 }
 
-val listOfNavBarScreens = listOf<NavBarScreens>()
+val listOfNavBarScreens = listOf<NavBarScreens>(
+    NavBarScreens.MoviesScreen
+)

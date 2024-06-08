@@ -1,6 +1,7 @@
 package inc.generics.duet
 
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -48,6 +49,7 @@ fun SubNavBar() {
             AnimatedNavigationBar(
                 modifier = Modifier
                     .height(64.dp)
+                    .background(DuetTheme.colors.backgroundColor)
                     .padding(horizontal = 12.dp)
                     .padding(bottom = 12.dp),
                 selectedIndex = selectedIndex,

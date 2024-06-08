@@ -71,11 +71,10 @@ fun Main(mainViewModel: MainViewModel = koinViewModel(), mainNavController: NavH
                 )
             },
             onActiveGroup = {
-                //todo: пока нет экранов для внутренней навигации
-                /*mainNavController.navigateReplace(
+                mainNavController.navigateReplace(
                     routeTo = ExternalScreens.SubNavigation.route,
                     routeFrom = ExternalScreens.Main.route
-                )*/
+                )
             }
         )
     }

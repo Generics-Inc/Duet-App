@@ -6,6 +6,8 @@ import inc.generics.duet_api.models.auth.VkSignInDto
 import inc.generics.duet_api.models.groups.Group
 import inc.generics.duet_api.models.groups.JoinToGroup
 import inc.generics.duet_api.models.groups.RequestToGroup
+import inc.generics.duet_api.models.movie.CreateMovieDto
+import inc.generics.duet_api.models.movie.MovieDto
 import inc.generics.duet_api.models.profile.ProfileInfDto
 import inc.generics.duet_api.models.profile.StatusUsersGroupDto
 import okhttp3.MultipartBody
@@ -82,4 +84,11 @@ interface DuetApi {
 
     @PATCH("groups/requests/cancel/{id}")
     suspend fun cancelRequest(@Path("id") id: Long)
+
+    /* Movies */
+    @GET("movies")
+    suspend fun getAllMovies(): Result<List<MovieDto>>
+
+    @POST("movies")
+    suspend fun crateMovie(@Body body: CreateMovieDto): Result<MovieDto>
 }
