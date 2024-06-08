@@ -1,5 +1,6 @@
 package inc.generics.duet_api.api
 
+import inc.generics.duet_api.models.archives.ArchivesItemDto
 import inc.generics.duet_api.models.auth.AuthResponseDto
 import inc.generics.duet_api.models.auth.SignInDto
 import inc.generics.duet_api.models.auth.VkSignInDto
@@ -84,6 +85,17 @@ interface DuetApi {
 
     @PATCH("groups/requests/cancel/{id}")
     suspend fun cancelRequest(@Path("id") id: Long)
+
+    /* Archives */
+    @GET("/groups/archives/me")
+    suspend fun allArchives(): Result<List<ArchivesItemDto>>
+
+    @PATCH("/groups/archives/revert/{id}")
+    suspend fun revertGroup(@Path("id") id: Long): Result<ArchivesItemDto>
+
+    @DELETE("/groups/archives/{id}")
+    suspend fun deleteGroup(@Path("id") id: Long)
+
 
     /* Movies */
     @GET("movies")
