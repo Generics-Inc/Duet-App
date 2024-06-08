@@ -19,6 +19,7 @@
             <option value="$PROJECT_DIR$/data-sources" />
             <option value="$PROJECT_DIR$/data-sources/duet-api" />
             <option value="$PROJECT_DIR$/data-sources/duet-local" />
+            <option value="$PROJECT_DIR$/data/archive-data" />
             <option value="$PROJECT_DIR$/data/authorization-data" />
             <option value="$PROJECT_DIR$/data/create-new-group-data" />
             <option value="$PROJECT_DIR$/data/group-left-by-partner-data" />
