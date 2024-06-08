@@ -11,7 +11,7 @@ data class ArchivesItemDto(
     @SerializedName("createAt")
     val createAt: Date,
     @SerializedName("profile")
-    val profile: ProfileInArchive?,
+    val profile: ProfileInArchive,
     @SerializedName("group")
     val group: Group
 )
@@ -57,7 +57,7 @@ data class Group(
       "username": "string",
       "firstName": "string",
       "lastName": "string",
-      "gender": "MALE",
+      "gender": "MALE",     // не беру инфу по полу (она не нужна)
       "description": "Казак с плеч",
       "photo": "string",
       "createdAt": "2024-06-08T10:37:32.432Z"
