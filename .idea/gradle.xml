@@ -27,6 +27,7 @@
             <option value="$PROJECT_DIR$/data/profile-data" />
             <option value="$PROJECT_DIR$/data/requests-data" />
             <option value="$PROJECT_DIR$/features" />
+            <option value="$PROJECT_DIR$/features/archive" />
             <option value="$PROJECT_DIR$/features/authorization" />
             <option value="$PROJECT_DIR$/features/create-new-group" />
             <option value="$PROJECT_DIR$/features/group-left-by-partner" />
