@@ -5,6 +5,7 @@ import inc.generics.archive_data.models.Partner
 import inc.generics.duet_api.models.archives.ArchivesItemDto
 
 internal fun ArchivesItemDto.mapToUi(): ArchiveItem = ArchiveItem(
+    id = this.id,
     name = this.profile.firstName + " " + this.profile.lastName,
     photoUrl = this.group.photo,
     partner = Partner(

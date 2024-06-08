@@ -3,6 +3,7 @@ package inc.generics.archive_data.models
 import java.util.Date
 
 data class ArchiveItem(
+    val id: Long,
     val name: String,
     val photoUrl: String?,
     val partner: Partner?,
