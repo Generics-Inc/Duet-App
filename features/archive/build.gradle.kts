@@ -35,6 +35,7 @@ android {
 
 dependencies {
     implementation(project(":core:presentation"))
+    implementation(project(":data:archive-data"))
 
     implementation(libs.androidx.core.ktx)
 
