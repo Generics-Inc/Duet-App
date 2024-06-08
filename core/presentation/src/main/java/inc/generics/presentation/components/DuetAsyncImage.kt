@@ -12,6 +12,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.DefaultShadowColor
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -27,6 +30,8 @@ fun DuetAsyncImage(
     painterIconIfNotImg: Painter,
     imgUrl: String?,
     size: Dp = 80.dp,
+    shadowColor: Color = DefaultShadowColor,
+    shadowElevation: Dp = 8.dp,
     modifier: Modifier = Modifier
         .padding(14.dp)
         .size(size)
@@ -39,10 +44,14 @@ fun DuetAsyncImage(
         modifier = modifier
     ) {
         Surface(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.fillMaxSize().shadow(
+                shape = RoundedCornerShape(roundedDp),
+                ambientColor = shadowColor,
+                spotColor = shadowColor,
+                elevation = shadowElevation,
+            ),
             color = DuetTheme.colors.backgroundColor,
-            shadowElevation = 8.dp,
-            shape = RoundedCornerShape(roundedDp)
+            shape = RoundedCornerShape(roundedDp),
         ) {
             if (imgUrl == null) {
                 Icon(
@@ -56,7 +65,7 @@ fun DuetAsyncImage(
                     model = LocalContext.current.getString(R.string.base_url) + imgUrl,
                     contentDescription = "",
                     contentScale = ContentScale.Crop,
-                    modifier = Modifier.clip(RoundedCornerShape(roundedDp))
+                    modifier = Modifier.size(24.dp).clip(RoundedCornerShape(roundedDp))
                 )
             }
         }
