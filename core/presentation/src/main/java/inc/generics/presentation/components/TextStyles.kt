@@ -2,6 +2,7 @@ package inc.generics.presentation.components
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import inc.generics.presentation.theme.DuetTheme
@@ -24,7 +25,8 @@ fun secondTextStyleDuet(): TextStyle = TextStyle(
 fun titleContrastTestStyleDuet(): TextStyle = TextStyle(
     color = DuetTheme.colors.backgroundColor,
     fontSize = 20.sp,
-    textAlign = TextAlign.End
+    textAlign = TextAlign.End,
+    fontWeight = FontWeight.Bold
 )
 
 @Composable
