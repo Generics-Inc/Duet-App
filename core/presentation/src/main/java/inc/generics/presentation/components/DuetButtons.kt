@@ -3,6 +3,7 @@ package inc.generics.presentation.components
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.OutlinedButton
@@ -28,7 +29,7 @@ fun OutlinedButtonDuet(
     hasBorder: Boolean = true,
     hasElevation: Boolean = true,
     enabled: Boolean = true,
-    shape: Shape = ButtonDefaults.outlinedShape,
+    shape: Shape = RoundedCornerShape(10.dp),
     cutterType: CutterType = CutterType.MULTIPLE_EVENTS,
     onClick: () -> Unit, content: @Composable (RowScope.() -> Unit)
 ) {
@@ -61,7 +62,7 @@ fun FilledTonalButtonDuet(
     modifier: Modifier = Modifier,
     color: Color = DuetTheme.colors.secondColor,
     enabled: Boolean = true,
-    shape: Shape = ButtonDefaults.outlinedShape,
+    shape: Shape = RoundedCornerShape(10.dp),
     cutterType: CutterType = CutterType.MULTIPLE_EVENTS,
     onClick: () -> Unit, content: @Composable (RowScope.() -> Unit)
 ) {
@@ -81,6 +82,7 @@ fun FilledTonalButtonDuet(
             contentColor = DuetTheme.colors.textContrastColor,
             disabledContainerColor = Color(0xFFD5D1D4) //E6D5E3м
         ),
+        shape = shape,
         elevation = ButtonDefaults.elevatedButtonElevation(2.dp, 0.dp, 0.dp, 0.dp, 2.dp),
         content = content
     )
