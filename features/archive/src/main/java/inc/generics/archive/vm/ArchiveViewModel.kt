@@ -34,20 +34,22 @@ class ArchiveViewModel(
 
     fun deleteWithUpdateUiData(id: Long) = viewModelScope.launch {
         updateUiDataByStatus(
-            repository.delete(id)
+            repository.delete(id),
+            isRevert = false
         )
     }
 
     fun revertWithUpdateUiData(id: Long) = viewModelScope.launch {
         updateUiDataByStatus(
-            repository.revert(id)
+            repository.revert(id),
+            isRevert = true
         )
     }
 
-    private fun updateUiDataByStatus(isActionSuccess: Boolean) {
+    private fun updateUiDataByStatus(isActionSuccess: Boolean, isRevert: Boolean) {
         getArchive()
         if (isActionSuccess)
-            _statusAction.value = ActionStatus.SUCCESS
+            _statusAction.value = if (isRevert) ActionStatus.SUCCESS_REVERT else ActionStatus.SUCCESS_DELETE
         else
             _statusAction.value = ActionStatus.ERROR
     }
@@ -64,7 +66,8 @@ class ArchiveViewModel(
 enum class ActionStatus {
     NONE,
     ERROR,
-    SUCCESS
+    SUCCESS_REVERT,
+    SUCCESS_DELETE,
 }
 
 enum class LoadStatus {
