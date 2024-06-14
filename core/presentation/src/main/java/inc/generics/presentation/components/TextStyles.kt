@@ -36,7 +36,7 @@ fun defaultDialogTextStyleDuet(): TextStyle = TextStyle(
 )
 
 @Composable
-internal fun defaultTextStyleForButtonDuet(): TextStyle = TextStyle(
+fun defaultTextStyleForButtonDuet(): TextStyle = TextStyle(
     fontSize = 18.sp,
     textAlign = TextAlign.Center
 )
