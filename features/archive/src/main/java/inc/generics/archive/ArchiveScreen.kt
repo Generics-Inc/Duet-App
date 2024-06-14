@@ -42,6 +42,7 @@ import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.SwipeRefreshIndicator
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import inc.generics.archive.routing.ArchiveRouting
+import inc.generics.archive.vm.ActionStatus
 import inc.generics.archive.vm.ArchiveViewModel
 import inc.generics.archive.vm.ItemArchiveBottomSheetViewModel
 import inc.generics.archive.vm.LoadStatus
@@ -60,17 +61,24 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun ArchiveScreen(
     routing: ArchiveRouting,
-    viewModel: ArchiveViewModel = koinViewModel()
+    viewModel: ArchiveViewModel = koinViewModel(),
 ) {
+    val actionStatus by viewModel.statusAction.observeAsState(ActionStatus.NONE)
+    if (actionStatus == ActionStatus.SUCCESS_REVERT) {
+        LaunchedEffect(Unit) {
+            routing.routToMain()
+        }
+    }
+
     LaunchedEffect(Unit) {
         viewModel.getArchive()
     }
+
     val listOfArchive by viewModel.listOfArchive.observeAsState(emptyList())
     val status by viewModel.statusLoadingList.observeAsState(LoadStatus.NONE)
     val swipeRefreshState = rememberSwipeRefreshState(
         isRefreshing = status == LoadStatus.LOAD
     )
-
     val listState = rememberLazyListState()
     val isAtTheEndOfList by remember(listState) {
         derivedStateOf {
