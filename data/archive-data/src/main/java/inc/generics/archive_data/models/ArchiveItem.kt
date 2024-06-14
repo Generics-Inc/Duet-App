@@ -17,6 +17,5 @@ data class ArchiveItem(
 
 data class Partner(
     val name: String,
-    val isPartnerInGroup: Boolean,
     val photoUrl: String?
 )

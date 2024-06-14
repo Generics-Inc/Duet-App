@@ -51,6 +51,8 @@ dependencies {
 
     implementation(libs.di.koin.androidx.compose)
 
+    implementation(libs.google.swiperefresh)
+
     implementation(libs.coil.compose)
     implementation(libs.google.permissions)
 

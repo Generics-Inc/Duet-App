@@ -87,13 +87,13 @@ interface DuetApi {
     suspend fun cancelRequest(@Path("id") id: Long)
 
     /* Archives */
-    @GET("/groups/archives/me")
+    @GET("groups/archives/me")
     suspend fun allArchives(): Result<List<ArchivesItemDto>>
 
-    @PATCH("/groups/archives/revert/{id}")
+    @PATCH("groups/archives/revert/{id}")
     suspend fun revertGroup(@Path("id") id: Long): Result<ArchivesItemDto>
 
-    @DELETE("/groups/archives/{id}")
+    @DELETE("groups/archives/{id}")
     suspend fun deleteGroup(@Path("id") id: Long)
 
 

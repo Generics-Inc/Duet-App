@@ -18,7 +18,7 @@ internal fun ProfileInfDto.toProfileInfoUi(): ProfileInfo =
             },
             groupPhotoUrl = this.group!!.photo,
             partnerPhotoUrl = this.partner?.photo,
-            isPartnerInGroup = false
+            isPartnerInGroup = true //todo: заменить на реалное значение
         ) else null,
         accountsList = this.accounts.map {
             UserConnectedAccount(

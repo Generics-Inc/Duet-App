@@ -28,6 +28,7 @@ import inc.generics.presentation.theme.DuetTheme
 fun DuetAsyncImage(
     roundedDp: Dp = 8.dp,
     painterIconIfNotImg: Painter,
+    colorIcon: Color = DuetTheme.colors.mainColor,
     imgUrl: String?,
     size: Dp = 80.dp,
     shadowColor: Color = DefaultShadowColor,
@@ -56,7 +57,7 @@ fun DuetAsyncImage(
             if (imgUrl == null) {
                 Icon(
                     painter = painterIconIfNotImg,
-                    tint = DuetTheme.colors.mainColor,
+                    tint = colorIcon,
                     contentDescription = "icon load image",
                     modifier = Modifier.align(Alignment.Center)
                 )

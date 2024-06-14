@@ -7,9 +7,11 @@ data class ArchivesItemDto(
     @SerializedName("id")
     val id: Long,
     @SerializedName("profileId")
-    val profileId: Long,
-    @SerializedName("createAt")
-    val createAt: Date,
+    val profileId: Long?,
+    @SerializedName("createdAt")
+    val createdAt: Date,
+    @SerializedName("partner")
+    val partner: Partner?,
     @SerializedName("profile")
     val profile: ProfileInArchive,
     @SerializedName("group")
@@ -29,8 +31,23 @@ data class ProfileInArchive(
     val description: String,
     @SerializedName("photo")
     val photo: String?,
-    @SerializedName("createAt")
-    val createAt: Date
+    @SerializedName("createdAt")
+    val createdAt: Date
+)
+
+data class Partner(
+    @SerializedName("id")
+    val id: Long,
+    @SerializedName("username")
+    val username: String,
+    @SerializedName("firstName")
+    val firstName: String,
+    @SerializedName("lastName")
+    val lastName: String,
+    @SerializedName("photo")
+    val photo: String?,
+    @SerializedName("createdAt")
+    val createdAt: Date
 )
 
 data class Group(
@@ -47,27 +64,38 @@ data class Group(
 )
 
 /*
-{
+ {
     "id": 0,
     "groupId": 0,
     "profileId": 0,
-    "createdAt": "2024-06-08T10:37:32.431Z",
+    "partnerId": 0,
+    "createdAt": "2024-06-12T16:10:44.384Z",
     "profile": {
       "id": 0,
       "username": "string",
       "firstName": "string",
       "lastName": "string",
-      "gender": "MALE",     // не беру инфу по полу (она не нужна)
-      "description": "Казак с плеч",
+      "gender": "MALE",
+      "description": "Конец близок",
       "photo": "string",
-      "createdAt": "2024-06-08T10:37:32.432Z"
+      "createdAt": "2024-06-12T16:10:44.384Z"
+    },
+    "partner": {
+      "id": 0,
+      "username": "string",
+      "firstName": "string",
+      "lastName": "string",
+      "gender": "MALE",
+      "description": "Конец близок",
+      "photo": "string",
+      "createdAt": "2024-06-12T16:10:44.384Z"
     },
     "group": {
       "id": 0,
       "name": "string",
       "description": "string",
       "photo": "string",
-      "createdAt": "2024-06-08T10:37:32.432Z"
+      "createdAt": "2024-06-12T16:10:44.384Z"
     }
   }
 * */
