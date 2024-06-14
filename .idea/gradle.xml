@@ -32,6 +32,7 @@
             <option value="$PROJECT_DIR$/features/archive" />
             <option value="$PROJECT_DIR$/features/authorization" />
             <option value="$PROJECT_DIR$/features/create-new-group" />
+            <option value="$PROJECT_DIR$/features/group" />
             <option value="$PROJECT_DIR$/features/group-left-by-partner" />
             <option value="$PROJECT_DIR$/features/group-without-partner" />
             <option value="$PROJECT_DIR$/features/join-to-group" />
