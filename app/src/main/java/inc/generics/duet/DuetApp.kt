@@ -8,6 +8,7 @@ import inc.generics.duet.glue.android_utils.di.androidUtilsModule
 import inc.generics.duet.glue.data.archive_data.di.archiveDataModule
 import inc.generics.duet.glue.data.authorizaton_data.di.authorizationDataModule
 import inc.generics.duet.glue.data.create_new_group_data.di.createNewGroupDataModule
+import inc.generics.duet.glue.data.group_data.di.groupDataModule
 import inc.generics.duet.glue.data.group_left_by_partner_data.di.groupLeftByPartnerDataModule
 import inc.generics.duet.glue.data.group_without_partner_data.di.groupWithoutPartnerDataModule
 import inc.generics.duet.glue.data.join_to_group_data.di.joinToGroupDataModule
@@ -59,6 +60,7 @@ class DuetApp : Application(), ImageLoaderFactory {
                 archiveDataModule,
                 profileFeaturesModule,
                 profileDataModule,
+                groupDataModule,
 
                 presentationModule,
                 duetLocalModule,

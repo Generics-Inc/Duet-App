@@ -89,6 +89,8 @@ dependencies {
     implementation(project(":data:archive-data"))
     implementation(project(":features:archive"))
 
+    implementation(project(":data:group-data"))
+
     implementation(project(":features:movie"))
     //----/>
 
