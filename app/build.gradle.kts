@@ -90,6 +90,7 @@ dependencies {
     implementation(project(":features:archive"))
 
     implementation(project(":data:group-data"))
+    implementation(project(":features:group"))
 
     implementation(project(":features:movie"))
     //----/>
