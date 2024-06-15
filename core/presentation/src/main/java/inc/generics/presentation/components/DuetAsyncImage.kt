@@ -33,24 +33,26 @@ fun DuetAsyncImage(
     size: Dp = 80.dp,
     shadowColor: Color = DefaultShadowColor,
     shadowElevation: Dp = 8.dp,
-    modifier: Modifier = Modifier
-        .padding(14.dp)
-        .size(size)
-        .background(
-            color = DuetTheme.colors.backgroundColor,
-            shape = RoundedCornerShape(roundedDp)
+    offShadow: Boolean = false,
+    modifier: Modifier = Modifier.padding(14.dp).size(size).background(
+            color = DuetTheme.colors.backgroundColor, shape = RoundedCornerShape(roundedDp)
         )
 ) {
     Box(
         modifier = modifier
     ) {
         Surface(
-            modifier = Modifier.fillMaxSize().shadow(
-                shape = RoundedCornerShape(roundedDp),
-                ambientColor = shadowColor,
-                spotColor = shadowColor,
-                elevation = shadowElevation,
-            ),
+            modifier = Modifier.fillMaxSize().let {
+                if (offShadow)
+                    it
+                else
+                    it.shadow(
+                    shape = RoundedCornerShape(roundedDp),
+                    ambientColor = shadowColor,
+                    spotColor = shadowColor,
+                    elevation = shadowElevation,
+                )
+            },
             color = DuetTheme.colors.backgroundColor,
             shape = RoundedCornerShape(roundedDp),
         ) {
