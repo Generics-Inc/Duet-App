@@ -15,6 +15,14 @@ fun defaultTextStyleDuet(): TextStyle = TextStyle(
 )
 
 @Composable
+fun boldTextStyleDuet(): TextStyle = TextStyle(
+    color = DuetTheme.colors.textColor,
+    fontSize = 20.sp,
+    textAlign = TextAlign.Center,
+    fontWeight = FontWeight.Bold
+)
+
+@Composable
 fun secondTextStyleDuet(): TextStyle = TextStyle(
     color = DuetTheme.colors.textColor.copy(alpha = 0.5f),
     fontSize = 12.sp,
