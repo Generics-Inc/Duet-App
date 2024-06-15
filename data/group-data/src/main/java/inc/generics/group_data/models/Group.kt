@@ -7,7 +7,7 @@ data class Group(
     val photoUrl: String?,
     val dayTogether: Int,
     val statistic: Statistic,
-    val partner: Partner,
+    val partner: Partner?,
     val createdAt: Date
 )
 
