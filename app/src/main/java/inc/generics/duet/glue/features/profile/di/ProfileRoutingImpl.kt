@@ -15,4 +15,8 @@ class ProfileRoutingImpl(
     override fun toAuth() {
         navHostController.navigateInclusive(ExternalScreens.Authorization.route)
     }
+
+    override fun toGroup() {
+        navHostController.navigate(ExternalScreens.Group.route)
+    }
 }

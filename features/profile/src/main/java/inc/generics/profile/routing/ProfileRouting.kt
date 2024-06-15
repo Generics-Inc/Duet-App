@@ -4,4 +4,6 @@ interface ProfileRouting {
     fun toBack()
 
     fun toAuth()
+
+    fun toGroup()
 }
