@@ -18,6 +18,7 @@ import inc.generics.duet.ui.Main
 import inc.generics.duet.ui.SubNavBar
 import inc.generics.duet.glue.features.authorization.AuthorizationScreenRoutingImpl
 import inc.generics.duet.glue.features.create_new_group.CreateNewGroupScreenRoutingImpl
+import inc.generics.duet.glue.features.group.GroupRoutingImpl
 import inc.generics.duet.glue.features.group_left_by_partner.GroupLeftByPartnerRoutingImpl
 import inc.generics.duet.glue.features.group_without_partner.GroupWithoutPartnerRoutingImpl
 import inc.generics.duet.glue.features.join_to_group.JoinToGroupRoutingImpl
@@ -25,6 +26,7 @@ import inc.generics.duet.glue.features.no_active_group.NoActiveGroupRoutingImpl
 import inc.generics.duet.glue.features.profile.di.ProfileRoutingImpl
 import inc.generics.duet.glue.features.requests.RequestRoutingImpl
 import inc.generics.duet.navigation.screens.ExternalScreens.*
+import inc.generics.group.GroupScreen
 import inc.generics.group_left_by_partner.GroupLeftByPartnerScreen
 import inc.generics.group_left_by_partner.models.StatusGroupLeftByPartner
 import inc.generics.group_without_partner.GroupWithoutPartnerScreen
@@ -104,6 +106,9 @@ fun SetupMainNavGraph(navHostController: NavHostController) {
         }
         composable(route = Archive.route) {
             ArchiveScreen(ArchiveRoutingImpl(navHostController))
+        }
+        composable(route = Group.route) {
+            GroupScreen(GroupRoutingImpl(navHostController))
         }
 
         composable(route = SubNavigation.route) {
