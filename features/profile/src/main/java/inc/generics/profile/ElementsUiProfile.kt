@@ -4,6 +4,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -28,6 +29,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -47,6 +49,8 @@ import inc.generics.presentation.theme.DuetTheme
 import inc.generics.presentation.theme.appDuetThemeViewModel
 import inc.generics.presentation.theme.localization.StringsKeys
 import inc.generics.presentation.theme.localization.allLanguages
+import inc.generics.presentation.utils.MultipleEventsCutter
+import inc.generics.presentation.utils.get
 import inc.generics.profile.routing.ProfileRouting
 import inc.generics.profile.view_models.ProfileViewModel
 import inc.generics.profile_data.models.TypeAccount
@@ -74,7 +78,7 @@ internal fun ScreenContent(
         if (screenState != null) {
             item(key = 0) { UserInfo() }
             item(key = 1) { AccountList() }
-            item(key = 2) { GroupInfo() }
+            item(key = 2) { GroupInfo(routing = routing) }
         } else {
             item(key = 0) { Loading() }
         }
@@ -191,12 +195,20 @@ internal fun AccountItem(
 
 @Composable
 internal fun GroupInfo(
-    viewModel: ProfileViewModel = koinViewModel()
+    viewModel: ProfileViewModel = koinViewModel(),
+    routing: ProfileRouting
 ) {
     val screenState by viewModel.screenState.observeAsState()
+    val multipleEventsCutter by remember {
+        mutableStateOf(MultipleEventsCutter.get())
+    }
+
     screenState?.let { state ->
         Column(
-            modifier = Modifier.fillMaxWidth().padding(top = 20.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 20.dp)
+
         ) {
             Text(
                 text = state.groupInfo?.nameGroup
@@ -210,6 +222,7 @@ internal fun GroupInfo(
                     modifier = Modifier.fillMaxWidth().padding(top = 18.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
+                    val rounded = RoundedCornerShape(8.dp)
                     DuetAsyncImage(
                         imgUrl = groupInfo.groupPhotoUrl,
                         painterIconIfNotImg = painterResource(inc.generics.presentation.R.drawable.ic_load_img),
@@ -217,8 +230,14 @@ internal fun GroupInfo(
                             .size(50.dp)
                             .background(
                                 color = DuetTheme.colors.backgroundColor,
-                                shape = RoundedCornerShape(8.dp)
+                                shape = rounded
                             )
+                            .clip(rounded)
+                            .clickable {
+                                multipleEventsCutter.processEvent {
+                                    routing.toGroup()
+                                }
+                            }
                     )
 
                     Icon(
