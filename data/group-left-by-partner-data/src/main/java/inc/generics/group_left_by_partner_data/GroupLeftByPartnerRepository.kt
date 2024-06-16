@@ -13,4 +13,8 @@ class GroupLeftByPartnerRepository(
     suspend fun deletePartner(): Boolean = safeRequest {
         api.deletePartnerInGroup()
     }
+
+    suspend fun createNewInviteCode(): Boolean {
+        return api.generateNewInviteCode().isSuccess
+    }
 }
