@@ -24,10 +24,22 @@ class GroupLeftByPartnerViewModel(
             if (it) _stateScreen.value = StateScreen.LEAVE_GROUP
         }
     }
+
+    fun newInviteCode() = viewModelScope.launch {
+        _stateScreen.value = StateScreen.NEW_INVITE_CODE_IN_PROCESS
+        repository.createNewInviteCode().let {
+            _stateScreen.value = if (it)
+                 StateScreen.NEW_INVITE_CODE_IS_GENERATED
+            else
+                StateScreen.NONE
+        }
+    }
 }
 
 enum class StateScreen {
     NONE,
     DELETE_PARTNER,
-    LEAVE_GROUP
+    LEAVE_GROUP,
+    NEW_INVITE_CODE_IN_PROCESS,
+    NEW_INVITE_CODE_IS_GENERATED
 }

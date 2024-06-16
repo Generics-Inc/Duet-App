@@ -6,7 +6,10 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -25,6 +28,8 @@ import inc.generics.presentation.components.DefaultOutlinedButtonDuet
 import inc.generics.presentation.components.DefaultTopAppBarDuet
 import inc.generics.presentation.components.DuetAlertDialogRequest
 import inc.generics.presentation.components.HeadTestAndIcon
+import inc.generics.presentation.components.OutlinedButtonDuet
+import inc.generics.presentation.components.defaultTextStyleForButtonDuet
 import inc.generics.presentation.theme.DuetTheme
 import inc.generics.presentation.theme.localization.StringsKeys
 import inc.generics.presentation.utils.CutterType
@@ -42,6 +47,8 @@ fun GroupLeftByPartnerScreen(
             StateScreen.NONE -> Unit
             StateScreen.DELETE_PARTNER -> routing.toMain()
             StateScreen.LEAVE_GROUP -> routing.toMain()
+            StateScreen.NEW_INVITE_CODE_IN_PROCESS -> Unit
+            StateScreen.NEW_INVITE_CODE_IS_GENERATED -> routing.toMain()
         }
     }
 
@@ -71,6 +78,8 @@ internal fun NoPartnerInGroup(
     viewModel: GroupLeftByPartnerViewModel = koinViewModel(),
     dialogViewModel: GroupLeftByPartnerDialogViewModel = koinViewModel()
 ) {
+    val stateScreen by viewModel.stateScreen.observeAsState(StateScreen.NONE)
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -80,17 +89,30 @@ internal fun NoPartnerInGroup(
     ) {
         if (status.isPartnerDeleteGroup) {
             HeadTestAndIcon(DuetTheme.localization[StringsKeys.PARTNER_DELETE_GROUP])
-            DefaultOutlinedButtonDuet(
+            OutlinedButtonDuet(
                 onClick = {
-                    routing.toNewInviteCode()
+                    viewModel.newInviteCode()
                 },
-                cutterType = CutterType.ONLY_ONE_CLICK,
-                text = DuetTheme.localization[StringsKeys.NEW_CODE],
+                cutterType = CutterType.MULTIPLE_EVENTS,
+                enabled = stateScreen != StateScreen.NEW_INVITE_CODE_IN_PROCESS,
                 modifier = Modifier
                     .padding(top = 65.dp)
                     .fillMaxWidth()
                     .padding(horizontal = 80.dp)
-            )
+                    .size(187.dp, 45.dp)
+            ) {
+                if (stateScreen == StateScreen.NEW_INVITE_CODE_IN_PROCESS) {
+                    CircularProgressIndicator(
+                        modifier = Modifier.size(18.dp),
+                        color = DuetTheme.colors.secondColor
+                    )
+                } else {
+                    Text(
+                        text = DuetTheme.localization[StringsKeys.NEW_CODE],
+                        style = defaultTextStyleForButtonDuet()
+                    )
+                }
+            }
         } else {
             HeadTestAndIcon(
                 DuetTheme.localization[StringsKeys.PARTNER_LEAVE]
