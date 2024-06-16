@@ -9,10 +9,6 @@ import inc.generics.group_left_by_partner.routing.GroupLeftByPartnerRouting
 class GroupLeftByPartnerRoutingImpl(
     private val navHostController: NavHostController
 ): GroupLeftByPartnerRouting {
-    override fun toNewInviteCode() {
-        navHostController.navigate(ExternalScreens.JoinToGroup.route)
-    }
-
     override fun toSaveArchive() {
         TODO("Not yet implemented")
     }
