@@ -48,7 +48,25 @@ data class Group(
     @SerializedName("updatedAt")
     val updatedAtL: Date,
     @SerializedName("groupArchives")
-    val groupArchives: List<GroupArchive>
+    val groupArchives: List<GroupArchive>,
+    @SerializedName("partner")
+    val partner: Partner?
+
+)
+
+data class Partner(
+    @SerializedName("id")
+    val id: Long,
+    @SerializedName("username")
+    val username: String,
+    @SerializedName("firstName")
+    val firstName: String,
+    @SerializedName("lastName")
+    val lastName: String,
+    @SerializedName("photo")
+    val photo: String?,
+    @SerializedName("createdAt")
+    val createdAt: Date
 )
 
 data class GroupArchive(
