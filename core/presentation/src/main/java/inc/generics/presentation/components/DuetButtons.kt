@@ -29,6 +29,8 @@ fun OutlinedButtonDuet(
     hasBorder: Boolean = true,
     hasElevation: Boolean = true,
     enabled: Boolean = true,
+    containerColor: Color = DuetTheme.colors.backgroundColor,
+    contentColor: Color = DuetTheme.colors.secondColor,
     shape: Shape = RoundedCornerShape(10.dp),
     cutterType: CutterType = CutterType.MULTIPLE_EVENTS,
     onClick: () -> Unit, content: @Composable (RowScope.() -> Unit)
@@ -45,8 +47,8 @@ fun OutlinedButtonDuet(
         modifier = modifier,
         enabled = innerEnabled,
         colors = ButtonDefaults.outlinedButtonColors(
-            containerColor = DuetTheme.colors.backgroundColor,
-            contentColor = DuetTheme.colors.secondColor,
+            containerColor = containerColor,
+            contentColor = contentColor,
             disabledContainerColor = Color(0xFFD5C5D2) //E6D5E3м
         ),
         border = if (hasBorder && innerEnabled) BorderStroke(1.dp, DuetTheme.colors.secondColor) else null,
