@@ -11,11 +11,13 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import inc.generics.duet.glue.features.movie.MovieRoutingImpl
 import inc.generics.duet.navigation.screens.NavBarScreens
 import inc.generics.movie.MovieScreen
 
 @Composable
 fun SetupSubNavGraph(
+    externalNavHostController: NavHostController,
     navHostController: NavHostController,
     paddingValues: PaddingValues
 ) {
@@ -35,7 +37,7 @@ fun SetupSubNavGraph(
         }
     ) {
         composable(route = NavBarScreens.MoviesScreen.route) {
-            MovieScreen()
+            MovieScreen(MovieRoutingImpl(externalNavHostController))
         }
     }
 }

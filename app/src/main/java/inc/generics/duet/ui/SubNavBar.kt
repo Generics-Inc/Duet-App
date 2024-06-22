@@ -33,7 +33,9 @@ import inc.generics.presentation.utils.EventsCutter
 import inc.generics.presentation.utils.get
 
 @Composable
-fun SubNavBar() {
+fun SubNavBar(
+    externalNavHostController: NavHostController
+) {
     val navController: NavHostController = rememberNavController()
     val eventsCutter by remember {
         mutableStateOf(
@@ -95,6 +97,7 @@ fun SubNavBar() {
         }
     ) { paddingValues ->
         SetupSubNavGraph(
+            externalNavHostController = externalNavHostController,
             navHostController = navController,
             paddingValues = paddingValues
         )

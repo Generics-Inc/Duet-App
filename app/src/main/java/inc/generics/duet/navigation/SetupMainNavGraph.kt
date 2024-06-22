@@ -112,7 +112,7 @@ fun SetupMainNavGraph(navHostController: NavHostController) {
         }
 
         composable(route = SubNavigation.route) {
-            SubNavBar()
+            SubNavBar(externalNavHostController =  navHostController)
         }
     }
 }
