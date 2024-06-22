@@ -27,6 +27,7 @@ import inc.generics.presentation.theme.DuetTheme
 @Composable
 fun DuetAsyncImage(
     roundedDp: Dp = 8.dp,
+    paddingDp: Dp = 14.dp,
     painterIconIfNotImg: Painter,
     colorIcon: Color = DuetTheme.colors.mainColor,
     imgUrl: String?,
@@ -34,7 +35,7 @@ fun DuetAsyncImage(
     shadowColor: Color = DefaultShadowColor,
     shadowElevation: Dp = 8.dp,
     offShadow: Boolean = false,
-    modifier: Modifier = Modifier.padding(14.dp).size(size).background(
+    modifier: Modifier = Modifier.padding(paddingDp).size(size).background(
             color = DuetTheme.colors.backgroundColor, shape = RoundedCornerShape(roundedDp)
         )
 ) {
@@ -53,6 +54,51 @@ fun DuetAsyncImage(
                     elevation = shadowElevation,
                 )
             },
+            color = DuetTheme.colors.backgroundColor,
+            shape = RoundedCornerShape(roundedDp),
+        ) {
+            if (imgUrl == null) {
+                Icon(
+                    painter = painterIconIfNotImg,
+                    tint = colorIcon,
+                    contentDescription = "icon load image",
+                    modifier = Modifier.align(Alignment.Center)
+                )
+            } else {
+                AsyncImage(
+                    model = LocalContext.current.getString(R.string.base_url) + imgUrl,
+                    contentDescription = "",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.size(24.dp).clip(RoundedCornerShape(roundedDp))
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun DuetAsyncImageOpen(
+    modifier: Modifier = Modifier,
+    roundedDp: Dp = 8.dp,
+    painterIconIfNotImg: Painter,
+    colorIcon: Color = DuetTheme.colors.mainColor,
+    imgUrl: String?,
+    shadowColor: Color = DefaultShadowColor,
+    shadowElevation: Dp = 8.dp,
+) {
+    Box(
+        modifier = modifier.background(
+            color = DuetTheme.colors.backgroundColor,
+            shape = RoundedCornerShape(roundedDp)
+        )
+    ) {
+        Surface(
+            modifier = Modifier.fillMaxSize().shadow(
+                shape = RoundedCornerShape(roundedDp),
+                ambientColor = shadowColor,
+                spotColor = shadowColor,
+                elevation = shadowElevation,
+            ),
             color = DuetTheme.colors.backgroundColor,
             shape = RoundedCornerShape(roundedDp),
         ) {
