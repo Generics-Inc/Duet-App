@@ -94,6 +94,18 @@ data class MovieInfDto(
 )
 
 
+data class CreateMovieByLinkDto(
+    @SerializedName("link")
+    val link: String,
+    @SerializedName("name")
+    val name: String,
+    @SerializedName("addName")
+    val addName: String,
+    @SerializedName("type")
+    val type: String
+)
+
+
 enum class MovieType(val value: String) {
     FILM("FILM"), SERIAL("SERIAL"), ANIME("ANIME"), CARTOON("CARTOON")
 }

@@ -7,7 +7,7 @@ import inc.generics.duet_api.models.auth.VkSignInDto
 import inc.generics.duet_api.models.groups.Group
 import inc.generics.duet_api.models.groups.JoinToGroup
 import inc.generics.duet_api.models.groups.RequestToGroup
-import inc.generics.duet_api.models.movie.CreateMovieDto
+import inc.generics.duet_api.models.movie.CreateMovieByLinkDto
 import inc.generics.duet_api.models.movie.MovieDto
 import inc.generics.duet_api.models.profile.ProfileInfDto
 import inc.generics.duet_api.models.profile.StatusUsersGroupDto
@@ -101,6 +101,6 @@ interface DuetApi {
     @GET("movies")
     suspend fun getAllMovies(): Result<List<MovieDto>>
 
-    @POST("movies")
-    suspend fun crateMovie(@Body body: CreateMovieDto): Result<MovieDto>
+    @POST("movies/newByLink")
+    suspend fun crateMovie(@Body body: CreateMovieByLinkDto): Result<MovieDto>
 }
