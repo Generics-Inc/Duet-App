@@ -1,11 +1,10 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    alias(libs.plugins.jetpack.compose.compiler)
 }
 
 android {
-    namespace = "inc.generics.movie"
+    namespace = "inc.generics.movie_data"
     compileSdk = 34
 
     defaultConfig {
@@ -34,24 +33,11 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:presentation"))
-    implementation(project(":data:movie-data"))
+    implementation(project(":data-sources:duet-api"))
+    implementation(project(":core:utils-data"))
 
     implementation(libs.androidx.core.ktx)
 
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
-
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.lifecycle.runtime.compose)
-    implementation(libs.androidx.runtime.livedata)
-
-    implementation(libs.di.koin.androidx.compose)
-    implementation(libs.google.swiperefresh)
-
-    implementation(libs.coil.compose)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

@@ -42,7 +42,7 @@ data class CreatorDto(
     @SerializedName("description")
     val description: String,
     @SerializedName("photo")
-    val photo: String,
+    val photo: String?,
     @SerializedName("createdAt")
     val createdAt: Date
 )
@@ -82,7 +82,7 @@ data class MovieInfDto(
     @SerializedName("type")
     val type: String,
     @SerializedName("photo")
-    val photo: String,
+    val photo: String?,
     @SerializedName("updatedAt")
     val updatedAt: Date,
     @SerializedName("createdAt")

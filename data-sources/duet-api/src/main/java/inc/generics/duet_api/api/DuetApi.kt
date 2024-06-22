@@ -98,9 +98,15 @@ interface DuetApi {
 
 
     /* Movies */
-    @GET("movies")
+    @GET("groups/movies")
     suspend fun getAllMovies(): Result<List<MovieDto>>
 
-    @POST("movies/newByLink")
+    @POST("groups/movies/newByLink")
     suspend fun crateMovie(@Body body: CreateMovieByLinkDto): Result<MovieDto>
+
+    @DELETE("groups/movies/{movieId}")
+    suspend fun deleteMovie(@Path("movieId") movieId: Long): Result<MovieDto>
+
+    @PATCH("groups/movies/tasks/{id}")
+    suspend fun createMovieAgainByTaskId(@Path("id") taskId: Long)
 }

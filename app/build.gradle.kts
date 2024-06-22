@@ -93,6 +93,7 @@ dependencies {
     implementation(project(":features:group"))
 
     implementation(project(":features:movie"))
+    implementation(project(":data:movie-data"))
     //----/>
 
     implementation(project(":android-utils"))
