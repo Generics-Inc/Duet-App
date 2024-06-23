@@ -94,6 +94,8 @@ dependencies {
 
     implementation(project(":features:movie"))
     implementation(project(":data:movie-data"))
+
+    implementation(project(":data:new-movie-hdrezka"))
     //----/>
 
     implementation(project(":android-utils"))

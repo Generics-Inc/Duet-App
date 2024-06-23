@@ -13,6 +13,7 @@ import inc.generics.duet.glue.data.group_left_by_partner_data.di.groupLeftByPart
 import inc.generics.duet.glue.data.group_without_partner_data.di.groupWithoutPartnerDataModule
 import inc.generics.duet.glue.data.join_to_group_data.di.joinToGroupDataModule
 import inc.generics.duet.glue.data.movie_data.di.movieDataModule
+import inc.generics.duet.glue.data.new_movie_hdrezka.di.newMovieHdRezkaModule
 import inc.generics.duet.glue.data.profile_data.di.profileDataModule
 import inc.generics.duet.glue.data.requests_data.di.requestsDataModule
 import inc.generics.duet.glue.data_sources.duet_api.di.duetApiModule
@@ -67,6 +68,7 @@ class DuetApp : Application(), ImageLoaderFactory {
                 movieFeaturesModule,
                 groupFeaturesModule,
                 groupDataModule,
+                newMovieHdRezkaModule,
 
                 presentationModule,
                 duetLocalModule,
