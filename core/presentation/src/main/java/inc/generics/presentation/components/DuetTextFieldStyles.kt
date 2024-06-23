@@ -3,6 +3,7 @@ package inc.generics.presentation.components
 import androidx.compose.material3.TextFieldColors
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import inc.generics.presentation.theme.DuetTheme
 
 @Composable
@@ -20,4 +21,21 @@ fun defaultTextFieldStyle(): TextFieldColors = TextFieldDefaults.colors().copy(
     focusedSupportingTextColor = DuetTheme.colors.secondColor,
     focusedTextColor = DuetTheme.colors.thirdColor,
     unfocusedTextColor = DuetTheme.colors.thirdColor
+)
+
+@Composable
+fun transparentTextFieldStyle(): TextFieldColors = TextFieldDefaults.colors().copy(
+    unfocusedContainerColor = Color.Transparent,
+    focusedContainerColor = Color.Transparent,
+    errorContainerColor = DuetTheme.colors.errorColor,
+    unfocusedLabelColor = DuetTheme.colors.backgroundColor,
+    focusedLabelColor = DuetTheme.colors.backgroundColor.copy(alpha = 0.5f),
+    unfocusedIndicatorColor = DuetTheme.colors.backgroundColor,
+    focusedIndicatorColor = DuetTheme.colors.backgroundColor,
+    cursorColor = DuetTheme.colors.backgroundColor,
+    errorTextColor = DuetTheme.colors.errorColor,
+    unfocusedSupportingTextColor = DuetTheme.colors.secondColor,
+    focusedSupportingTextColor = DuetTheme.colors.secondColor,
+    focusedTextColor = DuetTheme.colors.backgroundColor,
+    unfocusedTextColor = DuetTheme.colors.backgroundColor
 )
