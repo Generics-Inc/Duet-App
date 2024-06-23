@@ -9,6 +9,8 @@ import inc.generics.duet_api.models.groups.JoinToGroup
 import inc.generics.duet_api.models.groups.RequestToGroup
 import inc.generics.duet_api.models.movie.CreateMovieByLinkDto
 import inc.generics.duet_api.models.movie.MovieDto
+import inc.generics.duet_api.models.movie.SearchByName
+import inc.generics.duet_api.models.movie.SearchedMovieList
 import inc.generics.duet_api.models.profile.ProfileInfDto
 import inc.generics.duet_api.models.profile.StatusUsersGroupDto
 import okhttp3.MultipartBody
@@ -101,7 +103,7 @@ interface DuetApi {
     @GET("groups/movies")
     suspend fun getAllMovies(): Result<List<MovieDto>>
 
-    @POST("groups/movies/newByLink")
+    @POST("movies/newByLink")
     suspend fun crateMovie(@Body body: CreateMovieByLinkDto): Result<MovieDto>
 
     @DELETE("groups/movies/{movieId}")
@@ -109,4 +111,7 @@ interface DuetApi {
 
     @PATCH("groups/movies/tasks/{id}")
     suspend fun createMovieAgainByTaskId(@Path("id") taskId: Long)
+
+    @POST("movies/search")
+    suspend fun searchMovieByHdRezka(@Body body: SearchByName): Result<SearchedMovieList>
 }
