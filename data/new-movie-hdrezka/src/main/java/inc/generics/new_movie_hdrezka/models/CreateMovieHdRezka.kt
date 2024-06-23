@@ -1,4 +1,4 @@
-package inc.generics.movie_data.models
+package inc.generics.new_movie_hdrezka.models
 
 data class CreateMovieHdRezka(
     val link: String,
