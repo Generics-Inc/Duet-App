@@ -5,15 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import inc.generics.movie.vm.models.StateBottomSheetViewModel
 
-class ActionItemBottomSheetViewModel : ViewModel() {
+class AddNewMovieBottomSheetViewModel : ViewModel() {
     private val _state = MutableLiveData(StateBottomSheetViewModel.DISMISS)
     val state: LiveData<StateBottomSheetViewModel> = _state
 
-    private val _dataItem: MutableLiveData<DataItem> = MutableLiveData(null)
-    val dataItem: LiveData<DataItem> = _dataItem
-
-    fun show(data: DataItem) {
-        _dataItem.value = data
+    fun show() {
         _state.value = StateBottomSheetViewModel.SHOW
     }
 
@@ -21,8 +17,3 @@ class ActionItemBottomSheetViewModel : ViewModel() {
         _state.value = StateBottomSheetViewModel.DISMISS
     }
 }
-
-data class DataItem(
-    val id: Long,
-    val name: String
-)
