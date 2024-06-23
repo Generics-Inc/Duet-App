@@ -5,7 +5,7 @@ data class ItemSearch(
     val addName: String,
     val url: String,
     val type: String,
-    val rating: Int
+    val rating: Double
 ) {
     fun getType(): TypeMovie? {
         return try {

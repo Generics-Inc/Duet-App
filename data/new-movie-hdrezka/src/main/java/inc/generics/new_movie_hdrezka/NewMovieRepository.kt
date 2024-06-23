@@ -1,5 +1,6 @@
 package inc.generics.new_movie_hdrezka
 
+import android.util.Log
 import inc.generics.duet_api.api.DuetApi
 import inc.generics.duet_api.models.movie.SearchByName
 import inc.generics.duet_api.models.movie.StatusSearch
@@ -17,6 +18,8 @@ class NewMovieRepository(private val api: DuetApi) {
                 it.values.map { elem ->  elem.toUi() }
             } else
                 null
+        }.onFailure {
+            Log.e("searchMovie", it.toString())
         }
         return null
     }

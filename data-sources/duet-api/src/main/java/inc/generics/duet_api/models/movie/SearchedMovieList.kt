@@ -36,5 +36,5 @@ data class SearchedMovie(
     @SerializedName("type")
     val type: String,
     @SerializedName("rating")
-    val rating: Int
+    val rating: Double
 )
