@@ -14,4 +14,7 @@ class MovieRoutingImpl(
     override fun onMovie() {}
 
     override fun onCreateNewMovie() {}
+    override fun onCreateNewMovieHdRezka() {
+        externalNavHostController.navigate(ExternalScreens.NewMovieHdRezka.route)
+    }
 }

@@ -13,7 +13,7 @@ import inc.generics.duet.glue.data.group_left_by_partner_data.di.groupLeftByPart
 import inc.generics.duet.glue.data.group_without_partner_data.di.groupWithoutPartnerDataModule
 import inc.generics.duet.glue.data.join_to_group_data.di.joinToGroupDataModule
 import inc.generics.duet.glue.data.movie_data.di.movieDataModule
-import inc.generics.duet.glue.data.new_movie_hdrezka.di.newMovieHdRezkaModule
+import inc.generics.duet.glue.data.new_movie_hdrezka.di.newMovieHdRezkaDataModule
 import inc.generics.duet.glue.data.profile_data.di.profileDataModule
 import inc.generics.duet.glue.data.requests_data.di.requestsDataModule
 import inc.generics.duet.glue.data_sources.duet_api.di.duetApiModule
@@ -26,6 +26,7 @@ import inc.generics.duet.glue.features.group_left_by_partner.di.groupLeftByPartn
 import inc.generics.duet.glue.features.group_without_partner.di.groupWithoutPartnerFeaturesModule
 import inc.generics.duet.glue.features.join_to_group.di.joinToGroupFeatureModule
 import inc.generics.duet.glue.features.movie.di.movieFeaturesModule
+import inc.generics.duet.glue.features.new_movie_hdrezka.di.newMovieHdRezkaFeaturesModule
 import inc.generics.duet.glue.features.profile.di.profileFeaturesModule
 import inc.generics.duet.glue.features.requests.di.requestsFeatureModule
 import inc.generics.duet.glue.main.di.mainModule
@@ -68,7 +69,8 @@ class DuetApp : Application(), ImageLoaderFactory {
                 movieFeaturesModule,
                 groupFeaturesModule,
                 groupDataModule,
-                newMovieHdRezkaModule,
+                newMovieHdRezkaDataModule,
+                newMovieHdRezkaFeaturesModule,
 
                 presentationModule,
                 duetLocalModule,

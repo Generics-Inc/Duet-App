@@ -4,6 +4,6 @@ import inc.generics.new_movie_hdrezka.NewMovieRepository
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 
-val newMovieHdRezkaModule = module {
+val newMovieHdRezkaDataModule = module {
     singleOf(::NewMovieRepository)
 }
