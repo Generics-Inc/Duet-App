@@ -39,9 +39,13 @@ fun SetupSubNavGraph(
         composable(route = NavBarScreens.MoviesScreen.route) {
             MovieScreen(MovieRoutingImpl(externalNavHostController))
         }
+        composable(route = NavBarScreens.EventsScreen.route) {}
+        composable(route = NavBarScreens.KitchenScreen.route) {}
     }
 }
 
-val listOfNavBarScreens = listOf<NavBarScreens>(
-    NavBarScreens.MoviesScreen
+val listOfNavBarScreens = listOf(
+    NavBarScreens.MoviesScreen,
+    NavBarScreens.EventsScreen,
+    NavBarScreens.KitchenScreen
 )
