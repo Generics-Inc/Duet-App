@@ -14,11 +14,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import inc.generics.movie.routing.MovieRouting
 import inc.generics.movie.vm.ActionItemBottomSheetViewModel
 import inc.generics.movie.vm.AddNewMovieBottomSheetViewModel
 import inc.generics.movie.vm.MovieViewModel
@@ -28,6 +31,8 @@ import inc.generics.presentation.components.defaultTextStyleDuet
 import inc.generics.presentation.components.defaultTextStyleForButtonDuet
 import inc.generics.presentation.components.secondTextStyleDuet
 import inc.generics.presentation.theme.DuetTheme
+import inc.generics.presentation.utils.MultipleEventsCutter
+import inc.generics.presentation.utils.get
 import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -112,8 +117,16 @@ internal fun SetupActionItemBottomSheet(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SetupAddNewMovieBottomSheet(
+    routing: MovieRouting,
     viewModelAddNewBottomSheet: AddNewMovieBottomSheetViewModel = koinViewModel()
 ) {
+    val cutterHdRezkaButton by remember {
+        mutableStateOf(MultipleEventsCutter.get())
+    }
+    val cutterPawButton by remember {
+        mutableStateOf(MultipleEventsCutter.get())
+    }
+
     ModalBottomSheet(
         onDismissRequest = {
             viewModelAddNewBottomSheet.dismiss()
@@ -142,8 +155,15 @@ fun SetupAddNewMovieBottomSheet(
                 text = "Добавить запись",
                 style = defaultTextStyleDuet().copy(fontSize = 14.sp)
             )
-            GradientButtonPaw(onClick = {})
-            GradientButtonHdRezka(onClick = {})
+            GradientButtonPaw(onClick = {
+                cutterPawButton.processEvent {  }
+            })
+            GradientButtonHdRezka(onClick = {
+                cutterHdRezkaButton.processEvent {
+                    viewModelAddNewBottomSheet.dismiss()
+                    routing.onCreateNewMovieHdRezka()
+                }
+            })
         }
     }
 }
