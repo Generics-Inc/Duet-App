@@ -11,5 +11,6 @@ data class DuetColors(
     val textColor: Color,
     val textContrastColor: Color,
     val errorColor: Color,
-    val successColor: Color
+    val successColor: Color,
+    val hdRezkaColor: HdRezkaColor
 )
