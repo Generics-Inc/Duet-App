@@ -1,17 +1,18 @@
 package inc.generics.movie_in_detail_data
 
 import inc.generics.duet_api.api.DuetApi
-import inc.generics.duet_api.models.movie.CreateMovieByLinkDto
+import inc.generics.movie_in_detail_data.models.CreateMovieHdRezka
 import inc.generics.movie_in_detail_data.models.MovieInDetail
 import kotlinx.coroutines.delay
 
 class MovieInDetailRepository(
     private val api: DuetApi
 ) {
-    suspend fun getMovie(id: Long): MovieInDetail {
+    suspend fun getMovie(id: Long): MovieInDetail? {
         delay(100)
         return MovieInDetail(
             id = 0,
+            photoUrl = null,
             name = "Название филма",
             originalName = "names movie",
             genres = listOf(
@@ -29,7 +30,8 @@ class MovieInDetailRepository(
         return api.deleteMovie(id).isSuccess
     }
 
-    suspend fun addMovieByLink(createMovieByLinkDto: CreateMovieByLinkDto): Boolean {
-        return api.crateMovie(createMovieByLinkDto).isSuccess
+    suspend fun addMovieByLink(createMovieHdRezka: CreateMovieHdRezka): Boolean {
+        return api.crateMovie(createMovieHdRezka.toDto()).isSuccess
     }
+
 }
