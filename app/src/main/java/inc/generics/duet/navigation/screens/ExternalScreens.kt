@@ -16,5 +16,7 @@ sealed class ExternalScreens(val route: String, val dataKey: String) {
     data object Group: ExternalScreens(route = "GroupScreen", "")
     data object NewMovieHdRezka: ExternalScreens(route = "NewMovieHdRezka", "")
 
+    data object MovieInDetail: ExternalScreens(route = "MovieInDetail", "")
+
     data object SubNavigation: ExternalScreens(route = "SubNavigation", "")
 }

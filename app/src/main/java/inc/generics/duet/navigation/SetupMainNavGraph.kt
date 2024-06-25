@@ -32,6 +32,7 @@ import inc.generics.group_left_by_partner.GroupLeftByPartnerScreen
 import inc.generics.group_left_by_partner.models.StatusGroupLeftByPartner
 import inc.generics.group_without_partner.GroupWithoutPartnerScreen
 import inc.generics.join_to_group.JoinToGroupScreen
+import inc.generics.movie_in_detail.MovieInDetailScreen
 import inc.generics.new_movie_hdrezka.NewMovieHdRezkaScreen
 import inc.generics.no_active_group.NoActiveGroupScreen
 import inc.generics.no_active_group.models.NoActiveGroupUiData
@@ -114,6 +115,15 @@ fun SetupMainNavGraph(navHostController: NavHostController) {
         }
         composable(route = NewMovieHdRezka.route) {
             NewMovieHdRezkaScreen(NewMovieHdRezkaRoutingImpl(navHostController))
+        }
+        composable(
+            route = "${MovieInDetail.route}/{idMovie}",
+            arguments = listOf(navArgument("idMovie") { type = NavType.LongType })
+        ) {
+            val idMovie = navHostController.currentBackStackEntry?.arguments?.getLong("idMovie")
+            idMovie?.let {
+                MovieInDetailScreen(idMovie = idMovie)
+            }
         }
 
         composable(route = SubNavigation.route) {
