@@ -30,13 +30,13 @@ class MovieViewModel(private val repository: MovieRepository): ViewModel() {
 
     fun deleteById(id: Long) = viewModelScope.launch {
         if (repository.delete(id)) {
-            repository.getAllMovies() //todo пока нет сокетов
+            getAllMovies() //todo пока нет сокетов
         }
     }
 
     fun tryAgan(taskId: Long) = viewModelScope.launch {
         if(repository.tryCreateAganByTaskId(taskId)) {
-            repository.getAllMovies()
+            getAllMovies()
         }
     }
 }
