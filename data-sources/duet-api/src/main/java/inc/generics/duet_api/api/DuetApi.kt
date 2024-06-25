@@ -118,4 +118,7 @@ interface DuetApi {
 
     @GET("groups/movies/{id}")
     suspend fun getMovieById(@Path("id") id: Long): Result<MovieInDetailDto>
+
+    @PATCH("groups/movies/{movieId}/setWatched")
+    suspend fun setWatchedFlagMovieById(@Path("movieId") id: Long): Result<MovieInDetailDto>
 }
