@@ -72,7 +72,7 @@ internal fun TaskItem(
     Column(
         modifier = Modifier
             .let {
-                if (!movie.taskCreate!!.isError)
+                if (movie.createdMovie != null)
                     it.clip(RoundedCornerShape(8.dp)).clickable {
                         viewModelBottomSheetViewModel.show(
                             DataItem(
