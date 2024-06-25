@@ -95,6 +95,9 @@ dependencies {
     implementation(project(":features:movie"))
     implementation(project(":data:movie-data"))
 
+    implementation(project(":features:movie-in-detail"))
+    implementation(project(":data:movie-in-detail-data"))
+
     implementation(project(":data:new-movie-hdrezka"))
     implementation(project(":features:new-movie-hdrezka"))
     //----/>
