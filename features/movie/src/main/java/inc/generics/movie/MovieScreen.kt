@@ -58,7 +58,7 @@ fun MovieScreen(
         .observeAsState(StateBottomSheetViewModel.DISMISS)
 
     if (statusBottomSheet == StateBottomSheetViewModel.SHOW) {
-        SetupActionItemBottomSheet()
+        SetupActionItemBottomSheet(routing = routing)
     }
     if (stateBottomSheetAddNew == StateBottomSheetViewModel.SHOW) {
         SetupAddNewMovieBottomSheet(routing = routing)

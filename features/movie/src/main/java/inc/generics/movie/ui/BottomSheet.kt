@@ -38,6 +38,7 @@ import org.koin.androidx.compose.koinViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun SetupActionItemBottomSheet(
+    routing: MovieRouting,
     viewModel: MovieViewModel = koinViewModel(),
     viewModelBottomSheetViewModel: ActionItemBottomSheetViewModel = koinViewModel()
 ) {
@@ -80,6 +81,9 @@ internal fun SetupActionItemBottomSheet(
                 OutlinedButtonDuet(
                     modifier = Modifier.fillMaxWidth(),
                     onClick = {
+                        routing.onMovie(
+                            idMovie = movieData!!.id
+                        )
                     },
                 ) {
                     Text(
