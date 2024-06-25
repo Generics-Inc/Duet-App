@@ -24,6 +24,10 @@ class MovieInDetailViewModel(
         }
     }
 
+    fun setWatchedFlag(id: Long) = viewModelScope.launch {
+        repository.setWatchedFlag(id)
+    }
+
     fun deleteMovie(id: Long) = viewModelScope.launch {
         if (repository.deleteMovie(id)) {
             _screenState.value = ScreenState.DELETE_CURRENT_MOVIE
