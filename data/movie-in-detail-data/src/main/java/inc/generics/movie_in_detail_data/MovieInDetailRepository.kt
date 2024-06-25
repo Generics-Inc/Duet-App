@@ -18,6 +18,10 @@ class MovieInDetailRepository(
         return null
     }
 
+    suspend fun setWatchedFlag(id: Long): Boolean {
+        return api.setWatchedFlagMovieById(id).isSuccess
+    }
+
     suspend fun deleteMovie(id: Long): Boolean {
         return api.deleteMovie(id).isSuccess
     }
