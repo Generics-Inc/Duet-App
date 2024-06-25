@@ -65,6 +65,7 @@ fun FilledTonalButtonDuet(
     color: Color = DuetTheme.colors.secondColor,
     contentColor: Color = DuetTheme.colors.textContrastColor,
     enabled: Boolean = true,
+    hasElevation: Boolean = true,
     shape: Shape = RoundedCornerShape(10.dp),
     cutterType: CutterType = CutterType.MULTIPLE_EVENTS,
     onClick: () -> Unit, content: @Composable (RowScope.() -> Unit)
@@ -86,7 +87,8 @@ fun FilledTonalButtonDuet(
             disabledContainerColor = Color(0xFFD5D1D4) //E6D5E3м
         ),
         shape = shape,
-        elevation = ButtonDefaults.elevatedButtonElevation(2.dp, 0.dp, 0.dp, 0.dp, 2.dp),
+        elevation = if(hasElevation)
+            ButtonDefaults.elevatedButtonElevation(2.dp, 0.dp, 0.dp, 0.dp, 2.dp) else null,
         content = content
     )
 }
