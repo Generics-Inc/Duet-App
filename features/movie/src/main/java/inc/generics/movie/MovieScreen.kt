@@ -94,14 +94,16 @@ fun MovieScreen(
                 stickyHeader {
                     HeaderList()
                 }
-                items(
-                    items = listOfMovie.filter {
-                        if (filterText.isEmpty())
-                            true
-                        else
-                            (it.createdMovie?.name ?: it.taskCreate?.name ?: "")
+                val filteredList = listOfMovie.filter {
+                    if (filterText.isEmpty())
+                        true
+                    else
+                        (it.createdMovie?.name ?: it.taskCreate?.name ?: "")
                             .contains(filterText, ignoreCase = true)
-                    },
+                }
+
+                items(
+                    items = filteredList,
                     key = { it.id }
                 ) { movie ->
                     CommonMovieItem(
