@@ -81,6 +81,7 @@ internal fun SetupActionItemBottomSheet(
                 OutlinedButtonDuet(
                     modifier = Modifier.fillMaxWidth(),
                     onClick = {
+                        viewModelBottomSheetViewModel.dismiss()
                         routing.onMovie(
                             idMovie = movieData!!.id
                         )
