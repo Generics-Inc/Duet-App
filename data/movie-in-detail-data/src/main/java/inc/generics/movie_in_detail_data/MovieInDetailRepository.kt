@@ -1,29 +1,21 @@
 package inc.generics.movie_in_detail_data
 
+import android.util.Log
 import inc.generics.duet_api.api.DuetApi
 import inc.generics.movie_in_detail_data.models.CreateMovieHdRezka
 import inc.generics.movie_in_detail_data.models.MovieInDetail
-import kotlinx.coroutines.delay
 
 class MovieInDetailRepository(
     private val api: DuetApi
 ) {
     suspend fun getMovie(id: Long): MovieInDetail? {
-        delay(100)
-        return MovieInDetail(
-            id = 0,
-            photoUrl = null,
-            name = "Название филма",
-            originalName = "names movie",
-            genres = listOf(
-                "Боевик" , "Ужасы"
-            ),
-            isWatch = false,
-            description = "",
-            parts = listOf(
-            )
-        )
-        //todo: for tests
+        api.getMovieById(id).onSuccess {
+            return it.toUi()
+        }.onFailure {
+            Log.e("getMovie", it.toString())
+        }
+
+        return null
     }
 
     suspend fun deleteMovie(id: Long): Boolean {
