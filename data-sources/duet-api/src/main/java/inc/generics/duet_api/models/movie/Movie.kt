@@ -90,7 +90,7 @@ data class MovieInfDto(
     @SerializedName("creatorId")
     val creatorId: Long,
     @SerializedName("originalName")
-    val originalName: String
+    val originalName: String?
 )
 
 

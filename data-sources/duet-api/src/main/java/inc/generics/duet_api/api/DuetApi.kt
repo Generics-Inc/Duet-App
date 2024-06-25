@@ -9,6 +9,7 @@ import inc.generics.duet_api.models.groups.JoinToGroup
 import inc.generics.duet_api.models.groups.RequestToGroup
 import inc.generics.duet_api.models.movie.CreateMovieByLinkDto
 import inc.generics.duet_api.models.movie.MovieDto
+import inc.generics.duet_api.models.movie.MovieInDetailDto
 import inc.generics.duet_api.models.movie.SearchByName
 import inc.generics.duet_api.models.movie.SearchedMovieList
 import inc.generics.duet_api.models.profile.ProfileInfDto
@@ -114,4 +115,7 @@ interface DuetApi {
 
     @POST("movies/search")
     suspend fun searchMovieByHdRezka(@Body body: SearchByName): Result<SearchedMovieList>
+
+    @GET("groups/movies/{id}")
+    suspend fun getMovieById(@Path("id") id: Long): Result<MovieInDetailDto>
 }
