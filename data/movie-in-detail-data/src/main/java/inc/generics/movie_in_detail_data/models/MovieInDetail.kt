@@ -2,6 +2,7 @@ package inc.generics.movie_in_detail_data.models
 
 data class MovieInDetail(
     val id: Long,
+    val photoUrl: String?,
     val name: String,
     val originalName: String,
     val genres: List<String>,
