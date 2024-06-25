@@ -14,19 +14,33 @@ import inc.generics.archive.ArchiveScreen
 import inc.generics.authorization.AuthorizationScreen
 import inc.generics.create_new_group.CreateNewGroupScreen
 import inc.generics.duet.glue.features.archive.ArchiveRoutingImpl
-import inc.generics.duet.ui.Main
-import inc.generics.duet.ui.SubNavBar
 import inc.generics.duet.glue.features.authorization.AuthorizationScreenRoutingImpl
 import inc.generics.duet.glue.features.create_new_group.CreateNewGroupScreenRoutingImpl
 import inc.generics.duet.glue.features.group.GroupRoutingImpl
 import inc.generics.duet.glue.features.group_left_by_partner.GroupLeftByPartnerRoutingImpl
 import inc.generics.duet.glue.features.group_without_partner.GroupWithoutPartnerRoutingImpl
 import inc.generics.duet.glue.features.join_to_group.JoinToGroupRoutingImpl
+import inc.generics.duet.glue.features.movie_in_detail.MovieInDetailRoutingImpl
 import inc.generics.duet.glue.features.new_movie_hdrezka.NewMovieHdRezkaRoutingImpl
 import inc.generics.duet.glue.features.no_active_group.NoActiveGroupRoutingImpl
 import inc.generics.duet.glue.features.profile.di.ProfileRoutingImpl
 import inc.generics.duet.glue.features.requests.RequestRoutingImpl
-import inc.generics.duet.navigation.screens.ExternalScreens.*
+import inc.generics.duet.navigation.screens.ExternalScreens.Archive
+import inc.generics.duet.navigation.screens.ExternalScreens.Authorization
+import inc.generics.duet.navigation.screens.ExternalScreens.CreateNewGroup
+import inc.generics.duet.navigation.screens.ExternalScreens.Group
+import inc.generics.duet.navigation.screens.ExternalScreens.GroupLeftByPartner
+import inc.generics.duet.navigation.screens.ExternalScreens.GroupWithoutPartner
+import inc.generics.duet.navigation.screens.ExternalScreens.JoinToGroup
+import inc.generics.duet.navigation.screens.ExternalScreens.Main
+import inc.generics.duet.navigation.screens.ExternalScreens.MovieInDetail
+import inc.generics.duet.navigation.screens.ExternalScreens.NewMovieHdRezka
+import inc.generics.duet.navigation.screens.ExternalScreens.NoActiveGroup
+import inc.generics.duet.navigation.screens.ExternalScreens.Profile
+import inc.generics.duet.navigation.screens.ExternalScreens.Requests
+import inc.generics.duet.navigation.screens.ExternalScreens.SubNavigation
+import inc.generics.duet.ui.Main
+import inc.generics.duet.ui.SubNavBar
 import inc.generics.group.GroupScreen
 import inc.generics.group_left_by_partner.GroupLeftByPartnerScreen
 import inc.generics.group_left_by_partner.models.StatusGroupLeftByPartner
@@ -122,7 +136,10 @@ fun SetupMainNavGraph(navHostController: NavHostController) {
         ) {
             val idMovie = navHostController.currentBackStackEntry?.arguments?.getLong("idMovie")
             idMovie?.let {
-                MovieInDetailScreen(idMovie = idMovie)
+                MovieInDetailScreen(
+                    routing = MovieInDetailRoutingImpl(navHostController),
+                    idMovie = idMovie
+                )
             }
         }
 
