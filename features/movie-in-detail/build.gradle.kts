@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.jetpack.compose.compiler)
 }
 
 android {
@@ -34,6 +35,7 @@ android {
 
 dependencies {
     implementation(project(":core:presentation"))
+    implementation(project(":data:movie-in-detail-data"))
 
     implementation(libs.androidx.core.ktx)
 
